@@ -13,9 +13,12 @@ public class SmallMonster : MonoBehaviour
     [SerializeField] private float PlayerFollowRange;
     [SerializeField] private float BuffCooldown;
 
+    [SerializeField] private bool InBattle;
+
     private bool Following;
     private bool Roaming;
     private bool Buffing;
+    private bool Attacking;
 
     private float RoamTimer;
     private float cooldownTimer;
@@ -27,15 +30,22 @@ public class SmallMonster : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(Player.position, transform.position) > PlayerFollowRange)
+        if (!InBattle)
         {
-            Following = true;
-            Roaming = false;
+            if (Vector3.Distance(Player.position, transform.position) > PlayerFollowRange)
+            {
+                Following = true;
+                Roaming = false;
+            }
+            else
+            {
+                Following = false;
+                Roaming = true;
+            }
         }
         else
         {
-            Following = false;
-            Roaming = true;
+            Attacking = true;
         }
 
         if (!Buffing)
@@ -60,10 +70,22 @@ public class SmallMonster : MonoBehaviour
                     }
                 }
             }
+
+            if(Attacking)
+            {
+
+
+                //Agent.SetDestination(FindTarget().position);
+            }
         }
         cooldownTimer -= Time.deltaTime;
 
         Anim.SetBool("Running", Agent.velocity.magnitude > 0.01f);
+    }
+
+    private void FindTarget()
+    {
+
     }
 
     private void PowerUp()
@@ -97,5 +119,10 @@ public class SmallMonster : MonoBehaviour
 
         result = Vector3.zero;
         return false;
+    }
+
+    private IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(0.5f);
     }
 }
