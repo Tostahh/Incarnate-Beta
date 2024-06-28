@@ -8,15 +8,22 @@ public class PlayerActions : MonoBehaviour
 {
     public static Action CallSmall = delegate{};
 
+    [SerializeField] private BigMonster BigMon;
+    [SerializeField] private SmallMonster SmallMon;
+
     [SerializeField] private Animator Anim;
     [SerializeField] private Light HandLight;
     [SerializeField] private Collider SwordHitBox;
+    [SerializeField] private GameObject PlayerModel;
 
     [SerializeField] private Rigidbody RB;
 
     [SerializeField] private float JumpForce;
     [SerializeField] private float Speed;
     [SerializeField] private float SpinSpeed;
+
+    [SerializeField] private bool Transformed;
+    private bool Tcooldown;
 
     private PlayerControls PC;
     private Vector2 InputDirection;
@@ -29,8 +36,11 @@ public class PlayerActions : MonoBehaviour
     private int ComboCounter;
     private float ComboTimer;
 
+    private GameObject BigMonModel;
+
     private void Awake()
     {
+        SetMons();
         Anim = GetComponentInChildren<Animator>();
         RB = GetComponentInChildren<Rigidbody>();
         HandLight = GetComponentInChildren<Light>();
@@ -44,12 +54,14 @@ public class PlayerActions : MonoBehaviour
         PC.Player.Jump.performed += Jump;
         PC.Player.Attack.performed += Attack;
         PC.Player.Call.performed += Call;
+        PC.Player.Incarnate.performed += Incarnate;
     }
     private void OnDisable()
     {
         PC.Player.Jump.performed -= Jump;
         PC.Player.Attack.performed -= Attack;
         PC.Player.Call.performed -= Call;
+        PC.Player.Incarnate.performed -= Incarnate;
     }
 
     private void Update()
@@ -138,16 +150,19 @@ public class PlayerActions : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext jump)
     {
-        if (!Attacking)
+        if (!Transformed)
         {
-            if (Grounded)
+            if (!Attacking)
             {
-                Anim.SetTrigger("Jump");
-                RB.AddForce(new Vector3(0, JumpForce, 0));
-                Invoke("Fall", 0.8f);
+                if (Grounded)
+                {
+                    Anim.SetTrigger("Jump");
+                    RB.AddForce(new Vector3(0, JumpForce, 0));
+                    Invoke("Fall", 0.8f);
+                }
             }
+            Grounded = false;
         }
-        Grounded = false;
     }
 
     private void Fall()
@@ -178,14 +193,41 @@ public class PlayerActions : MonoBehaviour
 
     private void Call(InputAction.CallbackContext swing)
     {
-        if(!Attacking)
+        if (!Transformed)
         {
-            if(Grounded)
+            if (!Attacking)
             {
-                Attacking = true;
-                StartCoroutine(Call());
+                if (Grounded)
+                {
+                    Attacking = true;
+                    StartCoroutine(Call());
+                }
             }
         }
+    }
+
+    private void Incarnate(InputAction.CallbackContext Shift)
+    {
+        if (!Attacking)
+        {
+            if (Grounded)
+            {
+                if (!Transformed && !Tcooldown)
+                {
+                    Transformed = true;
+                    BigMonModel = Instantiate(BigMon.ModelPrefab, transform.position, gameObject.transform.rotation, gameObject.transform);
+                    PlayerModel.SetActive(false);
+                    Anim = GetComponentInChildren<Animator>();
+                    StartCoroutine(IncarnateCoolDown());
+                }
+            }
+        }
+    }
+
+    private void SetMons()
+    {
+        BigMon = FindObjectOfType<BigMonster>();
+        SmallMon = FindObjectOfType<SmallMonster>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -222,26 +264,72 @@ public class PlayerActions : MonoBehaviour
 
     IEnumerator Swing1()
     {
-        RB.velocity = Vector3.zero;
-        SwordHitBox.enabled = true;
-        Anim.SetTrigger("Attack");
-        yield return new WaitForSeconds(0.35f);
-        Attacking = false;
-        SwordHitBox.enabled = false;
-        ComboCounter = 1;
-        ComboTimer = 0.5f;
+        if (!Transformed)
+        {
+            RB.velocity = Vector3.zero;
+            SwordHitBox.enabled = true;
+            Anim.SetTrigger("Attack1");
+            yield return new WaitForSeconds(0.35f);
+            Attacking = false;
+            SwordHitBox.enabled = false;
+            ComboCounter = 1;
+            ComboTimer = 0.5f;
+        }
+        else
+        {
+            RB.velocity = Vector3.zero;
+            //SwordHitBox.enabled = true;
+            Collider[] HitBoxes = GetComponentsInChildren<SphereCollider>();
+            foreach(Collider S in HitBoxes)
+            {
+                S.enabled = true;
+            }
+            Anim.SetTrigger("Attack1");
+            yield return new WaitForSeconds(BigMon.Attack1HitCoolDown);
+            Attacking = false;
+            //SwordHitBox.enabled = false;
+            foreach (Collider S in HitBoxes)
+            {
+                S.enabled = false;
+            }
+            ComboCounter = 1;
+            ComboTimer = BigMon.Attack1HitCoolDown*2f;
+        }
     }
 
     IEnumerator Swing2() 
     {
-        RB.velocity = Vector3.zero;
-        SwordHitBox.enabled = true;
-        Anim.SetTrigger("Attack2");
-        yield return new WaitForSeconds(0.45f);
-        Attacking = false;
-        SwordHitBox.enabled = false;
-        ComboCounter = 0;
-        ComboTimer = 0;
+        if (!Transformed)
+        {
+            RB.velocity = Vector3.zero;
+            SwordHitBox.enabled = true;
+            Anim.SetTrigger("Attack2");
+            yield return new WaitForSeconds(0.45f);
+            Attacking = false;
+            SwordHitBox.enabled = false;
+            ComboCounter = 0;
+            ComboTimer = 0;
+        }
+        else
+        {
+            RB.velocity = Vector3.zero;
+            //SwordHitBox.enabled = true;
+            Collider[] HitBoxes = GetComponentsInChildren<SphereCollider>();
+            foreach (Collider S in HitBoxes)
+            {
+                S.enabled = true;
+            }
+            Anim.SetTrigger("Attack2");
+            yield return new WaitForSeconds(BigMon.Attack2HitCoolDown);
+            Attacking = false;
+            //SwordHitBox.enabled = false;
+            foreach (Collider S in HitBoxes)
+            {
+                S.enabled = false;
+            }
+            ComboCounter = 0;
+            ComboTimer = 0;
+        }
     }
 
     IEnumerator Call()
@@ -253,5 +341,17 @@ public class PlayerActions : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
         HandLight.enabled = false;
         Attacking = false;
+    }
+
+    IEnumerator IncarnateCoolDown()
+    {
+        yield return new WaitForSeconds(15f);
+        Transformed = false;
+        PlayerModel.SetActive(true);
+        Destroy(BigMonModel);
+        Anim = GetComponentInChildren<Animator>();
+        Tcooldown = true;
+        yield return new WaitForSeconds(20f);
+        Tcooldown = false;
     }
 }

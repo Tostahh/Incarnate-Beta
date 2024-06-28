@@ -119,13 +119,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2db193e6cf2b94dad1173c85fcd897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BigMon: {fileID: 0}
+  SmallMon: {fileID: 0}
   Anim: {fileID: 8804886561713806938}
   HandLight: {fileID: 4372092466615876761}
   SwordHitBox: {fileID: 6495941769632568657}
+  PlayerModel: {fileID: 4164147397529939154}
   RB: {fileID: 6284794726985309283}
   JumpForce: 300
   Speed: 260
   SpinSpeed: 15
+  Transformed: 0
 --- !u!1001 &3822267658715173251
 PrefabInstance:
   m_ObjectHideFlags: 0

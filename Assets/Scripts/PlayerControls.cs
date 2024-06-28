@@ -71,6 +71,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Incarnate"",
+                    ""type"": ""Button"",
+                    ""id"": ""d4a3b305-913e-4678-8b69-943e43f6ae17"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -227,6 +236,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""947f9e1a-cbf5-420b-a888-a00569600713"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Incarnate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""45b522a5-a81b-47ab-b866-2544613ab04e"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Incarnate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -240,6 +271,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Call = m_Player.FindAction("Call", throwIfNotFound: true);
+        m_Player_Incarnate = m_Player.FindAction("Incarnate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -306,6 +338,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Call;
+    private readonly InputAction m_Player_Incarnate;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -315,6 +348,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Call => m_Wrapper.m_Player_Call;
+        public InputAction @Incarnate => m_Wrapper.m_Player_Incarnate;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -339,6 +373,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Call.started += instance.OnCall;
             @Call.performed += instance.OnCall;
             @Call.canceled += instance.OnCall;
+            @Incarnate.started += instance.OnIncarnate;
+            @Incarnate.performed += instance.OnIncarnate;
+            @Incarnate.canceled += instance.OnIncarnate;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -358,6 +395,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Call.started -= instance.OnCall;
             @Call.performed -= instance.OnCall;
             @Call.canceled -= instance.OnCall;
+            @Incarnate.started -= instance.OnIncarnate;
+            @Incarnate.performed -= instance.OnIncarnate;
+            @Incarnate.canceled -= instance.OnIncarnate;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -382,5 +422,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnCall(InputAction.CallbackContext context);
+        void OnIncarnate(InputAction.CallbackContext context);
     }
 }
