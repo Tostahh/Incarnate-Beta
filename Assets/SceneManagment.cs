@@ -7,10 +7,6 @@ using System;
 public class SceneManagment : MonoBehaviour
 {
     public static Action NewSceneLoaded = delegate { };
-    private void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;

@@ -49,7 +49,7 @@ public class CleaningStation : Interactable
     {
         if (inventory.SlotIsFull[i])
         {
-            GameObject Fossil = Instantiate(inventory.Slots[i]);
+            inventory.Slots[i].SetActive(true);
             inventory.SlotIsFull[i] = false;
             inventory.Slots[i] = null;
             FindObjectOfType<SceneManagment>().ChangeScene("Rhythm");

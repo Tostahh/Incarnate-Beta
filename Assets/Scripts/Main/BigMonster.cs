@@ -28,6 +28,13 @@ public class BigMonster : MonoBehaviour
 
     private int ComboCounter = 0;
 
+    private void Awake()
+    {
+        if (!Player)
+        {
+            Player = FindObjectOfType<Inventory>().gameObject.transform;
+        }
+    }
     private void Update()
     {
         if (!InBattle)

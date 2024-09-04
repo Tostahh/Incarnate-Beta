@@ -21,7 +21,8 @@ public class PickUp : MonoBehaviour
                 if (inventory.SlotIsFull[i] == false)
                 {
                     inventory.SlotIsFull[i] = true;
-                    inventory.Slots[i] = ItemPrefab;
+                    inventory.Slots[i] = Instantiate(ItemPrefab);
+                    inventory.Slots[i].SetActive(false);
                     Destroy(gameObject);
                     break;
                 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3564356242975137082}
   - component: {fileID: 8574105898317505072}
   m_Layer: 0
-  m_Name: TestFossil
+  m_Name: TmpCactusFossil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca130fecccbb7e4418779a16cab317b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FossilNum: 0
   Discovered: 0
-  Name: MushMan
-  Description: Lil Guy
+  Name: Stabby
+  Description: Big Man
   SongPrefab: {fileID: 2487137466055710760, guid: a436c55e22053bb47b2139d90e29d14e, type: 3}
-  CometMonsterPrafab: {fileID: 5673730335090023779, guid: 0b5c91b51e91ab945be6acf522ffb2cf, type: 3}
+  CometMonsterPrafab: {fileID: 653777797268641158, guid: 315f49079c347d34796a8fec27918b7a, type: 3}

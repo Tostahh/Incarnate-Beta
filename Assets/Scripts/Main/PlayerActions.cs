@@ -227,7 +227,8 @@ public class PlayerActions : MonoBehaviour
                     {
                         Transformed = true;
                         gameObject.transform.position = Vector3.Lerp(transform.position, BigMon.gameObject.transform.position, Speed / Time.deltaTime);
-                        BigMon.GetComponentInChildren<Animator>();
+                        Anim = BigMon.GetComponentInChildren<Animator>();
+                        BigMon.enabled = false;
                         PlayerModel.SetActive(false);
                         StartCoroutine(IncarnateCoolDown());
                     }
@@ -370,7 +371,16 @@ public class PlayerActions : MonoBehaviour
 
     IEnumerator IncarnateCoolDown()
     {
+        while (Tcooldown)
+        {
+            BigMon.transform.position = transform.position;
+        }
         yield return new WaitForSeconds(0);
+
+        Transformed = false;
+        PlayerModel.SetActive(true);
+        Anim = GetComponentInChildren<Animator>();
+        BigMon.enabled = true;
     }
     private IEnumerator DestroyTMP(GameObject GO)
     {
