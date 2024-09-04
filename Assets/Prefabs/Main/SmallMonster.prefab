@@ -103,7 +103,7 @@ MonoBehaviour:
   RoamRange: 10
   PlayerFollowRange: 5
   BuffCooldown: 10
-  InBattle: 1
+  InBattle: 0
 --- !u!1001 &7594779845997501275
 PrefabInstance:
   m_ObjectHideFlags: 0

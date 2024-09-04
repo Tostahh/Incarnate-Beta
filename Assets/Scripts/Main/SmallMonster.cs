@@ -25,6 +25,13 @@ public class SmallMonster : MonoBehaviour
     private float cooldownTimer;
     private bool Attacking;
 
+    private void Awake()
+    {
+        if(!Player)
+        {
+            Player = FindObjectOfType<Inventory>().gameObject.transform;
+        }
+    }
     private void OnEnable()
     {
         PlayerActions.CallSmall += PowerUp;

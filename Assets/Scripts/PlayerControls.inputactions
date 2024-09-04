@@ -33,7 +33,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Attack",
+                    "name": "LightAttack",
                     "type": "Button",
                     "id": "17768109-0f30-4ac3-96d2-11c055b3d974",
                     "expectedControlType": "Button",
@@ -42,7 +42,25 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Call",
+                    "name": "HeavyAttack",
+                    "type": "Button",
+                    "id": "fa00456e-277c-4095-b8ca-96927ed461b3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RangedAttack",
+                    "type": "Button",
+                    "id": "a584097f-a995-4cf5-8f43-513c976c1321",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SupportCall",
                     "type": "Button",
                     "id": "c7d9f45a-8de7-4c1a-aa96-3edcc4023361",
                     "expectedControlType": "Button",
@@ -51,9 +69,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Incarnate",
+                    "name": "BattleIncarnate",
                     "type": "Button",
                     "id": "d4a3b305-913e-4678-8b69-943e43f6ae17",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "ec6ab4b1-065d-4f7b-b96e-012d2dad8ee7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "FiesSearch",
+                    "type": "Button",
+                    "id": "8a8308a7-5c71-421c-9a95-6480d126542a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -156,7 +192,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "LightAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -167,7 +203,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "LightAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -178,18 +214,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Call",
+                    "action": "SupportCall",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "8d0e1da0-98f1-4efe-a0f2-70a0ffaf8c40",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Call",
+                    "action": "SupportCall",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -222,7 +258,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Incarnate",
+                    "action": "BattleIncarnate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -233,7 +269,227 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Incarnate",
+                    "action": "BattleIncarnate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c2b144b0-8a92-4b2e-bbc1-a5e6e9b2ec87",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HeavyAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f1346bd-6d7c-4f37-baa8-6900460e290c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HeavyAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "83dea05f-eea7-44fd-8dd4-c2dfb11fc123",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RangedAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e0ff84cd-b744-44ab-ab21-a9ace8ebf4d5",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RangedAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "612a1dde-35d8-4d4d-bc61-b15d37f2d363",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "21bf871a-bdaa-464e-8b2c-efdb52c959dc",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2f6757c-bc14-4d6c-8fd4-cc98b2f2f694",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FiesSearch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e11b9421-fb6e-4c7f-8e2f-746c9598c9ef",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FiesSearch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Rhythm",
+            "id": "c17eaa09-7f14-4ed8-969c-e98f497df510",
+            "actions": [
+                {
+                    "name": "LeftNote",
+                    "type": "Button",
+                    "id": "6b95d908-3c9b-42b3-b97e-1657ba9b4f64",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MiddleNote",
+                    "type": "Button",
+                    "id": "3f3c0e1b-b6ab-445f-8712-43849bc1a813",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightNote",
+                    "type": "Button",
+                    "id": "1420d414-a5a6-4b63-a231-ec18851b54f6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "StartSong",
+                    "type": "Button",
+                    "id": "9a0c0527-c27b-4b95-b479-ef3c1cdb155a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "62ead573-c72d-46a7-9ccf-55a76a9b153c",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftNote",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "07021064-4981-4cf9-8ded-da5659f7a1b5",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftNote",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2acfad6c-2423-43ce-bf18-da152c9b0a25",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MiddleNote",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9529ce8f-d3d7-4107-af68-dd21c43386a9",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MiddleNote",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "17a8fa3b-1612-466e-8cb3-cc6baf266764",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightNote",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2f625c4f-5200-485f-b911-fcce2749f081",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightNote",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0a752c6e-fd93-4291-a3b3-e81a07845225",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartSong",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b0da6d7-1bde-40e1-a82e-bb93e3dbbfb5",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartSong",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

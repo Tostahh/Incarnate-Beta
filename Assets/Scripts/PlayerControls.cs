@@ -55,7 +55,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Attack"",
+                    ""name"": ""LightAttack"",
                     ""type"": ""Button"",
                     ""id"": ""17768109-0f30-4ac3-96d2-11c055b3d974"",
                     ""expectedControlType"": ""Button"",
@@ -64,7 +64,25 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Call"",
+                    ""name"": ""HeavyAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""fa00456e-277c-4095-b8ca-96927ed461b3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RangedAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""a584097f-a995-4cf5-8f43-513c976c1321"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SupportCall"",
                     ""type"": ""Button"",
                     ""id"": ""c7d9f45a-8de7-4c1a-aa96-3edcc4023361"",
                     ""expectedControlType"": ""Button"",
@@ -73,9 +91,27 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Incarnate"",
+                    ""name"": ""BattleIncarnate"",
                     ""type"": ""Button"",
                     ""id"": ""d4a3b305-913e-4678-8b69-943e43f6ae17"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""ec6ab4b1-065d-4f7b-b96e-012d2dad8ee7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FiesSearch"",
+                    ""type"": ""Button"",
+                    ""id"": ""8a8308a7-5c71-421c-9a95-6480d126542a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -178,7 +214,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack"",
+                    ""action"": ""LightAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -189,7 +225,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack"",
+                    ""action"": ""LightAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -200,18 +236,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Call"",
+                    ""action"": ""SupportCall"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""8d0e1da0-98f1-4efe-a0f2-70a0ffaf8c40"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Call"",
+                    ""action"": ""SupportCall"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -244,7 +280,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Incarnate"",
+                    ""action"": ""BattleIncarnate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -255,7 +291,227 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Incarnate"",
+                    ""action"": ""BattleIncarnate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2b144b0-8a92-4b2e-bbc1-a5e6e9b2ec87"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HeavyAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f1346bd-6d7c-4f37-baa8-6900460e290c"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HeavyAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""83dea05f-eea7-44fd-8dd4-c2dfb11fc123"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RangedAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0ff84cd-b744-44ab-ab21-a9ace8ebf4d5"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RangedAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""612a1dde-35d8-4d4d-bc61-b15d37f2d363"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""21bf871a-bdaa-464e-8b2c-efdb52c959dc"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2f6757c-bc14-4d6c-8fd4-cc98b2f2f694"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FiesSearch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e11b9421-fb6e-4c7f-8e2f-746c9598c9ef"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FiesSearch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Rhythm"",
+            ""id"": ""c17eaa09-7f14-4ed8-969c-e98f497df510"",
+            ""actions"": [
+                {
+                    ""name"": ""LeftNote"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b95d908-3c9b-42b3-b97e-1657ba9b4f64"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MiddleNote"",
+                    ""type"": ""Button"",
+                    ""id"": ""3f3c0e1b-b6ab-445f-8712-43849bc1a813"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightNote"",
+                    ""type"": ""Button"",
+                    ""id"": ""1420d414-a5a6-4b63-a231-ec18851b54f6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StartSong"",
+                    ""type"": ""Button"",
+                    ""id"": ""9a0c0527-c27b-4b95-b479-ef3c1cdb155a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""62ead573-c72d-46a7-9ccf-55a76a9b153c"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftNote"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""07021064-4981-4cf9-8ded-da5659f7a1b5"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftNote"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2acfad6c-2423-43ce-bf18-da152c9b0a25"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MiddleNote"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9529ce8f-d3d7-4107-af68-dd21c43386a9"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MiddleNote"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""17a8fa3b-1612-466e-8cb3-cc6baf266764"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightNote"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f625c4f-5200-485f-b911-fcce2749f081"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightNote"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a752c6e-fd93-4291-a3b3-e81a07845225"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartSong"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b0da6d7-1bde-40e1-a82e-bb93e3dbbfb5"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartSong"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -269,9 +525,19 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
-        m_Player_Call = m_Player.FindAction("Call", throwIfNotFound: true);
-        m_Player_Incarnate = m_Player.FindAction("Incarnate", throwIfNotFound: true);
+        m_Player_LightAttack = m_Player.FindAction("LightAttack", throwIfNotFound: true);
+        m_Player_HeavyAttack = m_Player.FindAction("HeavyAttack", throwIfNotFound: true);
+        m_Player_RangedAttack = m_Player.FindAction("RangedAttack", throwIfNotFound: true);
+        m_Player_SupportCall = m_Player.FindAction("SupportCall", throwIfNotFound: true);
+        m_Player_BattleIncarnate = m_Player.FindAction("BattleIncarnate", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_FiesSearch = m_Player.FindAction("FiesSearch", throwIfNotFound: true);
+        // Rhythm
+        m_Rhythm = asset.FindActionMap("Rhythm", throwIfNotFound: true);
+        m_Rhythm_LeftNote = m_Rhythm.FindAction("LeftNote", throwIfNotFound: true);
+        m_Rhythm_MiddleNote = m_Rhythm.FindAction("MiddleNote", throwIfNotFound: true);
+        m_Rhythm_RightNote = m_Rhythm.FindAction("RightNote", throwIfNotFound: true);
+        m_Rhythm_StartSong = m_Rhythm.FindAction("StartSong", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -336,9 +602,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Look;
-    private readonly InputAction m_Player_Attack;
-    private readonly InputAction m_Player_Call;
-    private readonly InputAction m_Player_Incarnate;
+    private readonly InputAction m_Player_LightAttack;
+    private readonly InputAction m_Player_HeavyAttack;
+    private readonly InputAction m_Player_RangedAttack;
+    private readonly InputAction m_Player_SupportCall;
+    private readonly InputAction m_Player_BattleIncarnate;
+    private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_FiesSearch;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -346,9 +616,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Look => m_Wrapper.m_Player_Look;
-        public InputAction @Attack => m_Wrapper.m_Player_Attack;
-        public InputAction @Call => m_Wrapper.m_Player_Call;
-        public InputAction @Incarnate => m_Wrapper.m_Player_Incarnate;
+        public InputAction @LightAttack => m_Wrapper.m_Player_LightAttack;
+        public InputAction @HeavyAttack => m_Wrapper.m_Player_HeavyAttack;
+        public InputAction @RangedAttack => m_Wrapper.m_Player_RangedAttack;
+        public InputAction @SupportCall => m_Wrapper.m_Player_SupportCall;
+        public InputAction @BattleIncarnate => m_Wrapper.m_Player_BattleIncarnate;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @FiesSearch => m_Wrapper.m_Player_FiesSearch;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -367,15 +641,27 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
-            @Call.started += instance.OnCall;
-            @Call.performed += instance.OnCall;
-            @Call.canceled += instance.OnCall;
-            @Incarnate.started += instance.OnIncarnate;
-            @Incarnate.performed += instance.OnIncarnate;
-            @Incarnate.canceled += instance.OnIncarnate;
+            @LightAttack.started += instance.OnLightAttack;
+            @LightAttack.performed += instance.OnLightAttack;
+            @LightAttack.canceled += instance.OnLightAttack;
+            @HeavyAttack.started += instance.OnHeavyAttack;
+            @HeavyAttack.performed += instance.OnHeavyAttack;
+            @HeavyAttack.canceled += instance.OnHeavyAttack;
+            @RangedAttack.started += instance.OnRangedAttack;
+            @RangedAttack.performed += instance.OnRangedAttack;
+            @RangedAttack.canceled += instance.OnRangedAttack;
+            @SupportCall.started += instance.OnSupportCall;
+            @SupportCall.performed += instance.OnSupportCall;
+            @SupportCall.canceled += instance.OnSupportCall;
+            @BattleIncarnate.started += instance.OnBattleIncarnate;
+            @BattleIncarnate.performed += instance.OnBattleIncarnate;
+            @BattleIncarnate.canceled += instance.OnBattleIncarnate;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @FiesSearch.started += instance.OnFiesSearch;
+            @FiesSearch.performed += instance.OnFiesSearch;
+            @FiesSearch.canceled += instance.OnFiesSearch;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -389,15 +675,27 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
-            @Call.started -= instance.OnCall;
-            @Call.performed -= instance.OnCall;
-            @Call.canceled -= instance.OnCall;
-            @Incarnate.started -= instance.OnIncarnate;
-            @Incarnate.performed -= instance.OnIncarnate;
-            @Incarnate.canceled -= instance.OnIncarnate;
+            @LightAttack.started -= instance.OnLightAttack;
+            @LightAttack.performed -= instance.OnLightAttack;
+            @LightAttack.canceled -= instance.OnLightAttack;
+            @HeavyAttack.started -= instance.OnHeavyAttack;
+            @HeavyAttack.performed -= instance.OnHeavyAttack;
+            @HeavyAttack.canceled -= instance.OnHeavyAttack;
+            @RangedAttack.started -= instance.OnRangedAttack;
+            @RangedAttack.performed -= instance.OnRangedAttack;
+            @RangedAttack.canceled -= instance.OnRangedAttack;
+            @SupportCall.started -= instance.OnSupportCall;
+            @SupportCall.performed -= instance.OnSupportCall;
+            @SupportCall.canceled -= instance.OnSupportCall;
+            @BattleIncarnate.started -= instance.OnBattleIncarnate;
+            @BattleIncarnate.performed -= instance.OnBattleIncarnate;
+            @BattleIncarnate.canceled -= instance.OnBattleIncarnate;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @FiesSearch.started -= instance.OnFiesSearch;
+            @FiesSearch.performed -= instance.OnFiesSearch;
+            @FiesSearch.canceled -= instance.OnFiesSearch;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -415,13 +713,94 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Rhythm
+    private readonly InputActionMap m_Rhythm;
+    private List<IRhythmActions> m_RhythmActionsCallbackInterfaces = new List<IRhythmActions>();
+    private readonly InputAction m_Rhythm_LeftNote;
+    private readonly InputAction m_Rhythm_MiddleNote;
+    private readonly InputAction m_Rhythm_RightNote;
+    private readonly InputAction m_Rhythm_StartSong;
+    public struct RhythmActions
+    {
+        private @PlayerControls m_Wrapper;
+        public RhythmActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @LeftNote => m_Wrapper.m_Rhythm_LeftNote;
+        public InputAction @MiddleNote => m_Wrapper.m_Rhythm_MiddleNote;
+        public InputAction @RightNote => m_Wrapper.m_Rhythm_RightNote;
+        public InputAction @StartSong => m_Wrapper.m_Rhythm_StartSong;
+        public InputActionMap Get() { return m_Wrapper.m_Rhythm; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(RhythmActions set) { return set.Get(); }
+        public void AddCallbacks(IRhythmActions instance)
+        {
+            if (instance == null || m_Wrapper.m_RhythmActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_RhythmActionsCallbackInterfaces.Add(instance);
+            @LeftNote.started += instance.OnLeftNote;
+            @LeftNote.performed += instance.OnLeftNote;
+            @LeftNote.canceled += instance.OnLeftNote;
+            @MiddleNote.started += instance.OnMiddleNote;
+            @MiddleNote.performed += instance.OnMiddleNote;
+            @MiddleNote.canceled += instance.OnMiddleNote;
+            @RightNote.started += instance.OnRightNote;
+            @RightNote.performed += instance.OnRightNote;
+            @RightNote.canceled += instance.OnRightNote;
+            @StartSong.started += instance.OnStartSong;
+            @StartSong.performed += instance.OnStartSong;
+            @StartSong.canceled += instance.OnStartSong;
+        }
+
+        private void UnregisterCallbacks(IRhythmActions instance)
+        {
+            @LeftNote.started -= instance.OnLeftNote;
+            @LeftNote.performed -= instance.OnLeftNote;
+            @LeftNote.canceled -= instance.OnLeftNote;
+            @MiddleNote.started -= instance.OnMiddleNote;
+            @MiddleNote.performed -= instance.OnMiddleNote;
+            @MiddleNote.canceled -= instance.OnMiddleNote;
+            @RightNote.started -= instance.OnRightNote;
+            @RightNote.performed -= instance.OnRightNote;
+            @RightNote.canceled -= instance.OnRightNote;
+            @StartSong.started -= instance.OnStartSong;
+            @StartSong.performed -= instance.OnStartSong;
+            @StartSong.canceled -= instance.OnStartSong;
+        }
+
+        public void RemoveCallbacks(IRhythmActions instance)
+        {
+            if (m_Wrapper.m_RhythmActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IRhythmActions instance)
+        {
+            foreach (var item in m_Wrapper.m_RhythmActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_RhythmActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public RhythmActions @Rhythm => new RhythmActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
-        void OnCall(InputAction.CallbackContext context);
-        void OnIncarnate(InputAction.CallbackContext context);
+        void OnLightAttack(InputAction.CallbackContext context);
+        void OnHeavyAttack(InputAction.CallbackContext context);
+        void OnRangedAttack(InputAction.CallbackContext context);
+        void OnSupportCall(InputAction.CallbackContext context);
+        void OnBattleIncarnate(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnFiesSearch(InputAction.CallbackContext context);
+    }
+    public interface IRhythmActions
+    {
+        void OnLeftNote(InputAction.CallbackContext context);
+        void OnMiddleNote(InputAction.CallbackContext context);
+        void OnRightNote(InputAction.CallbackContext context);
+        void OnStartSong(InputAction.CallbackContext context);
     }
 }

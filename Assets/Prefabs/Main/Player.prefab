@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8215964114947426788}
   - component: {fileID: 1681656949304622507}
   - component: {fileID: 4701950798940542267}
+  - component: {fileID: 8126981484145429207}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -125,11 +126,31 @@ MonoBehaviour:
   HandLight: {fileID: 4372092466615876761}
   SwordHitBox: {fileID: 6495941769632568657}
   PlayerModel: {fileID: 4164147397529939154}
+  SearchFlyPrefab: {fileID: 7389124445973669273, guid: ccc6f692c7b04764dbfa544a2e7234fa, type: 3}
   RB: {fileID: 6284794726985309283}
   JumpForce: 300
   Speed: 260
   SpinSpeed: 15
+  SearchRange: 10
   Transformed: 0
+--- !u!114 &8126981484145429207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4655693578113399630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8d3dea77136424aba4085f81da66df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SlotIsFull: 00000000
+  Slots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &3822267658715173251
 PrefabInstance:
   m_ObjectHideFlags: 0

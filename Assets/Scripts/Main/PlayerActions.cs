@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using Unity.VisualScripting;
 
 public class PlayerActions : MonoBehaviour
 {
@@ -15,14 +16,17 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private Light HandLight;
     [SerializeField] private Collider SwordHitBox;
     [SerializeField] private GameObject PlayerModel;
+    [SerializeField] private GameObject SearchFlyPrefab;
 
     [SerializeField] private Rigidbody RB;
 
     [SerializeField] private float JumpForce;
     [SerializeField] private float Speed;
     [SerializeField] private float SpinSpeed;
+    [SerializeField] private float SearchRange;
 
     [SerializeField] private bool Transformed;
+
     private bool Tcooldown;
 
     private PlayerControls PC;
@@ -35,8 +39,6 @@ public class PlayerActions : MonoBehaviour
 
     private int ComboCounter;
     private float ComboTimer;
-
-    private GameObject BigMonModel;
 
     private void Awake()
     {
@@ -52,16 +54,20 @@ public class PlayerActions : MonoBehaviour
     private void OnEnable()
     {
         PC.Player.Jump.performed += Jump;
-        PC.Player.Attack.performed += Attack;
-        PC.Player.Call.performed += Call;
-        PC.Player.Incarnate.performed += Incarnate;
+        PC.Player.LightAttack.performed += LightAttack;
+        PC.Player.SupportCall.performed += SupportCall;
+        PC.Player.BattleIncarnate.performed += BattleIncarnate;
+        PC.Player.FiesSearch.performed += Search;
+        SceneManagment.NewSceneLoaded += SetMons;
     }
     private void OnDisable()
     {
         PC.Player.Jump.performed -= Jump;
-        PC.Player.Attack.performed -= Attack;
-        PC.Player.Call.performed -= Call;
-        PC.Player.Incarnate.performed -= Incarnate;
+        PC.Player.LightAttack.performed -= LightAttack;
+        PC.Player.SupportCall.performed -= SupportCall;
+        PC.Player.BattleIncarnate.performed -= BattleIncarnate;
+        PC.Player.FiesSearch.performed -= Search;
+        SceneManagment.NewSceneLoaded += SetMons;
     }
 
     private void Update()
@@ -170,7 +176,7 @@ public class PlayerActions : MonoBehaviour
         Anim.SetTrigger("Down");
     }
 
-    private void Attack(InputAction.CallbackContext swing)
+    private void LightAttack(InputAction.CallbackContext swing)
     {
         if(!Attacking && ComboCounter == 0)
         {
@@ -191,35 +197,54 @@ public class PlayerActions : MonoBehaviour
         }
     }
 
-    private void Call(InputAction.CallbackContext swing)
+    private void SupportCall(InputAction.CallbackContext swing)
     {
-        if (!Transformed)
+        if (SmallMon)
         {
-            if (!Attacking)
+            if (!Transformed)
             {
-                if (Grounded)
+                if (!Attacking)
                 {
-                    Attacking = true;
-                    StartCoroutine(Call());
+                    if (Grounded)
+                    {
+                        Attacking = true;
+                        StartCoroutine(Call());
+                    }
                 }
             }
         }
     }
 
-    private void Incarnate(InputAction.CallbackContext Shift)
+    private void BattleIncarnate(InputAction.CallbackContext Shift)
     {
-        if (!Attacking)
+        if (BigMon)
         {
-            if (Grounded)
+            if (!Attacking)
             {
-                if (!Transformed && !Tcooldown)
+                if (Grounded)
                 {
-                    Transformed = true;
-                    BigMonModel = Instantiate(BigMon.ModelPrefab, transform.position, gameObject.transform.rotation, gameObject.transform);
-                    PlayerModel.SetActive(false);
-                    Anim = GetComponentInChildren<Animator>();
-                    StartCoroutine(IncarnateCoolDown());
+                    if (!Transformed && !Tcooldown)
+                    {
+                        Transformed = true;
+                        gameObject.transform.position = Vector3.Lerp(transform.position, BigMon.gameObject.transform.position, Speed / Time.deltaTime);
+                        BigMon.GetComponentInChildren<Animator>();
+                        PlayerModel.SetActive(false);
+                        StartCoroutine(IncarnateCoolDown());
+                    }
                 }
+            }
+        }
+    }
+
+    private void Search(InputAction.CallbackContext Search)
+    {
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position, SearchRange, Vector3.up);
+        foreach(RaycastHit hit in hits)
+        {
+            if(hit.transform.gameObject.CompareTag("Fossil"))
+            {
+                GameObject tmp = Instantiate(SearchFlyPrefab, hit.transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
+                StartCoroutine(DestroyTMP(tmp));
             }
         }
     }
@@ -345,13 +370,11 @@ public class PlayerActions : MonoBehaviour
 
     IEnumerator IncarnateCoolDown()
     {
-        yield return new WaitForSeconds(15f);
-        Transformed = false;
-        PlayerModel.SetActive(true);
-        Destroy(BigMonModel);
-        Anim = GetComponentInChildren<Animator>();
-        Tcooldown = true;
-        yield return new WaitForSeconds(20f);
-        Tcooldown = false;
+        yield return new WaitForSeconds(0);
+    }
+    private IEnumerator DestroyTMP(GameObject GO)
+    {
+        yield return new WaitForSeconds(1.5f);
+        Destroy(GO);
     }
 }
