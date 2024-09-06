@@ -8,13 +8,11 @@ public class SceneManagment : MonoBehaviour
 {
     public static Action NewSceneLoaded = delegate { };
 
-    private int TempSceneNumb;
+    public int CurrentSceneNumb;
 
-    private void Start()
+    private void Awake()
     {
-        TempSceneNumb = SceneManager.GetActiveScene().buildIndex;
-        FindObjectOfType<SaveLoadJson>().GiveSaveData().LastLoadedScene = TempSceneNumb;
-        FindObjectOfType<SaveLoadJson>().SaveGame();
+        CurrentSceneNumb = SceneManager.GetActiveScene().buildIndex;
     }
     private void OnEnable()
     {
@@ -34,12 +32,8 @@ public class SceneManagment : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        CurrentSceneNumb = SceneManager.GetActiveScene().buildIndex;
         // In transition
-
-        TempSceneNumb = SceneManager.GetActiveScene().buildIndex;
-        Debug.Log(FindObjectOfType<SaveLoadJson>().GiveSaveData().LastLoadedScene);
-        FindObjectOfType<SaveLoadJson>().GiveSaveData().LastLoadedScene = TempSceneNumb;
-        FindObjectOfType<SaveLoadJson>().SaveGame();
 
         NewSceneLoaded();
     }

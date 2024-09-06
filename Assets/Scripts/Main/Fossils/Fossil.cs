@@ -23,6 +23,7 @@ public class Fossil : MonoBehaviour
         if (FindObjectOfType<SaveLoadJson>().GiveSaveData().FossilDiscoveredStatus.Length >= FossilNum)
         {
             Debug.Log(FindObjectOfType<SaveLoadJson>().GiveSaveData().FossilDiscoveredStatus[FossilNum]);
+
             Discovered = FindObjectOfType<SaveLoadJson>().GiveSaveData().FossilDiscoveredStatus[FossilNum];
         }
     }
@@ -77,7 +78,7 @@ public class Fossil : MonoBehaviour
             if (Discovered)
             {
                 FindObjectOfType<Inventory>().gameObject.transform.parent.gameObject.SetActive(true);
-                Instantiate(CometMonsterPrafab, FindObjectOfType<Inventory>().gameObject.transform.position, Quaternion.identity);
+                Instantiate(CometMonsterPrafab, FindObjectOfType<PlayerActions>().GetComponent<Transform>().position, Quaternion.identity);
 
                 FindObjectOfType<SaveLoadJson>().GiveSaveData().FossilDiscoveredStatus[FossilNum] = Discovered;
                 FindObjectOfType<SaveLoadJson>().SaveGame();

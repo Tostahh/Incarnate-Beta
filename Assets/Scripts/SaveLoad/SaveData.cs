@@ -5,9 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class SaveData
 {
+    //Cleaning Station information
     public bool[] FossilDiscoveredStatus = new bool[24];
 
-    public int LastLoadedScene = 0;
-
+    //Save Station Information
+    public int LastLoadedScene;
     public string CurrentStation;
 }
