@@ -17,15 +17,13 @@ public class Fossil : MonoBehaviour
     private bool Cleaned;
     private bool Destroyed;
 
-    SaveData SaveData;
     private void Awake()
     {
-        SaveData = FindObjectOfType<SaveLoadJson>().GiveSaveData();
-
         DontDestroyOnLoad(this);
-        if (SaveData.FossilDiscoveredStatus.Length >= FossilNum)
+        if (FindObjectOfType<SaveLoadJson>().GiveSaveData().FossilDiscoveredStatus.Length >= FossilNum)
         {
-            Discovered = SaveData.FossilDiscoveredStatus[FossilNum];
+            Debug.Log(FindObjectOfType<SaveLoadJson>().GiveSaveData().FossilDiscoveredStatus[FossilNum]);
+            Discovered = FindObjectOfType<SaveLoadJson>().GiveSaveData().FossilDiscoveredStatus[FossilNum];
         }
     }
     private void OnEnable()
@@ -78,9 +76,10 @@ public class Fossil : MonoBehaviour
         {
             if (Discovered)
             {
+                FindObjectOfType<Inventory>().gameObject.transform.parent.gameObject.SetActive(true);
                 Instantiate(CometMonsterPrafab, FindObjectOfType<Inventory>().gameObject.transform.position, Quaternion.identity);
 
-                SaveData.FossilDiscoveredStatus[FossilNum] = Discovered;
+                FindObjectOfType<SaveLoadJson>().GiveSaveData().FossilDiscoveredStatus[FossilNum] = Discovered;
                 FindObjectOfType<SaveLoadJson>().SaveGame();
 
                 Destroy(gameObject);

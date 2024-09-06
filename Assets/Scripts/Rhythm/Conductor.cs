@@ -73,7 +73,7 @@ public class Conductor : MonoBehaviour
     private void Win()
     {
         FindObjectOfType<Fossil>().SongCompleted();
-        FindObjectOfType<SceneManagment>().ChangeScene("SampleScene");
+        FindObjectOfType<SceneManagment>().ChangeScene("SpaceHQ");
     }
     private void Update()
     {

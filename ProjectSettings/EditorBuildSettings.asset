@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/SpaceHQ.unity
+    guid: 1e70a930f5f501741afdc405af4ee440
   - enabled: 1
     path: Assets/Scenes/Rhythm.unity
     guid: 481bade67d5e46647b73b8d60a337aac
+  - enabled: 1
+    path: Assets/Scenes/PlanetArea.unity
+    guid: dea5abcfcd78c6e41803a90298a15b13
   m_configObjects: {}

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SaveLoadJson : MonoBehaviour // Learning Save Data
 {
-    public SaveData SaveDataInput;
+    private static SaveData SaveDataInput;
 
     string SaveFilePath;
 
@@ -22,12 +22,10 @@ public class SaveLoadJson : MonoBehaviour // Learning Save Data
             LoadGame();
         }
     }
-
     public SaveData GiveSaveData()
     {
         return SaveDataInput;
     }
-
     public void SaveGame()
     {
         string SavePlayerData = JsonUtility.ToJson(SaveDataInput);
@@ -35,7 +33,6 @@ public class SaveLoadJson : MonoBehaviour // Learning Save Data
 
         Debug.Log("Save file created at: " + SaveFilePath);
     }
-
     public void LoadGame()
     {
         if (File.Exists(SaveFilePath))
