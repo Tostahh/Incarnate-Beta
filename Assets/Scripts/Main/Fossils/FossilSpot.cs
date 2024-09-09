@@ -27,6 +27,14 @@ public class FossilSpot : Interactable
             }
             Destroy(gameObject);
         }
+
+        if (FossilSprite)
+        {
+            if (FossilSprite.activeSelf)
+            {
+                Destroy(InstanceUI);
+            }
+        }
     }
 
     public override void OnTriggerEnter(Collider other)
@@ -36,7 +44,10 @@ public class FossilSpot : Interactable
             PlayerInRange = true;
             if (Spotted)
             {
-                InstanceUI = Instantiate(InteractableUI, transform.position, Camera.main.transform.rotation);
+                if (FossilSprite.activeSelf == false)
+                {
+                    InstanceUI = Instantiate(InteractableUI, transform.position, Camera.main.transform.rotation);
+                }
             }
         }
     }

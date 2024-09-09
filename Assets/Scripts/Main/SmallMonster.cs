@@ -30,11 +30,6 @@ public class SmallMonster : MonoBehaviour
     private Inventory inventory;
     private void Awake()
     {
-        if(!Player)
-        {
-            Player = FindObjectOfType<PlayerActions>().gameObject.transform;
-        }
-
         DontDestroyOnLoad(this);
 
         inventory = FindObjectOfType<Inventory>();
@@ -60,6 +55,11 @@ public class SmallMonster : MonoBehaviour
 
     private void Update()
     {
+        if (!Player)
+        {
+            Player = FindObjectOfType<PlayerActions>().gameObject.transform;
+        }
+
         if (!InBattle)
         {
             if (Vector3.Distance(Player.position, transform.position) > PlayerFollowRange)

@@ -34,11 +34,6 @@ public class BigMonster : MonoBehaviour
 
     private void Awake()
     {
-        if (!Player)
-        {
-            Player = FindObjectOfType<PlayerActions>().gameObject.transform;
-        }
-
         DontDestroyOnLoad(this);
 
         inventory = FindObjectOfType<Inventory>();
@@ -56,6 +51,11 @@ public class BigMonster : MonoBehaviour
     }
     private void Update()
     {
+        if (!Player)
+        {
+            Player = FindObjectOfType<PlayerActions>().gameObject.transform;
+        }
+
         if (!InBattle)
         {
             if (Vector3.Distance(Player.position, transform.position) > PlayerFollowRange)
