@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class SmallMonster : MonoBehaviour
 {
     [SerializeField] private string Name;
+    public int MonsterNum;
 
     [SerializeField] private Animator Anim;
     [SerializeField] private Collider ShroomHitBox;

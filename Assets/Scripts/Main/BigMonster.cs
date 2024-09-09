@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class BigMonster : MonoBehaviour
 {
     [SerializeField] private string Name;
+    public int MonsterNum;
 
     [SerializeField] private Animator Anim;
     [SerializeField] private Collider FistHitBox;
