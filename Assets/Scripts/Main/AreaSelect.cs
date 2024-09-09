@@ -7,9 +7,11 @@ using TMPro;
 public class AreaSelect : Interactable
 {
     [SerializeField] private GameObject AreaSelectUI;
-    [SerializeField] private TextMeshProUGUI[] AreaNames;
 
+    [SerializeField] private TextMeshProUGUI[] AreaNames;
     [SerializeField] private string[] SceneNames;
+
+    [SerializeField] private string[] StationNames;
 
     public override void Interact(InputAction.CallbackContext Shift)
     {
@@ -24,7 +26,14 @@ public class AreaSelect : Interactable
                 AreaSelectUI.SetActive(true);
                 for (int i = 0; i < AreaNames.Length; i++)
                 {
-                    AreaNames[i].text = SceneNames[i];
+                    if (StationNames.Length > 0)
+                    {
+                        AreaNames[i].text = SceneNames[0] + " " + StationNames[i];
+                    }
+                    else
+                    {
+                        AreaNames[i].text = SceneNames[0];
+                    }
                 }
             }
         }
@@ -32,7 +41,13 @@ public class AreaSelect : Interactable
 
     public void ChangeToScene(int i)
     {
+        FindObjectOfType<SaveLoadJson>().GiveSaveData().LastLoadedScene = SceneNames[i];
         FindObjectOfType<SceneManagment>().ChangeScene(SceneNames[i]);
+    }
+    
+    public void ChangeCurrentStation(int i)
+    {
+        FindObjectOfType<SaveLoadJson>().GiveSaveData().CurrentStation = StationNames[i];
     }
 
     public override void OnTriggerExit(Collider other)

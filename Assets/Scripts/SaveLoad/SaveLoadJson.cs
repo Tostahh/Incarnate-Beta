@@ -7,7 +7,7 @@ public class SaveLoadJson : MonoBehaviour // Learning Save Data
 {
     private static SaveData SaveDataInput;
 
-    string SaveFilePath;
+    public string SaveFilePath;
 
     private void Awake()
     {

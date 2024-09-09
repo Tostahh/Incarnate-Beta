@@ -8,11 +8,11 @@ public class SceneManagment : MonoBehaviour
 {
     public static Action NewSceneLoaded = delegate { };
 
-    public int CurrentSceneNumb;
+    public string CurrentSceneName;
 
     private void Awake()
     {
-        CurrentSceneNumb = SceneManager.GetActiveScene().buildIndex;
+        CurrentSceneName = SceneManager.GetActiveScene().name;
     }
     private void OnEnable()
     {
@@ -32,7 +32,7 @@ public class SceneManagment : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        CurrentSceneNumb = SceneManager.GetActiveScene().buildIndex;
+        CurrentSceneName = SceneManager.GetActiveScene().name;
         // In transition
 
         NewSceneLoaded();

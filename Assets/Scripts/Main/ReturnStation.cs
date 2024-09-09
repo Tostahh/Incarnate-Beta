@@ -21,8 +21,6 @@ public class ReturnStation : MonoBehaviour
     }
     public void SetPlayerPos()
     {
-        Debug.Log(FindObjectOfType<SaveLoadJson>().GiveSaveData().CurrentStation);
-
         if (FindObjectOfType<SaveLoadJson>().GiveSaveData().CurrentStation == StationName)
         {
             Transform Player = FindObjectOfType<PlayerActions>().GetComponent<Transform>();
@@ -36,7 +34,7 @@ public class ReturnStation : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             FindObjectOfType<SaveLoadJson>().GiveSaveData().CurrentStation = StationName;
-            FindObjectOfType<SaveLoadJson>().GiveSaveData().LastLoadedScene = FindObjectOfType<SceneManagment>().CurrentSceneNumb;
+            FindObjectOfType<SaveLoadJson>().GiveSaveData().LastLoadedScene = FindObjectOfType<SceneManagment>().CurrentSceneName;
             FindObjectOfType<SaveLoadJson>().SaveGame();
         }
     }

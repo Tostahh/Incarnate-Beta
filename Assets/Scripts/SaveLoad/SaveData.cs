@@ -9,6 +9,6 @@ public class SaveData
     public bool[] FossilDiscoveredStatus = new bool[24];
 
     //Save Station Information
-    public int LastLoadedScene;
+    public string LastLoadedScene;
     public string CurrentStation;
 }
