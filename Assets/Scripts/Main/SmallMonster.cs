@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class SmallMonster : MonoBehaviour
 {
+    [SerializeField] private string Name;
+
     [SerializeField] private Animator Anim;
     [SerializeField] private Collider ShroomHitBox;
 
@@ -25,12 +27,27 @@ public class SmallMonster : MonoBehaviour
     private float cooldownTimer;
     private bool Attacking;
 
+    private Inventory inventory;
     private void Awake()
     {
         if(!Player)
         {
-            Player = FindObjectOfType<Inventory>().gameObject.transform;
+            Player = FindObjectOfType<PlayerActions>().gameObject.transform;
         }
+
+        DontDestroyOnLoad(this);
+
+        inventory = FindObjectOfType<Inventory>();
+    }
+    private void Start()
+    {
+        if (inventory.SmallMonsterSlotFull)
+        {
+            inventory.SmallMonsterSlotFull = false;
+            Destroy(inventory.SmallMonsterSlot.gameObject);
+        }
+        inventory.SmallMonsterSlot = gameObject;
+        inventory.SmallMonsterSlotFull = true;
     }
     private void OnEnable()
     {
@@ -169,6 +186,10 @@ public class SmallMonster : MonoBehaviour
 
         result = Vector3.zero;
         return false;
+    }
+    public string GiveName()
+    {
+        return Name;
     }
 
     private void OnTriggerEnter(Collider other)

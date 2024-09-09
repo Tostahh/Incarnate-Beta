@@ -8,6 +8,9 @@ public class Interactable : MonoBehaviour
     public bool PlayerInRange;
     public PlayerControls PC;
 
+    public GameObject InteractableUI;
+
+    public GameObject InstanceUI;
     public virtual void Awake()
     {
         PC = new PlayerControls();
@@ -26,6 +29,7 @@ public class Interactable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerInRange = true;
+            InstanceUI = Instantiate(InteractableUI, transform.position, Camera.main.transform.rotation);
         }
     }
 
@@ -34,6 +38,7 @@ public class Interactable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerInRange = false;
+            Destroy(InstanceUI);
         }
     }
 

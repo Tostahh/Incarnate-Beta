@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2638f0ee93b378b4589bd27d6545de7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: MushMan
   Anim: {fileID: 9087846350503862225}
   ShroomHitBox: {fileID: 2021171222205634737}
   Agent: {fileID: 588546309312320610}

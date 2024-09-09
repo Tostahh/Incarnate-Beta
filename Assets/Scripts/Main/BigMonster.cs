@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class BigMonster : MonoBehaviour
 {
+    [SerializeField] private string Name;
+
     [SerializeField] private Animator Anim;
     [SerializeField] private Collider FistHitBox;
     [SerializeField] private Collider HeadHitBox;
@@ -28,12 +30,29 @@ public class BigMonster : MonoBehaviour
 
     private int ComboCounter = 0;
 
+    private Inventory inventory;
+
     private void Awake()
     {
         if (!Player)
         {
-            Player = FindObjectOfType<Inventory>().gameObject.transform;
+            Player = FindObjectOfType<PlayerActions>().gameObject.transform;
         }
+
+        DontDestroyOnLoad(this);
+
+        inventory = FindObjectOfType<Inventory>();
+    }
+
+    private void Start()
+    {
+        if (inventory.BigMonsterSlotFull)
+        {
+            inventory.BigMonsterSlotFull = false;
+            Destroy(inventory.BigMonsterSlot.gameObject);
+        }
+        inventory.BigMonsterSlot = gameObject;
+        inventory.BigMonsterSlotFull = true;
     }
     private void Update()
     {
@@ -144,6 +163,11 @@ public class BigMonster : MonoBehaviour
 
         result = Vector3.zero;
         return false;
+    }
+
+    public string GiveName()
+    {
+        return Name;
     }
     private void OnTriggerEnter(Collider other)
     {

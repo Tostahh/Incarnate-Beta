@@ -245,6 +245,7 @@ public class PlayerActions : MonoBehaviour
             if(hit.transform.gameObject.CompareTag("Fossil"))
             {
                 GameObject tmp = Instantiate(SearchFlyPrefab, hit.transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
+                hit.transform.gameObject.GetComponent<FossilSpot>().Spotted = true;
                 StartCoroutine(DestroyTMP(tmp));
             }
         }

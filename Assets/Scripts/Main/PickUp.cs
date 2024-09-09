@@ -7,15 +7,12 @@ public class PickUp : MonoBehaviour
     [SerializeField] private GameObject ItemPrefab;
 
     private Inventory inventory;
-    private void Awake()
-    {
-        inventory = FindObjectOfType<Inventory>();
-    }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            inventory = FindObjectOfType<Inventory>();
             for (int i = 0; i < inventory.SlotIsFull.Length; i++)
             {
                 if (inventory.SlotIsFull[i] == false)

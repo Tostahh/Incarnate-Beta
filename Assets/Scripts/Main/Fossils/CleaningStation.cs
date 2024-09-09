@@ -55,4 +55,14 @@ public class CleaningStation : Interactable
             FindObjectOfType<SceneManagment>().ChangeScene("Rhythm");
         }
     }
+
+    public override void OnTriggerExit(Collider other)
+    {
+        base.OnTriggerExit(other);
+
+        if(other.CompareTag("Player"))
+        {
+            CleaningUI.SetActive(false);
+        }
+    }
 }

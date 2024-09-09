@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7540641223024608075
 RectTransform:
   m_ObjectHideFlags: 0
@@ -152,7 +152,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -171,7 +171,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerInRange: 0
+  InteractableUI: {fileID: 3166747675411204885, guid: 5c7b148dbd75a234e97004e0ca13061c, type: 3}
   CleaningUI: {fileID: 642572237683128265}
+  UISlotsText:
+  - {fileID: 2846487647278717535}
+  - {fileID: 2764937543756851489}
+  - {fileID: 1942218601932439430}
+  - {fileID: 6822170232749148899}
 --- !u!1 &2186452549357018935
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,10 +346,10 @@ RectTransform:
   - {fileID: 673137037422939244}
   m_Father: {fileID: 8845566235654819475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 225, y: -125}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4182738956938952733
 CanvasRenderer:
@@ -426,7 +432,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8202788894591156110}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7284441837441961861}
+        m_TargetAssemblyTypeName: CleaningStation, Assembly-CSharp
+        m_MethodName: SelectFossil
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3358255073665386871
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,7 +570,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4e69e6eed7c77f24ca8e3ea840dcd875, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -608,10 +626,10 @@ RectTransform:
   - {fileID: 4037305595454004260}
   m_Father: {fileID: 8845566235654819475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 975, y: -125}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3771379105614182202
 CanvasRenderer:
@@ -694,7 +712,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1240167787832216638}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7284441837441961861}
+        m_TargetAssemblyTypeName: CleaningStation, Assembly-CSharp
+        m_MethodName: SelectFossil
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5800920634046067846
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,10 +759,10 @@ RectTransform:
   - {fileID: 1303474406758434122}
   m_Father: {fileID: 8845566235654819475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 725, y: -125}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6400164522432025761
 CanvasRenderer:
@@ -815,7 +845,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 917706578745021619}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7284441837441961861}
+        m_TargetAssemblyTypeName: CleaningStation, Assembly-CSharp
+        m_MethodName: SelectFossil
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5916858012363784066
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,10 +1371,10 @@ RectTransform:
   - {fileID: 7242630215062315264}
   m_Father: {fileID: 8845566235654819475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 475, y: -125}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7100468289378272722
 CanvasRenderer:
@@ -1415,7 +1457,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1348335745343686677}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7284441837441961861}
+        m_TargetAssemblyTypeName: CleaningStation, Assembly-CSharp
+        m_MethodName: SelectFossil
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8905787946849297716
 GameObject:
   m_ObjectHideFlags: 0

@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerInRange: 0
+  InteractableUI: {fileID: 3166747675411204885, guid: 5c7b148dbd75a234e97004e0ca13061c, type: 3}
+  InstanceUI: {fileID: 0}
   FossilSprite: {fileID: 3227321331276552549}
 --- !u!65 &2817379863195174837
 BoxCollider:

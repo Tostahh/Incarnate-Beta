@@ -34,4 +34,14 @@ public class AreaSelect : Interactable
     {
         FindObjectOfType<SceneManagment>().ChangeScene(SceneNames[i]);
     }
+
+    public override void OnTriggerExit(Collider other)
+    {
+        base.OnTriggerExit(other);
+
+        if (other.CompareTag("Player"))
+        {
+            AreaSelectUI.SetActive(false);
+        }
+    }
 }

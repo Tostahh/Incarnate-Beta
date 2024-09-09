@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61909a000474ce49b478535a39a4a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Stabby
   Anim: {fileID: 5937201857611925608}
   FistHitBox: {fileID: 5038351131448667470}
   HeadHitBox: {fileID: 2782316321238210332}

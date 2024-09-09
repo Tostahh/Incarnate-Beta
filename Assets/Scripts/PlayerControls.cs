@@ -116,6 +116,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""70aab60a-21f4-44a0-981f-26149b9e8b64"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -382,6 +391,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""FiesSearch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""47c4dcc3-31b1-426c-b68d-00c258d53cb5"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e75ee1e-670c-4722-9ff3-b173fcb7ded7"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -532,6 +563,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_BattleIncarnate = m_Player.FindAction("BattleIncarnate", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_FiesSearch = m_Player.FindAction("FiesSearch", throwIfNotFound: true);
+        m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         // Rhythm
         m_Rhythm = asset.FindActionMap("Rhythm", throwIfNotFound: true);
         m_Rhythm_LeftNote = m_Rhythm.FindAction("LeftNote", throwIfNotFound: true);
@@ -609,6 +641,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_BattleIncarnate;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_FiesSearch;
+    private readonly InputAction m_Player_Inventory;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -623,6 +656,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @BattleIncarnate => m_Wrapper.m_Player_BattleIncarnate;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @FiesSearch => m_Wrapper.m_Player_FiesSearch;
+        public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -662,6 +696,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @FiesSearch.started += instance.OnFiesSearch;
             @FiesSearch.performed += instance.OnFiesSearch;
             @FiesSearch.canceled += instance.OnFiesSearch;
+            @Inventory.started += instance.OnInventory;
+            @Inventory.performed += instance.OnInventory;
+            @Inventory.canceled += instance.OnInventory;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -696,6 +733,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @FiesSearch.started -= instance.OnFiesSearch;
             @FiesSearch.performed -= instance.OnFiesSearch;
             @FiesSearch.canceled -= instance.OnFiesSearch;
+            @Inventory.started -= instance.OnInventory;
+            @Inventory.performed -= instance.OnInventory;
+            @Inventory.canceled -= instance.OnInventory;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -795,6 +835,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnBattleIncarnate(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnFiesSearch(InputAction.CallbackContext context);
+        void OnInventory(InputAction.CallbackContext context);
     }
     public interface IRhythmActions
     {
