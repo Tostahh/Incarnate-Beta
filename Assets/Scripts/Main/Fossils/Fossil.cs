@@ -26,6 +26,7 @@ public class Fossil : MonoBehaviour
 
             Discovered = FindObjectOfType<SaveLoadJson>().GiveSaveData().FossilDiscoveredStatus[FossilNum];
         }
+        gameObject.SetActive(false);
     }
     private void OnEnable()
     {

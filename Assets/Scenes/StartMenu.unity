@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2132,6 +2132,12 @@ MonoBehaviour:
   BigMonsterSlot: {fileID: 0}
   SmallMonsterSlotFull: 0
   SmallMonsterSlot: {fileID: 0}
+  FossilPrefabs:
+  - {fileID: 3688659504262292584, guid: e613a3948bf0f5c4c943e563b8548edd, type: 3}
+  - {fileID: 3688659504262292584, guid: 054c12df45880cd43a101fa0b04ca8c7, type: 3}
+  MonsterPrefabs:
+  - {fileID: 653777797268641158, guid: 315f49079c347d34796a8fec27918b7a, type: 3}
+  - {fileID: 5673730335090023779, guid: 0b5c91b51e91ab945be6acf522ffb2cf, type: 3}
 --- !u!1 &1213178507
 GameObject:
   m_ObjectHideFlags: 0

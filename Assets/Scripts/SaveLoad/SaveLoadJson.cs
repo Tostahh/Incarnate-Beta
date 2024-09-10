@@ -26,6 +26,32 @@ public class SaveLoadJson : MonoBehaviour // Learning Save Data
     {
         return SaveDataInput;
     }
+
+    public void NewGame()
+    {
+        SaveData SD = new SaveData();
+
+        for (int i = 0; i < SD.FossilDiscoveredStatus.Length; i++)
+        {
+            SD.FossilDiscoveredStatus[i] = false;
+        }
+        SD.LastLoadedScene = "SpaceHQ";
+        SD.CurrentStation = "SpaceHQ";
+        for (int i = 0; i < SD.InventorySlotsFull.Length; i++)
+        {
+            SD.InventorySlotsFull[i] = false;
+            SD.FossilInSlot[i] = 0;
+        }
+        SD.BigMonsterSlot = false;
+        SD.BigMonster = 0;
+        SD.SmallMonsterSlot = false;
+        SD.SmallMonster = 0;
+
+        string SDString = JsonUtility.ToJson(SD);
+        string SavePlayerData = JsonUtility.ToJson(SaveDataInput);
+        File.WriteAllText(SaveFilePath, SDString);
+    }
+
     public void SaveGame()
     {
         string SavePlayerData = JsonUtility.ToJson(SaveDataInput);

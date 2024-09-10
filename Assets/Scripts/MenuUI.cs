@@ -25,10 +25,12 @@ public class MenuUI : MonoBehaviour
         if (File.Exists(FindObjectOfType<SaveLoadJson>().SaveFilePath))
         {
             FindObjectOfType<SceneManagment>().ChangeScene(FindObjectOfType<SaveLoadJson>().GiveSaveData().LastLoadedScene);
+            FindObjectOfType<Inventory>().LoadInventory();
         }
         else
         {
-            FindObjectOfType<SceneManagment>().ChangeScene("SpaceHQ");
+            FindObjectOfType<SaveLoadJson>().NewGame();
+            FindObjectOfType<SceneManagment>().ChangeScene(FindObjectOfType<SaveLoadJson>().GiveSaveData().LastLoadedScene);
         }
     }
 
