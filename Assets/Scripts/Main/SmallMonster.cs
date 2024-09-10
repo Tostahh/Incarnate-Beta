@@ -48,10 +48,12 @@ public class SmallMonster : MonoBehaviour
     private void OnEnable()
     {
         PlayerActions.CallSmall += PowerUp;
+        SceneManagment.NewSceneLoaded += SetPos;
     }
     private void OnDisable()
     {
         PlayerActions.CallSmall -= PowerUp;
+        SceneManagment.NewSceneLoaded -= SetPos;
     }
 
     private void Update()
@@ -192,7 +194,11 @@ public class SmallMonster : MonoBehaviour
     {
         return Name;
     }
-
+    public void SetPos()
+    {
+        Player = FindObjectOfType<PlayerActions>().gameObject.transform;
+        transform.position = Player.transform.position;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy" && Battling)

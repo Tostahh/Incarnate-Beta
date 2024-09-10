@@ -40,6 +40,15 @@ public class BigMonster : MonoBehaviour
         inventory = FindObjectOfType<Inventory>();
     }
 
+    private void OnEnable()
+    {
+        SceneManagment.NewSceneLoaded += SetPos;
+    }
+    private void OnDisable()
+    {
+        SceneManagment.NewSceneLoaded -= SetPos;
+    }
+
     private void Start()
     {
         if (inventory.BigMonsterSlotFull)
@@ -169,6 +178,12 @@ public class BigMonster : MonoBehaviour
     public string GiveName()
     {
         return Name;
+    }
+
+    public void SetPos()
+    {
+        Player = FindObjectOfType<PlayerActions>().gameObject.transform;
+        gameObject.transform.position = Player.transform.position;
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -255,6 +255,15 @@ public class PlayerActions : MonoBehaviour
     {
         BigMon = FindObjectOfType<BigMonster>();
         SmallMon = FindObjectOfType<SmallMonster>();
+
+        if (BigMon)
+        {
+            BigMon.SetPos();
+        }
+        if (SmallMon)
+        {
+            SmallMon.SetPos();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
