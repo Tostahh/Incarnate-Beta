@@ -182,8 +182,11 @@ public class BigMonster : MonoBehaviour
 
     public void SetPos()
     {
+        Agent.enabled = false;
+        Debug.Log("Called Pos");
         Player = FindObjectOfType<PlayerActions>().gameObject.transform;
-        gameObject.transform.position = Player.transform.position;
+        transform.position = Player.transform.position;
+        Agent.enabled = true;
     }
     private void OnTriggerEnter(Collider other)
     {

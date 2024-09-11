@@ -196,8 +196,11 @@ public class SmallMonster : MonoBehaviour
     }
     public void SetPos()
     {
+        Agent.enabled = false;
+        Debug.Log("Called Pos");
         Player = FindObjectOfType<PlayerActions>().gameObject.transform;
         transform.position = Player.transform.position;
+        Agent.enabled = true;
     }
     private void OnTriggerEnter(Collider other)
     {
