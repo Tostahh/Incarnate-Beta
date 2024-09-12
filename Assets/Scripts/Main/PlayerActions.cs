@@ -27,6 +27,8 @@ public class PlayerActions : MonoBehaviour
 
     [SerializeField] private bool Transformed;
 
+    [SerializeField] private float SwordDmg;
+
     private bool Tcooldown;
 
     private PlayerControls PC;
@@ -273,13 +275,18 @@ public class PlayerActions : MonoBehaviour
             if (!Grounded)
             {
                 Anim.SetTrigger("Land");
+                Debug.Log("Grounded");
                 Grounded = true;
             }
         }
 
         if (other.gameObject.tag == "Enemy" && Attacking)
         {
-            Debug.Log("Hit");
+            Debug.Log("Hit"); // Apply KnockBack;
+
+
+
+            other.GetComponentInChildren<Heath>().UpdateHeath(-SwordDmg);
         }
     }
 
@@ -294,7 +301,10 @@ public class PlayerActions : MonoBehaviour
     {
         if(other.gameObject.layer == 3)
         {
-            Grounded = true;
+            if (!Grounded)
+            {
+                Grounded = true;
+            }
         }
     }
 

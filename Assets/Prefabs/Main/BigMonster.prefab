@@ -109,6 +109,7 @@ MonoBehaviour:
   RoamRange: 20
   PlayerFollowRange: 10
   InBattle: 0
+  Dmg: 3
 --- !u!1001 &504225045389289665
 PrefabInstance:
   m_ObjectHideFlags: 0

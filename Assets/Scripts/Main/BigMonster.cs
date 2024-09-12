@@ -22,6 +22,8 @@ public class BigMonster : MonoBehaviour
 
     [SerializeField] private bool InBattle;
 
+    [SerializeField] private float Dmg;
+
     private bool Following;
     private bool Roaming;
     private bool Battling;
@@ -43,10 +45,12 @@ public class BigMonster : MonoBehaviour
     private void OnEnable()
     {
         SceneManagment.NewSceneLoaded += SetPos;
+        SetCombat.TriggerCombat += CombatStance;
     }
     private void OnDisable()
     {
         SceneManagment.NewSceneLoaded -= SetPos;
+        SetCombat.TriggerCombat -= CombatStance;
     }
 
     private void Start()
@@ -188,11 +192,25 @@ public class BigMonster : MonoBehaviour
         transform.position = Player.transform.position;
         Agent.enabled = true;
     }
+
+    public void CombatStance()
+    {
+        if (!InBattle)
+        {
+            InBattle = true;
+        }
+        else
+        {
+            InBattle = false;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy" && Battling)
         {
             Debug.Log("Hit");
+
+            other.GetComponentInChildren<Heath>().UpdateHeath(-Dmg);
         }
     }
 

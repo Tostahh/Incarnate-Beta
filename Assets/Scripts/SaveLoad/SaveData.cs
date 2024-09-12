@@ -19,4 +19,6 @@ public class SaveData
     public int BigMonster; // what the big monster is
     public bool SmallMonsterSlot; // Does Player have a small monster
     public int SmallMonster; // what the small monster is
+
+    //Set Combat Information
 }
