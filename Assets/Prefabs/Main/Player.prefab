@@ -128,11 +128,12 @@ MonoBehaviour:
   SearchFlyPrefab: {fileID: 7389124445973669273, guid: ccc6f692c7b04764dbfa544a2e7234fa, type: 3}
   RB: {fileID: 6284794726985309283}
   JumpForce: 300
-  Speed: 260
+  Speed: 400
   SpinSpeed: 15
   SearchRange: 10
   Transformed: 0
   SwordDmg: 1
+  KnockBackAmount: 10
 --- !u!1001 &3822267658715173251
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2961831659033475763}
   - component: {fileID: 8041524986834049767}
   - component: {fileID: 6421455027947886945}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BigMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}

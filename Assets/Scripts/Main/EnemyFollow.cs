@@ -9,6 +9,9 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] private Animator Anim;
     [SerializeField] private NavMeshAgent Agent;
 
+    [SerializeField] private float KnockbackAmount;
+    [SerializeField] private float Dmg;
+
     private Transform Target;
 
     private Transform PlayerTarget;
@@ -23,6 +26,7 @@ public class EnemyFollow : MonoBehaviour
     private void Start()
     {
         PlayerTarget = FindObjectOfType<PlayerActions>().transform;
+
         SmallTarget = FindObjectOfType<SmallMonster>().transform;
         BigTarget = FindObjectOfType<BigMonster>().transform;
     }
@@ -69,5 +73,26 @@ public class EnemyFollow : MonoBehaviour
         }
 
         Anim.SetBool("Running", Agent.velocity.magnitude > 0.01f);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Vector3 Direction = (other.transform.position - transform.position).normalized;
+            Debug.Log("Hitting Player");
+            KnockBack(other.GetComponentInChildren<Rigidbody>(), Direction, KnockbackAmount, 0.5f);
+        }
+    }
+
+    private IEnumerator KnockBack(Rigidbody rb, Vector3 Direction, float Power, float time)
+    {
+        float timer = 0;
+        while (timer <= time)
+        {
+            rb.AddForce(Direction.normalized * Power);
+            yield return new WaitForFixedUpdate();
+            timer += Time.deltaTime;
+        }
     }
 }

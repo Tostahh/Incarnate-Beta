@@ -28,6 +28,7 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private bool Transformed;
 
     [SerializeField] private float SwordDmg;
+    [SerializeField] private float KnockBackAmount;
 
     private bool Tcooldown;
 
