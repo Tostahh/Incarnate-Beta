@@ -33,8 +33,13 @@ public class SceneManagment : MonoBehaviour
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         CurrentSceneName = SceneManager.GetActiveScene().name;
+        FindObjectOfType<SaveLoadJson>().enabled = true;
         // In transition
 
         NewSceneLoaded();
+    }
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

@@ -72,6 +72,7 @@ public class BigMonster : MonoBehaviour
 
         if (!InBattle)
         {
+            Battling = false;
             if (Vector3.Distance(Player.position, transform.position) > PlayerFollowRange)
             {
                 Following = true;
@@ -142,19 +143,26 @@ public class BigMonster : MonoBehaviour
     private Transform FindTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject Target = enemies[0];
-        Transform target;
-        for (int i = 0; i < enemies.Length; i++)
+        if (enemies.Length > 0)
         {
-            if (Vector3.Distance(transform.position, enemies[i].transform.position) < Vector3.Distance(transform.position, Target.transform.position))
+            GameObject Target = enemies[0];
+            Transform target;
+            for (int i = 0; i < enemies.Length; i++)
             {
-                Target = enemies[i];
+                if (Vector3.Distance(transform.position, enemies[i].transform.position) < Vector3.Distance(transform.position, Target.transform.position))
+                {
+                    Target = enemies[i];
+                }
             }
+
+            target = Target.transform;
+
+            return target;
         }
-
-        target = Target.transform;
-
-        return target;
+        else
+        {
+            return Player;
+        }
     }
 
     private void Rotate()

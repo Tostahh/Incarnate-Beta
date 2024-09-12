@@ -33,9 +33,4 @@ public class MenuUI : MonoBehaviour
             FindObjectOfType<SceneManagment>().ChangeScene(FindObjectOfType<SaveLoadJson>().GiveSaveData().LastLoadedScene);
         }
     }
-
-    public void ExitGame()
-    {
-        Application.Quit();
-    }
 }
