@@ -96,8 +96,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Anim: {fileID: 6680300069583668797}
   Agent: {fileID: 1066309081844864238}
-  KnockbackAmount: 0
-  Dmg: 0
+  KnockbackAmount: 3
+  Dmg: 1
 --- !u!114 &7139850090979563377
 MonoBehaviour:
   m_ObjectHideFlags: 0

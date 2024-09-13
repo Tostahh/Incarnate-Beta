@@ -58,10 +58,13 @@ public class Conductor : MonoBehaviour
     }
     private void StartSong(InputAction.CallbackContext Pressed)
     {
-        SecPerBeat = 60f / SongBPM;
-        SongDSPStartTime = (float)AudioSettings.dspTime;
-        MusicSource.Play();
-        SongPlaying = true;
+        if (!SongPlaying)
+        {
+            SecPerBeat = 60f / SongBPM;
+            SongDSPStartTime = (float)AudioSettings.dspTime;
+            MusicSource.Play();
+            SongPlaying = true;
+        }
     }
     private void EndSong()
     {
