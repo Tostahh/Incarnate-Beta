@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [System.Serializable]
 public class SaveData
@@ -21,4 +22,5 @@ public class SaveData
     public int SmallMonster; // what the small monster is
 
     //Set Combat Information
+    public bool[] PlanetAreaSetCombats = new bool[1];// num of combats in area
 }

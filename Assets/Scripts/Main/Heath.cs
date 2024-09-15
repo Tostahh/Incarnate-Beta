@@ -21,12 +21,18 @@ public class Heath : MonoBehaviour
     {
         HeathBar = GetComponentInChildren<Image>();
         CurrentHeath = MaxHeath;
-        HeathBar.fillAmount = CurrentHeath / MaxHeath;
+        if (HeathBar)
+        {
+            HeathBar.fillAmount = CurrentHeath / MaxHeath;
+        }
     }
 
     private void Update()
     {
-        HeathBar.fillAmount = CurrentHeath/MaxHeath;
+        if (HeathBar)
+        {
+            HeathBar.fillAmount = CurrentHeath / MaxHeath;
+        }
 
         if(CurrentHeath <= 0)
         {

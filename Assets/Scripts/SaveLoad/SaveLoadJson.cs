@@ -29,27 +29,31 @@ public class SaveLoadJson : MonoBehaviour // Learning Save Data
 
     public void NewGame()
     {
-        SaveData SD = new SaveData();
-
-        for (int i = 0; i < SD.FossilDiscoveredStatus.Length; i++)
+        for (int i = 0; i < SaveDataInput.FossilDiscoveredStatus.Length; i++)
         {
-            SD.FossilDiscoveredStatus[i] = false;
+            SaveDataInput.FossilDiscoveredStatus[i] = false;
         }
-        SD.LastLoadedScene = "SpaceHQ";
-        SD.CurrentStation = "SpaceHQ";
-        for (int i = 0; i < SD.InventorySlotsFull.Length; i++)
-        {
-            SD.InventorySlotsFull[i] = false;
-            SD.FossilInSlot[i] = 0;
-        }
-        SD.BigMonsterSlot = false;
-        SD.BigMonster = 0;
-        SD.SmallMonsterSlot = false;
-        SD.SmallMonster = 0;
 
-        string SDString = JsonUtility.ToJson(SD);
-        string SavePlayerData = JsonUtility.ToJson(SaveDataInput);
-        File.WriteAllText(SaveFilePath, SDString);
+        SaveDataInput.LastLoadedScene = "SpaceHQ";
+        SaveDataInput.CurrentStation = "SpaceHQ";
+
+        for (int i = 0; i < SaveDataInput.InventorySlotsFull.Length; i++)
+        {
+            SaveDataInput.InventorySlotsFull[i] = false;
+            SaveDataInput.FossilInSlot[i] = 0;
+        }
+
+        SaveDataInput.BigMonsterSlot = false;
+        SaveDataInput.BigMonster = 0;
+        SaveDataInput.SmallMonsterSlot = false;
+        SaveDataInput.SmallMonster = 0;
+
+        for (int i = 0; i < SaveDataInput.PlanetAreaSetCombats.Length; i++) // Do for each Area Array
+        {
+            SaveDataInput.PlanetAreaSetCombats[i] = false;
+        }
+
+        SaveGame();
     }
 
     public void SaveGame()
