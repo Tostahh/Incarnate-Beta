@@ -34,8 +34,8 @@ public class SaveLoadJson : MonoBehaviour // Learning Save Data
             SaveDataInput.FossilDiscoveredStatus[i] = false;
         }
 
-        SaveDataInput.LastLoadedScene = "SpaceHQ";
-        SaveDataInput.CurrentStation = "SpaceHQ";
+        SaveDataInput.LastLoadedScene = "PlanetArea";
+        SaveDataInput.CurrentStation = "StartStation";
 
         for (int i = 0; i < SaveDataInput.InventorySlotsFull.Length; i++)
         {

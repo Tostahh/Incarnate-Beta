@@ -107,7 +107,7 @@ public class PlayerActions : MonoBehaviour
         {
             AppliedDirection = new Vector3(InputDirection.x, 0, InputDirection.y);
             CamMovement = ConvertToCamSpace(AppliedDirection);
-            RB.velocity = new Vector3(CamMovement.x * Speed * Time.deltaTime, RB.velocity.y, CamMovement.z * Speed * Time.deltaTime);
+            RB.linearVelocity = new Vector3(CamMovement.x * Speed * Time.deltaTime, RB.linearVelocity.y, CamMovement.z * Speed * Time.deltaTime);
         }
     }
 
@@ -313,7 +313,7 @@ public class PlayerActions : MonoBehaviour
     {
         if (!Transformed)
         {
-            RB.velocity = Vector3.zero;
+            RB.linearVelocity = Vector3.zero;
             SwordHitBox.enabled = true;
             Anim.SetTrigger("Attack1");
             yield return new WaitForSeconds(0.35f);
@@ -324,7 +324,7 @@ public class PlayerActions : MonoBehaviour
         }
         else
         {
-            RB.velocity = Vector3.zero;
+            RB.linearVelocity = Vector3.zero;
             //SwordHitBox.enabled = true;
             Collider[] HitBoxes = GetComponentsInChildren<SphereCollider>();
             foreach(Collider S in HitBoxes)
@@ -348,7 +348,7 @@ public class PlayerActions : MonoBehaviour
     {
         if (!Transformed)
         {
-            RB.velocity = Vector3.zero;
+            RB.linearVelocity = Vector3.zero;
             SwordHitBox.enabled = true;
             Anim.SetTrigger("Attack2");
             yield return new WaitForSeconds(0.45f);
@@ -359,7 +359,7 @@ public class PlayerActions : MonoBehaviour
         }
         else
         {
-            RB.velocity = Vector3.zero;
+            RB.linearVelocity = Vector3.zero;
             //SwordHitBox.enabled = true;
             Collider[] HitBoxes = GetComponentsInChildren<SphereCollider>();
             foreach (Collider S in HitBoxes)
@@ -381,7 +381,7 @@ public class PlayerActions : MonoBehaviour
 
     IEnumerator Call()
     {
-        RB.velocity = Vector3.zero;
+        RB.linearVelocity = Vector3.zero;
         Anim.SetTrigger("Wave");
         HandLight.enabled = true;
         CallSmall();
