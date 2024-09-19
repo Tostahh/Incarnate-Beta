@@ -269,6 +269,11 @@ public class PlayerActions : MonoBehaviour
         }
     }
 
+    public void PlayerHit()
+    {
+        Anim.SetTrigger("Hit");
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 3)

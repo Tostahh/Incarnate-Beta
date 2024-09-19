@@ -79,14 +79,23 @@ public class EnemyFollow : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Vector3 Direction = (other.transform.position - transform.position).normalized;
-
-            other.GetComponentInChildren<Heath>().UpdateHeath(-Dmg);
-            
             Debug.Log("Hitting Player");
 
+            other.GetComponentInChildren<Heath>().UpdateHeath(-Dmg);
 
-            KnockBack(other.GetComponentInChildren<Rigidbody>(), Direction, KnockbackAmount, 0.5f);
+            other.GetComponentInChildren<PlayerActions>().PlayerHit();
+
+            //Vector3 Direction = (other.transform.position - transform.position).normalized;
+            //KnockBack(other.GetComponentInChildren<Rigidbody>(), Direction, KnockbackAmount, 0.5f);
+        }
+
+        if (other.gameObject.CompareTag("CometMonster"))
+        {
+            Debug.Log("Hitting Mon");
+
+            other.GetComponentInChildren<Heath>().UpdateHeath(-Dmg);
+
+            other.GetComponentInChildren<CometMonster>().MonHit();
         }
     }
 

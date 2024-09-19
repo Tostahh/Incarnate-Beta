@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SongPlaying: 0
+  SongDone: 0
   MiddleRow: {fileID: 6808987485685303880}
   LeftRow: {fileID: 1681588362026853391}
   RightRow: {fileID: 908248815227082193}
@@ -122,6 +123,9 @@ MonoBehaviour:
   SongPosInBeat: 0
   SongDSPStartTime: 0
   BeatsShownInAdvance: 3
+  StartUI: {fileID: 0}
+  LoseUI: {fileID: 0}
+  WinUI: {fileID: 0}
 --- !u!82 &984745620868275472
 AudioSource:
   m_ObjectHideFlags: 0
@@ -133,6 +137,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -232,7 +237,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitNotes: 0
   MissedNotes: 0
+  PlayedNotes: 0
   ProgressBar: {fileID: 0}
+  MissBar: {fileID: 0}
 --- !u!1 &3199597201336137879
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,10 +298,13 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0caac93e747319c45bccc8361b64ba58, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -697,10 +707,13 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0caac93e747319c45bccc8361b64ba58, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -780,10 +793,13 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0caac93e747319c45bccc8361b64ba58, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

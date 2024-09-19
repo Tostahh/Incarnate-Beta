@@ -3,38 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SmallMonster : MonoBehaviour
+public class SmallMonster : CometMonster
 {
-    [SerializeField] private string Name;
-    public int MonsterNum;
-
-    [SerializeField] private Animator Anim;
-    [SerializeField] private Collider ShroomHitBox;
-
-    [SerializeField] private NavMeshAgent Agent;
-    [SerializeField] private Transform Player;
-    [SerializeField] private float RoamRange;
-    [SerializeField] private float PlayerFollowRange;
+    [Header("SupportFormInformation")]
     [SerializeField] private float BuffCooldown;
-
-    [SerializeField] private bool InBattle;
-
-    private bool Following;
-    private bool Roaming;
     private bool Buffing;
-    private bool Battling;
-
-    private float RoamTimer;
     private float cooldownTimer;
-    private bool Attacking;
 
-    private Inventory inventory;
-    private void Awake()
-    {
-        DontDestroyOnLoad(this);
-
-        inventory = FindObjectOfType<Inventory>();
-    }
     private void Start()
     {
         if (inventory.SmallMonsterSlotFull)
@@ -45,17 +20,15 @@ public class SmallMonster : MonoBehaviour
         inventory.SmallMonsterSlot = gameObject;
         inventory.SmallMonsterSlotFull = true;
     }
-    private void OnEnable()
+    public override void OnEnable()
     {
+        base.OnEnable();
         PlayerActions.CallSmall += PowerUp;
-        SceneManagment.NewSceneLoaded += SetPos;
-        SetCombat.TriggerCombat += CombatStance;
     }
-    private void OnDisable()
+    public override void OnDisable()
     {
+        base.OnDisable();
         PlayerActions.CallSmall -= PowerUp;
-        SceneManagment.NewSceneLoaded -= SetPos;
-        SetCombat.TriggerCombat -= CombatStance;
     }
 
     private void Update()
@@ -109,24 +82,7 @@ public class SmallMonster : MonoBehaviour
 
             if(Battling)
             {
-                Agent.SetDestination(FindTarget().position);
-
-                if (Agent.remainingDistance <= Agent.stoppingDistance)
-                {
-                    Agent.updateRotation = false;
-                    Rotate();
-                }
-                else
-                {
-                    Agent.updateRotation = true;
-                }
-
-                if (Agent.remainingDistance <= Agent.stoppingDistance && !Attacking)
-                {
-                    Attacking = true;
-                    Agent.speed = 0;
-                    StartCoroutine(Attack());
-                }
+                Agent.SetDestination(Player.position);
             }
         }
         cooldownTimer -= Time.deltaTime;
@@ -158,13 +114,6 @@ public class SmallMonster : MonoBehaviour
             return Player;
         }
     }
-    private void Rotate()
-    {
-        Vector3 lookPos = Agent.destination - transform.position;
-        lookPos.y = 0;
-        Quaternion rotation = Quaternion.LookRotation(lookPos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 12f);
-    }
 
     private void PowerUp()
     {
@@ -186,58 +135,11 @@ public class SmallMonster : MonoBehaviour
         Agent.speed = 3;
     }
 
-    private bool RandomRoam(Vector3 center, float range, out Vector3 result)
-    {
-        Vector3 randomPoint = center + Random.insideUnitSphere * range;
-        NavMeshHit hit;
-
-        if(NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
-        {
-            result = hit.position;
-            return true;
-        }
-
-        result = Vector3.zero;
-        return false;
-    }
-    public string GiveName()
-    {
-        return Name;
-    }
-    public void SetPos()
-    {
-        Agent.enabled = false;
-        Debug.Log("Called Pos");
-        Player = FindObjectOfType<PlayerActions>().gameObject.transform;
-        transform.position = Player.transform.position;
-        Agent.enabled = true;
-    }
-    public void CombatStance()
-    {
-        if (!InBattle)
-        {
-            InBattle = true;
-        }
-        else
-        {
-            InBattle = false;
-        }
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy" && Battling)
         {
             Debug.Log("Hit");
         }
-    }
-
-    private IEnumerator Attack()
-    {
-        ShroomHitBox.enabled = true;
-        Anim.SetTrigger("Attack");
-        yield return new WaitForSeconds(1f);
-        ShroomHitBox.enabled = false;
-        Agent.speed = 3;
-        Attacking = false;
     }
 }

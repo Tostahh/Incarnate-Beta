@@ -21,6 +21,10 @@ public class Conductor : MonoBehaviour
     public float SongDSPStartTime;
     public float BeatsShownInAdvance;
 
+    public GameObject StartUI;
+    public GameObject LoseUI;
+    public GameObject WinUI;
+
     private PlayerControls PC;
     private AudioSource MusicSource;
     private Song CurrentSong;
@@ -34,6 +38,11 @@ public class Conductor : MonoBehaviour
         PC = new PlayerControls();
         PC.Enable();
         MusicSource = GetComponent<AudioSource>();
+
+        if(StartUI)
+        {
+            StartUI.SetActive(true);
+        }
     }
     private void OnEnable()
     {
@@ -56,10 +65,28 @@ public class Conductor : MonoBehaviour
         MusicSource.clip = CurrentSong.SongMusic;
         SongLength = MusicSource.clip.length;
     }
+    private void Update()
+    {
+        if (SongPlaying)
+        {
+            SongPosInSec = ((float)AudioSettings.dspTime - SongDSPStartTime - FirstBeatOffset);
+            SongPosInBeat = SongPosInSec / SecPerBeat;
+
+            SpawnNote(SongPosInBeat + BeatsShownInAdvance);
+            if(SongPosInSec >= SongLength)
+            {
+                EndSong();
+            }
+        }
+    }
     private void StartSong(InputAction.CallbackContext Pressed)
     {
         if (!SongPlaying)
         {
+            if (StartUI)
+            {
+                StartUI.SetActive(false);
+            }
             SecPerBeat = 60f / SongBPM;
             SongDSPStartTime = (float)AudioSettings.dspTime;
             MusicSource.Play();
@@ -75,29 +102,19 @@ public class Conductor : MonoBehaviour
 
     private void Win()
     {
+        WinUI.SetActive(true);
         FindObjectOfType<Fossil>().SongCompleted();
-        FindObjectOfType<SceneManagment>().ChangeScene("SpaceHQ");
     }
-    private void Update()
-    {
-        if (SongPlaying)
-        {
-            SongPosInSec = ((float)AudioSettings.dspTime - SongDSPStartTime - FirstBeatOffset);
-            SongPosInBeat = SongPosInSec / SecPerBeat;
-
-            SpawnNote(SongPosInBeat + BeatsShownInAdvance);
-            if(SongPosInSec >= SongLength)
-            {
-                EndSong();
-            }
-        }
-    }
-
     private void LoseSong()
     {
+        LoseUI.SetActive(true);
         MusicSource.Stop();
         SongPlaying = false;
         FindObjectOfType<Fossil>().SongLost();
-        FindObjectOfType<SceneManagment>().ChangeScene("SampleScene");
+    }
+
+    public void BackToHQ()
+    {
+        FindObjectOfType<SceneManagment>().ChangeScene("SpaceHQ");
     }
 }

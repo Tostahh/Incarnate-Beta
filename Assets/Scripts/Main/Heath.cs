@@ -19,7 +19,10 @@ public class Heath : MonoBehaviour
 
     private void Awake()
     {
-        HeathBar = GetComponentInChildren<Image>();
+        if (!HeathBar)
+        {
+            HeathBar = GetComponentInChildren<Image>();
+        }
         CurrentHeath = MaxHeath;
         if (HeathBar)
         {

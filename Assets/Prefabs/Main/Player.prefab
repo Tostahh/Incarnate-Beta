@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -50}
+  m_AnchoredPosition: {x: 200, y: -70}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7646514528610424548
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHeath: 20
   CurrentHeath: 0
-  HeathBar: {fileID: 0}
+  HeathBar: {fileID: 6898997102085005509}
   Enemy: 0
   CometMonster: 0
   Player: 1
@@ -752,7 +752,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &8804886561713806938
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -766,6 +766,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -784,9 +785,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8921675076265092981}
   m_Enabled: 0
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.63879067, g: 1, b: 0.5707547, a: 1}
   m_Intensity: 0.7
   m_Range: 8
@@ -836,5 +836,9 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1

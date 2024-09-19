@@ -3,55 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BigMonster : MonoBehaviour
+public class BigMonster : CometMonster
 {
-    [SerializeField] private string Name;
-    public int MonsterNum;
-
-    [SerializeField] private Animator Anim;
+    [Header("BattleFormInformation")]
     [SerializeField] private Collider FistHitBox;
     [SerializeField] private Collider HeadHitBox;
-    public GameObject ModelPrefab;
     public float Attack1HitCoolDown;
     public float Attack2HitCoolDown;
-
-    [SerializeField] private NavMeshAgent Agent;
-    [SerializeField] private Transform Player;
-    [SerializeField] private float RoamRange;
-    [SerializeField] private float PlayerFollowRange;
-
-    [SerializeField] private bool InBattle;
-
     [SerializeField] private float Dmg;
-
-    private bool Following;
-    private bool Roaming;
-    private bool Battling;
-
-    private float RoamTimer;
     private bool Attacking;
-
     private int ComboCounter = 0;
-
-    private Inventory inventory;
-
-    private void Awake()
-    {
-        DontDestroyOnLoad(this);
-
-        inventory = FindObjectOfType<Inventory>();
-    }
-
-    private void OnEnable()
-    {
-        SceneManagment.NewSceneLoaded += SetPos;
-        SetCombat.TriggerCombat += CombatStance;
-    }
-    private void OnDisable()
-    {
-        SceneManagment.NewSceneLoaded -= SetPos;
-        SetCombat.TriggerCombat -= CombatStance;
-    }
 
     private void Start()
     {
@@ -162,54 +123,6 @@ public class BigMonster : MonoBehaviour
         else
         {
             return Player;
-        }
-    }
-
-    private void Rotate()
-    {
-        Vector3 lookPos = Agent.destination - transform.position;
-        lookPos.y = 0;
-        Quaternion rotation = Quaternion.LookRotation(lookPos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 12f);
-    }
-    private bool RandomRoam(Vector3 center, float range, out Vector3 result)
-    {
-        Vector3 randomPoint = center + Random.insideUnitSphere * range;
-        NavMeshHit hit;
-
-        if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
-        {
-            result = hit.position;
-            return true;
-        }
-
-        result = Vector3.zero;
-        return false;
-    }
-
-    public string GiveName()
-    {
-        return Name;
-    }
-
-    public void SetPos()
-    {
-        Agent.enabled = false;
-        Debug.Log("Called Pos");
-        Player = FindObjectOfType<PlayerActions>().gameObject.transform;
-        transform.position = Player.transform.position;
-        Agent.enabled = true;
-    }
-
-    public void CombatStance()
-    {
-        if (!InBattle)
-        {
-            InBattle = true;
-        }
-        else
-        {
-            InBattle = false;
         }
     }
     private void OnTriggerEnter(Collider other)
