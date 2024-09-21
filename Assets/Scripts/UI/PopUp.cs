@@ -54,7 +54,6 @@ public class PopUp : MonoBehaviour
             Done = true;
             GetComponentInChildren<Collider>().enabled = false;
             FindObjectOfType<SaveLoadJson>().GiveSaveData().TutorialsDone[TutorialNumb] = Done;
-            FindObjectOfType<SaveLoadJson>().SaveGame();
         }
     }
 }

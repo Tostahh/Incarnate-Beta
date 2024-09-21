@@ -154,6 +154,13 @@ public class PlayerActions : MonoBehaviour
             RB.angularVelocity = Vector3.zero;
         }
     }
+    private void PlayerAutoTarget()
+    {
+        var lookPos = FindObjectOfType<CameraActions>().LockTarget.transform.position - transform.position;
+        lookPos.y = 0;
+        var rotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 1000f);
+    }
 
     private void Jump(InputAction.CallbackContext jump)
     {
@@ -180,6 +187,10 @@ public class PlayerActions : MonoBehaviour
 
     private void LightAttack(InputAction.CallbackContext swing)
     {
+        if (FindObjectOfType<CameraActions>().LockedOn)
+        {
+            PlayerAutoTarget();
+        }
         if(!Attacking && ComboCounter == 0)
         {
             if (Grounded)
