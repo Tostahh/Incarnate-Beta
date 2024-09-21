@@ -9,6 +9,9 @@ public class SaveData
     //Fossil Information
     public bool[] FossilDiscoveredStatus = new bool[24]; // 0 to 23
 
+    //Tutorial Information
+    public bool[] TutorialsDone = new bool[4]; // number of pop up texts temp
+
     //Save Station Information
     public string LastLoadedScene; // Last Scene Played In game
     public string CurrentStation; // Last save Station Visited
@@ -22,5 +25,5 @@ public class SaveData
     public int SmallMonster; // what the small monster is
 
     //Set Combat Information
-    public bool[] PlanetAreaSetCombats = new bool[2];// num of combats in area
+    public bool[] PlanetAreaSetCombats = new bool[2]; // num of combats in area
 }

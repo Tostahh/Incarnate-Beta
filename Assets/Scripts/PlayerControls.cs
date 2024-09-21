@@ -122,7 +122,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": ""Inventory"",
                     ""type"": ""Button"",
                     ""id"": ""70aab60a-21f4-44a0-981f-26149b9e8b64"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -132,6 +132,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""0186e0ec-2226-4e97-a2c2-6ffa2d489226"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LockCam"",
+                    ""type"": ""Button"",
+                    ""id"": ""92a37e0e-00c5-4494-b683-c439e105b163"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -445,6 +454,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3f36239f-3560-4c89-a11f-47b58b714bc6"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LockCam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e89c125-fec2-41e7-a7b8-b77b1a83c154"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LockCam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -597,6 +628,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_FiesSearch = m_Player.FindAction("FiesSearch", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_LockCam = m_Player.FindAction("LockCam", throwIfNotFound: true);
         // Rhythm
         m_Rhythm = asset.FindActionMap("Rhythm", throwIfNotFound: true);
         m_Rhythm_LeftNote = m_Rhythm.FindAction("LeftNote", throwIfNotFound: true);
@@ -682,6 +714,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_FiesSearch;
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_LockCam;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -698,6 +731,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @FiesSearch => m_Wrapper.m_Player_FiesSearch;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @LockCam => m_Wrapper.m_Player_LockCam;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -743,6 +777,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @LockCam.started += instance.OnLockCam;
+            @LockCam.performed += instance.OnLockCam;
+            @LockCam.canceled += instance.OnLockCam;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -783,6 +820,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @LockCam.started -= instance.OnLockCam;
+            @LockCam.performed -= instance.OnLockCam;
+            @LockCam.canceled -= instance.OnLockCam;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -884,6 +924,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnFiesSearch(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnLockCam(InputAction.CallbackContext context);
     }
     public interface IRhythmActions
     {

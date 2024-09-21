@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -68,11 +69,23 @@ public class CometMonster : MonoBehaviour
     }
     public virtual void SetPos()
     {
-        Agent.enabled = false;
-        Debug.Log("Called Pos");
-        Player = FindObjectOfType<PlayerActions>().gameObject.transform;
-        transform.position = Player.transform.position;
-        Agent.enabled = true;
+        StartCoroutine(Set());
+    }
+    public virtual IEnumerator Set()
+    {
+        if (!Player)
+        {
+            yield return new WaitForSeconds(0.1f);
+            Agent.isStopped = true;
+            Player = FindObjectOfType<PlayerActions>().gameObject.transform;
+            Agent.velocity = Vector3.zero;
+            Agent.Warp(Player.position);
+            Agent.isStopped = false;
+        }
+        else
+        {
+            yield return null;
+        }
     }
     public virtual void CombatStance()
     {

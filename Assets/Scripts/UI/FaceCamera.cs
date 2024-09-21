@@ -14,6 +14,6 @@ public class FaceCamera : MonoBehaviour
     }
     private void Update()
     {
-        ObjToRotate.rotation = Quaternion.Slerp(ObjToRotate.rotation, Camera.transform.rotation, 20f * Time.deltaTime);
+        ObjToRotate.rotation = Quaternion.Slerp(ObjToRotate.rotation, Camera.transform.rotation, 100f * Time.deltaTime);
     }
 }

@@ -99,7 +99,7 @@
                     "name": "Inventory",
                     "type": "Button",
                     "id": "70aab60a-21f4-44a0-981f-26149b9e8b64",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -109,6 +109,15 @@
                     "type": "Button",
                     "id": "0186e0ec-2226-4e97-a2c2-6ffa2d489226",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LockCam",
+                    "type": "Button",
+                    "id": "92a37e0e-00c5-4494-b683-c439e105b163",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -420,6 +429,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f36239f-3560-4c89-a11f-47b58b714bc6",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LockCam",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0e89c125-fec2-41e7-a7b8-b77b1a83c154",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LockCam",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

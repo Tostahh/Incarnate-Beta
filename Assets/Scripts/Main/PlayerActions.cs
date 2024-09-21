@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
-using Unity.VisualScripting;
-
 public class PlayerActions : MonoBehaviour
 {
     public static Action CallSmall = delegate{};
@@ -42,7 +40,7 @@ public class PlayerActions : MonoBehaviour
 
     private int ComboCounter;
     private float ComboTimer;
-
+    private bool CamLock;
     private void Awake()
     {
         SetMons();
@@ -166,11 +164,12 @@ public class PlayerActions : MonoBehaviour
                 if (Grounded)
                 {
                     Anim.SetTrigger("Jump");
+                    Anim.ResetTrigger("Land");
                     RB.AddForce(new Vector3(0, JumpForce, 0));
-                    Invoke("Fall", 0.8f);
+                    Grounded = false;
+                    Invoke("Fall", 0.4f);
                 }
             }
-            Grounded = false;
         }
     }
 
@@ -253,20 +252,10 @@ public class PlayerActions : MonoBehaviour
             }
         }
     }
-
     private void SetMons()
     {
         BigMon = FindObjectOfType<BigMonster>();
         SmallMon = FindObjectOfType<SmallMonster>();
-
-        if (BigMon)
-        {
-            BigMon.SetPos();
-        }
-        if (SmallMon)
-        {
-            SmallMon.SetPos();
-        }
     }
 
     public void PlayerHit()
@@ -280,18 +269,14 @@ public class PlayerActions : MonoBehaviour
         {
             if (!Grounded)
             {
-                Anim.SetTrigger("Land");
-                Debug.Log("Grounded");
                 Grounded = true;
+                Debug.Log("Grounded");
+                Anim.SetTrigger("Land");
             }
         }
 
         if (other.gameObject.tag == "Enemy" && Attacking)
         {
-            Debug.Log("Hit"); // Apply KnockBack;
-
-
-
             other.GetComponentInChildren<Heath>().UpdateHeath(-SwordDmg);
         }
     }
@@ -303,17 +288,6 @@ public class PlayerActions : MonoBehaviour
             Grounded = false;
         }
     }
-    private void OnTriggerStay(Collider other)
-    {
-        if(other.gameObject.layer == 3)
-        {
-            if (!Grounded)
-            {
-                Grounded = true;
-            }
-        }
-    }
-
     IEnumerator Swing1()
     {
         if (!Transformed)
