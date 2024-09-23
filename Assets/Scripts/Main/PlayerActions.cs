@@ -169,13 +169,21 @@ public class PlayerActions : MonoBehaviour
             {
                 if (Grounded)
                 {
-                    Anim.SetTrigger("Jump");
                     Anim.ResetTrigger("Land");
                     RB.AddForce(new Vector3(0, JumpForce, 0));
-                    Grounded = false;
-                    Invoke("Fall", 0.4f);
+                    StartCoroutine(CheckJ());
                 }
             }
+        }
+    }
+
+    IEnumerator CheckJ()
+    {
+        yield return new WaitForSeconds(0.05f);
+        if (!Grounded)
+        {
+            Anim.SetTrigger("Jump");
+            Invoke("Fall", 0.4f);
         }
     }
 
