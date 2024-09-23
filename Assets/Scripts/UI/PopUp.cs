@@ -6,6 +6,7 @@ public class PopUp : MonoBehaviour
 {
     [SerializeField] private GameObject UI;
     [SerializeField] private bool Player;
+    [SerializeField] private bool Inverse;
 
     [SerializeField] private int TutorialNumb;
 
@@ -17,43 +18,73 @@ public class PopUp : MonoBehaviour
         if(Done)
         {
             GetComponentInChildren<Collider>().enabled = false;
+            if(Inverse)
+            {
+                UI.SetActive(false);
+            }
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (!Done)
+        if (!Inverse)
         {
-            if (Player)
+            if (!Done)
             {
-                if (other.gameObject.CompareTag("Player"))
+                if (Player)
+                {
+                    if (other.gameObject.CompareTag("Player"))
+                    {
+                        UI.SetActive(true);
+                    }
+                }
+                else
                 {
                     UI.SetActive(true);
                 }
             }
-            else
+        }
+        else
+        {
+            if (!Done)
             {
-                UI.SetActive(true);
+                if (Player)
+                {
+                    if (other.gameObject.CompareTag("Player"))
+                    {
+                        UI.SetActive(false);
+                    }
+                }
+                else
+                {
+                    UI.SetActive(false);
+                }
+                Done = true;
+                GetComponentInChildren<Collider>().enabled = false;
+                FindObjectOfType<SaveLoadJson>().GiveSaveData().TutorialsDone[TutorialNumb] = Done;
             }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (!Done)
+        if (!Inverse)
         {
-            if (Player)
+            if (!Done)
             {
-                if (other.gameObject.CompareTag("Player"))
+                if (Player)
+                {
+                    if (other.gameObject.CompareTag("Player"))
+                    {
+                        UI.SetActive(false);
+                    }
+                }
+                else
                 {
                     UI.SetActive(false);
                 }
+                Done = true;
+                GetComponentInChildren<Collider>().enabled = false;
+                FindObjectOfType<SaveLoadJson>().GiveSaveData().TutorialsDone[TutorialNumb] = Done;
             }
-            else
-            {
-                UI.SetActive(false);
-            }
-            Done = true;
-            GetComponentInChildren<Collider>().enabled = false;
-            FindObjectOfType<SaveLoadJson>().GiveSaveData().TutorialsDone[TutorialNumb] = Done;
         }
     }
 }
