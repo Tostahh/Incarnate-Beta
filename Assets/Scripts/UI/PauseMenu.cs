@@ -33,15 +33,15 @@ public class PauseMenu : MonoBehaviour
     {
         if(Paused)
         {
-            Paused = false;
             PauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
+            Paused = false;
         }
         else
         {
-            Paused = true;
             PauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
+            Paused = true;
         }
     }
 

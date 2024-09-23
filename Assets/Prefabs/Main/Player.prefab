@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 1681656949304622507}
   - component: {fileID: 4701950798940542267}
   - component: {fileID: 8239984742992247169}
+  - component: {fileID: 1479811299587157510}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -227,6 +228,18 @@ MonoBehaviour:
   Enemy: 0
   CometMonster: 0
   Player: 1
+--- !u!114 &1479811299587157510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4655693578113399630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d3e4081458a5446b547244d2a9ae27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6026156360629034734
 GameObject:
   m_ObjectHideFlags: 0

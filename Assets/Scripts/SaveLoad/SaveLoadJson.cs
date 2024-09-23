@@ -36,7 +36,7 @@ public class SaveLoadJson : MonoBehaviour // Learning Save Data
 
         for (int i = 0; i < SaveDataInput.TutorialsDone.Length; i++)
         {
-            SaveDataInput.FossilDiscoveredStatus[i] = false;
+            SaveDataInput.TutorialsDone[i] = false;
         }
 
         SaveDataInput.LastLoadedScene = "PlanetArea";

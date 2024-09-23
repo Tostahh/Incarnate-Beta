@@ -40,7 +40,6 @@ public class PlayerActions : MonoBehaviour
 
     private int ComboCounter;
     private float ComboTimer;
-    private bool CamLock;
     private void Awake()
     {
         SetMons();
@@ -282,6 +281,8 @@ public class PlayerActions : MonoBehaviour
             {
                 Grounded = true;
                 Debug.Log("Grounded");
+                Anim.ResetTrigger("Jump");
+                Anim.ResetTrigger("Down");
                 Anim.SetTrigger("Land");
             }
         }

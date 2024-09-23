@@ -19,7 +19,7 @@ public class ReturnStation : MonoBehaviour
     private void OnDisable()
     {
         SceneManagment.NewSceneLoaded -= SetPlayerPos;
-        RespawnScript.RespawnCall += SetPlayerPos;
+        RespawnScript.RespawnCall -= SetPlayerPos;
     }
     public void SetPlayerPos()
     {

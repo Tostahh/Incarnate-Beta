@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class InventoryUIManager : MonoBehaviour
 {
     [SerializeField] private GameObject InventoryUI;
+    [SerializeField] private GameObject PopUpUI;
 
     [SerializeField] private TextMeshProUGUI[] FossilSlots;
     [SerializeField] private TextMeshProUGUI SmallMonsterSlot;
@@ -101,11 +102,47 @@ public class InventoryUIManager : MonoBehaviour
     {
         if(InventoryUI.activeSelf)
         {
+            if (PopUpUI.activeSelf)
+            {
+                PopUpUI.SetActive(false);
+            }
             InventoryUI.SetActive(false);
         }
         else
         {
             InventoryUI.SetActive(true);
         }
+    }
+    public void InventoryPopUp(GameObject ItemToSwapIn)
+    {
+        InventoryUI.SetActive(true);
+        PopUpUI.SetActive(true);
+        inventory.SwapSlotItem = ItemToSwapIn;
+    }
+    
+    public void SwapItem(int Slot)
+    {
+        if (PopUpUI.activeSelf)
+        {
+            Destroy(inventory.Slots[Slot]);
+            inventory.Slots[Slot] = null;
+            inventory.Slots[Slot] = Instantiate(inventory.SwapSlotItem);
+            if (PopUpUI.activeSelf)
+            {
+                PopUpUI.SetActive(false);
+            }
+            InventoryUI.SetActive(false);
+            inventory.SwapSlotItem = null;
+        }
+    }
+
+    public void NoSwap()
+    {
+        if (PopUpUI.activeSelf)
+        {
+            PopUpUI.SetActive(false);
+        }
+        InventoryUI.SetActive(false);
+        inventory.SwapSlotItem = null;
     }
 }

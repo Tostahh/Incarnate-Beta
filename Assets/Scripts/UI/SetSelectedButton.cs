@@ -17,7 +17,6 @@ public class SetSelectedButton : MonoBehaviour
         myEventSystem = FindObjectOfType<EventSystem>();
         myEventSystem.SetSelectedGameObject(null);
         myEventSystem.SetSelectedGameObject(SelectedButton);
-        //Debug.Log(myEventSystem.currentSelectedGameObject);
     }
 
     private void OnEnable()
@@ -25,7 +24,6 @@ public class SetSelectedButton : MonoBehaviour
         myEventSystem = FindObjectOfType<EventSystem>();
         myEventSystem.SetSelectedGameObject(null);
         myEventSystem.SetSelectedGameObject(SelectedButton);
-        //Debug.Log(myEventSystem.currentSelectedGameObject);
         PauseGame();
     }
 

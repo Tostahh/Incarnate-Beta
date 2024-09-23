@@ -14,8 +14,24 @@ public class Inventory : MonoBehaviour
     public bool SmallMonsterSlotFull;
     public GameObject SmallMonsterSlot;
 
+    public GameObject SwapSlotItem;
+
     [SerializeField] private GameObject[] FossilPrefabs;
     [SerializeField] private GameObject[] MonsterPrefabs;
+    public bool InvetoryIsFull()
+    {
+        bool IsFull = true;
+
+        for (int i = 0; i < SlotIsFull.Length; i++)
+        {
+            if (SlotIsFull[i] == false)
+            {
+                IsFull = false;
+            }
+        }
+
+        return IsFull;
+    }
     public void SaveInvetory()
     {
         for (int i = 0; i < SlotIsFull.Length; i++)
@@ -51,7 +67,6 @@ public class Inventory : MonoBehaviour
             FindObjectOfType<SaveLoadJson>().GiveSaveData().SmallMonster = 0;
         }
     }
-
     public void LoadInventory()
     {
         for (int i = 0; i < FindObjectOfType<SaveLoadJson>().GiveSaveData().InventorySlotsFull.Length; i++)

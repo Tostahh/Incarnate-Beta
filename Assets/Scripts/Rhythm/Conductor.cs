@@ -49,6 +49,12 @@ public class Conductor : MonoBehaviour
         PC.Rhythm.StartSong.performed += StartSong;
         Grader.WinFossil += Win;
         Grader.LoseFossil += LoseSong;
+
+        CometMonster[] CMS = FindObjectsOfType<CometMonster>();
+        foreach(CometMonster CM in CMS)
+        {
+            CM.SetVisuals();
+        }
     }
     private void OnDisable()
     {
@@ -115,6 +121,11 @@ public class Conductor : MonoBehaviour
 
     public void BackToHQ()
     {
+        CometMonster[] CMS = FindObjectsOfType<CometMonster>();
+        foreach (CometMonster CM in CMS)
+        {
+            CM.SetVisuals();
+        }
         FindObjectOfType<SceneManagment>().ChangeScene("SpaceHQ");
     }
 }

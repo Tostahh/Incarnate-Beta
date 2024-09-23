@@ -24,6 +24,7 @@ public class CometMonster : MonoBehaviour
     public Inventory inventory;
     public Animator Anim;
     public NavMeshAgent Agent;
+    public GameObject Visuals;
 
     public virtual void Awake()
     {
@@ -103,5 +104,17 @@ public class CometMonster : MonoBehaviour
     public virtual void MonHit()
     {
         Anim.SetTrigger("Hit");
+    }
+
+    public virtual void SetVisuals()
+    {
+        if (Visuals.activeSelf)
+        {
+            Visuals.SetActive(false);
+        }
+        else
+        {
+            Visuals.SetActive(true);
+        }
     }
 }
