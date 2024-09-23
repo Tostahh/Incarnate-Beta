@@ -14,10 +14,12 @@ public class ReturnStation : MonoBehaviour
     private void OnEnable()
     {
         SceneManagment.NewSceneLoaded += SetPlayerPos;
+        RespawnScript.RespawnCall += SetPlayerPos;
     }
     private void OnDisable()
     {
         SceneManagment.NewSceneLoaded -= SetPlayerPos;
+        RespawnScript.RespawnCall += SetPlayerPos;
     }
     public void SetPlayerPos()
     {

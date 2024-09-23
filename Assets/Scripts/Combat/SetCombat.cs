@@ -10,6 +10,7 @@ public class SetCombat : MonoBehaviour
     [SerializeField] private int AreaNumb;
     [SerializeField] private int EncounterNumb;
 
+    public bool Active;
     public bool Defeated;
 
     [SerializeField] private GameObject[] EnemiesInCombat;
@@ -71,17 +72,20 @@ public class SetCombat : MonoBehaviour
     }
     public void EnemiesDead()
     {
-        Instantiate(Reward, RewardSpawn.transform.position, Quaternion.identity);
-
-        TriggerCombat();
-        GetComponent<Collider>().enabled = false;
-        Walls.SetActive(false);
-
-        if (!FindObjectOfType<SaveLoadJson>().GiveSaveData().PlanetAreaSetCombats[EncounterNumb])
+        if (Active)
         {
-            Defeated = true;
-            FindObjectOfType<SaveLoadJson>().GiveSaveData().PlanetAreaSetCombats[EncounterNumb] = Defeated;
-            FindObjectOfType<SaveLoadJson>().SaveGame();
+            Instantiate(Reward, RewardSpawn.transform.position, Quaternion.identity);
+
+            TriggerCombat();
+            GetComponent<Collider>().enabled = false;
+            Walls.SetActive(false);
+
+            if (!FindObjectOfType<SaveLoadJson>().GiveSaveData().PlanetAreaSetCombats[EncounterNumb])
+            {
+                Defeated = true;
+                FindObjectOfType<SaveLoadJson>().GiveSaveData().PlanetAreaSetCombats[EncounterNumb] = Defeated;
+                FindObjectOfType<SaveLoadJson>().SaveGame();
+            }
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -102,6 +106,7 @@ public class SetCombat : MonoBehaviour
 
                     Instantiate(EnemiesInCombat[i], SpawnTransform, Quaternion.identity);
                 }
+                Active = true;
             }
         }
     }

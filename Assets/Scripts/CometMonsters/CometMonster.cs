@@ -35,11 +35,13 @@ public class CometMonster : MonoBehaviour
     {
         SceneManagment.NewSceneLoaded += SetPos;
         SetCombat.TriggerCombat += CombatStance;
+        RespawnScript.RespawnCall += SetPos;
     }
     public virtual void OnDisable()
     {
         SceneManagment.NewSceneLoaded -= SetPos;
         SetCombat.TriggerCombat -= CombatStance;
+        RespawnScript.RespawnCall -= SetPos;
     }
 
     public virtual bool RandomRoam(Vector3 center, float range, out Vector3 result)

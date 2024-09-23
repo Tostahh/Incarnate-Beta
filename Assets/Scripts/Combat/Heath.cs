@@ -29,6 +29,29 @@ public class Heath : MonoBehaviour
             HeathBar.fillAmount = CurrentHeath / MaxHeath;
         }
     }
+    private void OnEnable()
+    {
+        RespawnScript.RespawnCall += ResetHeath;
+    }
+    private void OnDisable()
+    {
+        RespawnScript.RespawnCall -= ResetHeath;
+    }
+    public void ResetHeath()
+    {
+        if (Player || CometMonster)
+        {
+            if (!HeathBar)
+            {
+                HeathBar = GetComponentInChildren<Image>();
+            }
+            CurrentHeath = MaxHeath;
+            if (HeathBar)
+            {
+                HeathBar.fillAmount = CurrentHeath / MaxHeath;
+            }
+        }
+    }
 
     private void Update()
     {
