@@ -26,9 +26,14 @@ public class EnemyFollow : MonoBehaviour
     private void Start()
     {
         PlayerTarget = FindObjectOfType<PlayerActions>().transform;
-
-        SmallTarget = FindObjectOfType<SmallMonster>().transform;
-        BigTarget = FindObjectOfType<BigMonster>().transform;
+        if (PlayerTarget.GetComponent<PlayerActions>().SmallMon)
+        {
+            SmallTarget = FindObjectOfType<SmallMonster>().transform;
+        }
+        if (PlayerTarget.GetComponent<PlayerActions>().BigMon)
+        {
+            BigTarget = FindObjectOfType<BigMonster>().transform;
+        }
     }
 
     private void Update()

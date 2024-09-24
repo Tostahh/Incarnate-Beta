@@ -20,6 +20,7 @@ public class SetCombat : MonoBehaviour
     [SerializeField] private Transform RewardSpawn;
     [SerializeField] private GameObject Reward;
 
+    private GameObject[] enemies;
     private int EnemiesDefeated;
 
     private void Awake()
@@ -60,6 +61,15 @@ public class SetCombat : MonoBehaviour
         TriggerCombat();
         GetComponent<Collider>().enabled = true;
         Walls.SetActive(false);
+        foreach(GameObject e in enemies)
+        {
+            if (e)
+            {
+                Destroy(e);
+            }
+        }
+        EnemiesDefeated = 0;
+        Active = false;
     }
 
     public void EnemyCounter()
@@ -74,17 +84,20 @@ public class SetCombat : MonoBehaviour
     {
         if (Active)
         {
-            Instantiate(Reward, RewardSpawn.transform.position, Quaternion.identity);
-
-            TriggerCombat();
-            GetComponent<Collider>().enabled = false;
-            Walls.SetActive(false);
-
-            if (!FindObjectOfType<SaveLoadJson>().GiveSaveData().PlanetAreaSetCombats[EncounterNumb])
+            if (!Defeated)
             {
-                Defeated = true;
-                FindObjectOfType<SaveLoadJson>().GiveSaveData().PlanetAreaSetCombats[EncounterNumb] = Defeated;
-                FindObjectOfType<SaveLoadJson>().SaveGame();
+                Instantiate(Reward, RewardSpawn.transform.position, Quaternion.identity);
+
+                TriggerCombat();
+                GetComponent<Collider>().enabled = false;
+                Walls.SetActive(false);
+
+                if (!FindObjectOfType<SaveLoadJson>().GiveSaveData().PlanetAreaSetCombats[EncounterNumb])
+                {
+                    Defeated = true;
+                    FindObjectOfType<SaveLoadJson>().GiveSaveData().PlanetAreaSetCombats[EncounterNumb] = Defeated;
+                    FindObjectOfType<SaveLoadJson>().SaveGame();
+                }
             }
         }
     }
@@ -94,6 +107,8 @@ public class SetCombat : MonoBehaviour
         {
             if (other.CompareTag("Player"))
             {
+                enemies = new GameObject[EnemiesInCombat.Length];
+
                 GetComponent<Collider>().enabled = false;
 
                 Walls.SetActive(true);
@@ -104,7 +119,7 @@ public class SetCombat : MonoBehaviour
                 {
                     Vector3 SpawnTransform = new Vector3(transform.position.x + UnityEngine.Random.Range(-ArenaSize, ArenaSize), transform.position.y, transform.position.z + UnityEngine.Random.Range(-ArenaSize, ArenaSize));
 
-                    Instantiate(EnemiesInCombat[i], SpawnTransform, Quaternion.identity);
+                    enemies[i] = Instantiate(EnemiesInCombat[i], SpawnTransform, Quaternion.identity);
                 }
                 Active = true;
             }

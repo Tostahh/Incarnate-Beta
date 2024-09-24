@@ -7,8 +7,8 @@ public class PlayerActions : MonoBehaviour
 {
     public static Action CallSmall = delegate{};
 
-    [SerializeField] private BigMonster BigMon;
-    [SerializeField] private SmallMonster SmallMon;
+    [SerializeField] public BigMonster BigMon;
+    [SerializeField] public SmallMonster SmallMon;
 
     [SerializeField] private Animator Anim;
     [SerializeField] private Light HandLight;
