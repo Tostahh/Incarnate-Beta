@@ -49,14 +49,4 @@ public class AreaSelect : Interactable
     {
         FindObjectOfType<SaveLoadJson>().GiveSaveData().CurrentStation = StationNames[i];
     }
-
-    public override void OnTriggerExit(Collider other)
-    {
-        base.OnTriggerExit(other);
-
-        if (other.CompareTag("Player"))
-        {
-            AreaSelectUI.SetActive(false);
-        }
-    }
 }

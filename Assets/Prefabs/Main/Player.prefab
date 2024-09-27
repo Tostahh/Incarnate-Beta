@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 6284794726985309283}
   - component: {fileID: 8215964114947426788}
   - component: {fileID: 1681656949304622507}
+  - component: {fileID: 257601260500854924}
   - component: {fileID: 4701950798940542267}
   - component: {fileID: 8239984742992247169}
   - component: {fileID: 1479811299587157510}
@@ -183,6 +184,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.09, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &257601260500854924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4655693578113399630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 544cb8cbb9c91984eaf9ed22a332ed0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Axe: 0
+  Sling: 0
+  SpearDmg: 1
+  AxeDmg: 1
+  SlingDmg: 1
+  SearchRange: 15
+  Lantern: 0
 --- !u!114 &4701950798940542267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2db193e6cf2b94dad1173c85fcd897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PS: {fileID: 257601260500854924}
   BigMon: {fileID: 0}
   SmallMon: {fileID: 0}
   Anim: {fileID: 8804886561713806938}
@@ -206,9 +227,7 @@ MonoBehaviour:
   JumpForce: 300
   Speed: 400
   SpinSpeed: 15
-  SearchRange: 10
   Transformed: 0
-  SwordDmg: 1
   KnockBackAmount: 10
 --- !u!114 &8239984742992247169
 MonoBehaviour:

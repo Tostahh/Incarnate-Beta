@@ -5,6 +5,16 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public int Starbits; // Currency, SB = abrv
+
+    public int PearlStone; // 5 SB T1 Material
+    public int RootStem; // 25 SB T2 Material
+    public int DeepfrostOre; // 100 SB T3 Material
+
+    public int DarkDisasterKey; // requires 5 to beat the game
+
+    public int FossilSlots;
+
     public bool[] SlotIsFull;
     public GameObject[] Slots;
 
@@ -34,6 +44,18 @@ public class Inventory : MonoBehaviour
     }
     public void SaveInvetory()
     {
+        FindObjectOfType<SaveLoadJson>().GiveSaveData().StarBits = Starbits;
+        FindObjectOfType<SaveLoadJson>().GiveSaveData().PearlStone = PearlStone;
+        FindObjectOfType<SaveLoadJson>().GiveSaveData().RootStem = RootStem;
+        FindObjectOfType<SaveLoadJson>().GiveSaveData().DeepfrostOre = DeepfrostOre;
+        FindObjectOfType<SaveLoadJson>().GiveSaveData().DarkDisasterKey = DarkDisasterKey;
+
+        FindObjectOfType<SaveLoadJson>().GiveSaveData().FossilSlots = FossilSlots;
+
+
+        FindObjectOfType<SaveLoadJson>().GiveSaveData().InventorySlotsFull = new bool[FossilSlots];
+        FindObjectOfType<SaveLoadJson>().GiveSaveData().FossilInSlot = new int[FossilSlots];
+
         for (int i = 0; i < SlotIsFull.Length; i++)
         {
             FindObjectOfType<SaveLoadJson>().GiveSaveData().InventorySlotsFull[i] = SlotIsFull[i];
@@ -69,6 +91,20 @@ public class Inventory : MonoBehaviour
     }
     public void LoadInventory()
     {
+        Starbits = FindObjectOfType<SaveLoadJson>().GiveSaveData().StarBits;
+        PearlStone = FindObjectOfType<SaveLoadJson>().GiveSaveData().PearlStone;
+        RootStem = FindObjectOfType<SaveLoadJson>().GiveSaveData().RootStem;
+        DeepfrostOre = FindObjectOfType<SaveLoadJson>().GiveSaveData().DeepfrostOre;
+        DarkDisasterKey = FindObjectOfType<SaveLoadJson>().GiveSaveData().DarkDisasterKey;
+
+        Starbits = FindObjectOfType<SaveLoadJson>().GiveSaveData().StarBits;
+
+        FossilSlots = FindObjectOfType<SaveLoadJson>().GiveSaveData().FossilSlots;
+
+
+        SlotIsFull = new bool[FossilSlots];
+        Slots = new GameObject[FossilSlots];
+
         for (int i = 0; i < FindObjectOfType<SaveLoadJson>().GiveSaveData().InventorySlotsFull.Length; i++)
         {
             SlotIsFull[i] = FindObjectOfType<SaveLoadJson>().GiveSaveData().InventorySlotsFull[i];
@@ -87,5 +123,34 @@ public class Inventory : MonoBehaviour
         {
             SmallMonsterSlot = Instantiate(MonsterPrefabs[FindObjectOfType<SaveLoadJson>().GiveSaveData().SmallMonster-1]);
         }
+    }
+
+    public void UpgradeInventory()
+    {
+        bool[] tmp = new bool[SlotIsFull.Length + 4];
+        GameObject[] ftmp = new GameObject[Slots.Length + 4];
+
+        for (int i = 0; i < SlotIsFull.Length; i++)
+        {
+            tmp[i] = SlotIsFull[i];
+            if(tmp[i] == true)
+            {
+                ftmp[i] = Slots[i];
+            }
+        }
+
+        SlotIsFull = new bool[tmp.Length];
+        Slots = new GameObject[ftmp.Length];
+
+        for (int i = 0; i < tmp.Length; i++)
+        {
+            SlotIsFull[i] = tmp[i];
+            if (SlotIsFull[i] == true)
+            {
+                Slots[i] = ftmp[i];
+            }
+        }
+
+        FossilSlots = SlotIsFull.Length;
     }
 }

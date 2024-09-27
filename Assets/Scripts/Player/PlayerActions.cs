@@ -7,6 +7,7 @@ public class PlayerActions : MonoBehaviour
 {
     public static Action CallSmall = delegate{};
 
+    [SerializeField] public PlayerStats PS;
     [SerializeField] public BigMonster BigMon;
     [SerializeField] public SmallMonster SmallMon;
 
@@ -21,11 +22,9 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private float JumpForce;
     [SerializeField] private float Speed;
     [SerializeField] private float SpinSpeed;
-    [SerializeField] private float SearchRange;
 
     [SerializeField] private bool Transformed;
 
-    [SerializeField] private float SwordDmg;
     [SerializeField] private float KnockBackAmount;
 
     private bool Tcooldown;
@@ -42,6 +41,7 @@ public class PlayerActions : MonoBehaviour
     private float ComboTimer;
     private void Awake()
     {
+        PS = GetComponentInChildren<PlayerStats>();
         SetMons();
         Anim = GetComponentInChildren<Animator>();
         RB = GetComponentInChildren<Rigidbody>();
@@ -259,7 +259,7 @@ public class PlayerActions : MonoBehaviour
 
     private void Search(InputAction.CallbackContext Search)
     {
-        RaycastHit[] hits = Physics.SphereCastAll(transform.position, SearchRange, Vector3.up);
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position, PS.SearchRange, Vector3.up);
         foreach(RaycastHit hit in hits)
         {
             if(hit.transform.gameObject.CompareTag("Fossil"))
@@ -297,7 +297,7 @@ public class PlayerActions : MonoBehaviour
 
         if (other.gameObject.tag == "Enemy" && Attacking)
         {
-            other.GetComponentInChildren<Heath>().UpdateHeath(-SwordDmg);
+            other.GetComponentInChildren<Heath>().UpdateHeath(-PS.SpearDmg);
         }
     }
 

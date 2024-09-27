@@ -30,7 +30,6 @@ public class CleaningStation : Interactable
             }
         }
     }
-
     public void DisplayNames()
     {
         for (int i = 0; i < UISlotsText.Length; i++)
@@ -53,16 +52,6 @@ public class CleaningStation : Interactable
             inventory.SlotIsFull[i] = false;
             inventory.Slots[i] = null;
             FindObjectOfType<SceneManagment>().ChangeScene("Rhythm");
-        }
-    }
-
-    public override void OnTriggerExit(Collider other)
-    {
-        base.OnTriggerExit(other);
-
-        if(other.CompareTag("Player"))
-        {
-            CleaningUI.SetActive(false);
         }
     }
 }

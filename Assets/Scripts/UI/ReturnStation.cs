@@ -35,6 +35,7 @@ public class ReturnStation : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            FindObjectOfType<PlayerStats>().SaveStats();
             FindObjectOfType<Inventory>().SaveInvetory();
             FindObjectOfType<SaveLoadJson>().GiveSaveData().CurrentStation = StationName;
             FindObjectOfType<SaveLoadJson>().GiveSaveData().LastLoadedScene = FindObjectOfType<SceneManagment>().CurrentSceneName;

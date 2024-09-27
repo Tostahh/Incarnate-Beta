@@ -2621,6 +2621,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf8d3dea77136424aba4085f81da66df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Starbits: 0
+  PearlStone: 0
+  RootStem: 0
+  DeepfrostOre: 0
+  DarkDisasterKey: 0
+  FossilSlots: 0
   SlotIsFull: 00000000
   Slots:
   - {fileID: 0}

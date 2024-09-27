@@ -29,6 +29,12 @@ public class SaveLoadJson : MonoBehaviour // Learning Save Data
 
     public void NewGame()
     {
+        SaveDataInput.StarBits = 0;
+        SaveDataInput.PearlStone = 0;
+        SaveDataInput.RootStem = 0;
+        SaveDataInput.DeepfrostOre = 0;
+        SaveDataInput.DarkDisasterKey = 0;
+
         for (int i = 0; i < SaveDataInput.FossilDiscoveredStatus.Length; i++)
         {
             SaveDataInput.FossilDiscoveredStatus[i] = false;
@@ -52,6 +58,19 @@ public class SaveLoadJson : MonoBehaviour // Learning Save Data
         SaveDataInput.BigMonster = 0;
         SaveDataInput.SmallMonsterSlot = false;
         SaveDataInput.SmallMonster = 0;
+
+        SaveDataInput.SpearDmg = 1;
+        SaveDataInput.AxeDmg = 1;
+        SaveDataInput.Axe = false;
+        SaveDataInput.SlingDmg = 1;
+        SaveDataInput.Sling = false;
+
+        SaveDataInput.FossilSlots = 4;
+        SaveDataInput.RadarRange = 15;
+
+        SaveDataInput.Mount = false;
+        SaveDataInput.DoubleJump = false;
+        SaveDataInput.Lantern = false;
 
         for (int i = 0; i < SaveDataInput.PlanetAreaSetCombats.Length; i++) // Do for each Area Array
         {
