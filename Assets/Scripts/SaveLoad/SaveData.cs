@@ -10,7 +10,7 @@ public class SaveData
     public bool[] FossilDiscoveredStatus = new bool[24]; // 0 to 23
 
     //Tutorial Information
-    public bool[] TutorialsDone = new bool[8]; // number of pop up texts temp
+    public bool[] TutorialsDone = new bool[10]; // number of pop up texts temp
 
     //Save Station Information
     public string LastLoadedScene; // Last Scene Played In game

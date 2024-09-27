@@ -123,7 +123,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -147,7 +147,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4655693578113399630}
-  m_Material: {fileID: 13400000, guid: b38cb32570ef1f745a36c7399305241e, type: 2}
+  m_Material: {fileID: 13400000, guid: 733d870ff4a76f64ca0b4323f7529d5a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2db193e6cf2b94dad1173c85fcd897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Moving: 0
   PS: {fileID: 257601260500854924}
   BigMon: {fileID: 0}
   SmallMon: {fileID: 0}

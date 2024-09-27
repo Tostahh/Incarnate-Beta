@@ -7,6 +7,8 @@ public class PlayerActions : MonoBehaviour
 {
     public static Action CallSmall = delegate{};
 
+    public bool Moving;
+
     [SerializeField] public PlayerStats PS;
     [SerializeField] public BigMonster BigMon;
     [SerializeField] public SmallMonster SmallMon;
@@ -74,6 +76,15 @@ public class PlayerActions : MonoBehaviour
     {
         InputDirection.x = PC.Player.Movement.ReadValue<Vector2>().x;
         InputDirection.y = PC.Player.Movement.ReadValue<Vector2>().y;
+
+        if (InputDirection != Vector2.zero)
+        {
+            Moving = true;
+        }
+        else
+        {
+            Moving = false;
+        }
 
         if (!Attacking)
         {

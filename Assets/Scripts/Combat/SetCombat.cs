@@ -61,11 +61,11 @@ public class SetCombat : MonoBehaviour
         TriggerCombat();
         GetComponent<Collider>().enabled = true;
         Walls.SetActive(false);
-        foreach(GameObject e in enemies)
+        for (int i = 0; i < enemies.Length; i++)
         {
-            if (e)
+            if (enemies[i])
             {
-                Destroy(e);
+                Destroy(enemies[i]);
             }
         }
         EnemiesDefeated = 0;
@@ -74,10 +74,13 @@ public class SetCombat : MonoBehaviour
 
     public void EnemyCounter()
     {
-        EnemiesDefeated++;
-        if(EnemiesDefeated >= EnemiesInCombat.Length)
+        if (Active)
         {
-            EnemiesDead();
+            EnemiesDefeated++;
+            if (EnemiesDefeated >= EnemiesInCombat.Length)
+            {
+                EnemiesDead();
+            }
         }
     }
     public void EnemiesDead()

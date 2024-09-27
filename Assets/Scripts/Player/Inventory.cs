@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
 
     public int DarkDisasterKey; // requires 5 to beat the game
 
-    public int FossilSlots;
+    public int FossilSlots = 4;
 
     public bool[] SlotIsFull;
     public GameObject[] Slots;
@@ -52,11 +52,10 @@ public class Inventory : MonoBehaviour
 
         FindObjectOfType<SaveLoadJson>().GiveSaveData().FossilSlots = FossilSlots;
 
-
         FindObjectOfType<SaveLoadJson>().GiveSaveData().InventorySlotsFull = new bool[FossilSlots];
         FindObjectOfType<SaveLoadJson>().GiveSaveData().FossilInSlot = new int[FossilSlots];
 
-        for (int i = 0; i < SlotIsFull.Length; i++)
+        for (int i = 0; i < FindObjectOfType<SaveLoadJson>().GiveSaveData().InventorySlotsFull.Length; i++)
         {
             FindObjectOfType<SaveLoadJson>().GiveSaveData().InventorySlotsFull[i] = SlotIsFull[i];
             if(SlotIsFull[i])

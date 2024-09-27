@@ -2626,7 +2626,7 @@ MonoBehaviour:
   RootStem: 0
   DeepfrostOre: 0
   DarkDisasterKey: 0
-  FossilSlots: 0
+  FossilSlots: 4
   SlotIsFull: 00000000
   Slots:
   - {fileID: 0}
