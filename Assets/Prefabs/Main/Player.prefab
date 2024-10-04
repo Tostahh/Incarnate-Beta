@@ -147,7 +147,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4655693578113399630}
-  m_Material: {fileID: 13400000, guid: 733d870ff4a76f64ca0b4323f7529d5a, type: 2}
+  m_Material: {fileID: 13400000, guid: 0d118e980bf853e4fb8f7766de497e4d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -225,11 +225,18 @@ MonoBehaviour:
   PlayerModel: {fileID: 4164147397529939154}
   SearchFlyPrefab: {fileID: 7389124445973669273, guid: ccc6f692c7b04764dbfa544a2e7234fa, type: 3}
   RB: {fileID: 6284794726985309283}
-  JumpForce: 300
-  Speed: 400
+  JumpForce: 7
+  Speed: 10
   SpinSpeed: 15
   Transformed: 0
   KnockBackAmount: 10
+  fallThreshold: -1
+  groundCheckDistance: 0.15
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  fallMultiplier: 1.5
+  maxFallSpeed: -30
 --- !u!114 &8239984742992247169
 MonoBehaviour:
   m_ObjectHideFlags: 0
