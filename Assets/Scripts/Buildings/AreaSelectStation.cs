@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 
-public class AreaSelect : Interactable
+public class AreaSelectStation : Interactable
 {
     [SerializeField] private GameObject AreaSelectUI;
 

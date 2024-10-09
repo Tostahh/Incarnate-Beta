@@ -74,22 +74,6 @@ public class CometMonster : MonoBehaviour
     {
         StartCoroutine(Set());
     }
-    public virtual IEnumerator Set()
-    {
-        if (!Player)
-        {
-            yield return new WaitForSeconds(0.1f);
-            Agent.isStopped = true;
-            Player = FindObjectOfType<PlayerActions>().gameObject.transform;
-            Agent.velocity = Vector3.zero;
-            Agent.Warp(Player.position);
-            Agent.isStopped = false;
-        }
-        else
-        {
-            yield return null;
-        }
-    }
     public virtual void CombatStance()
     {
         if (!InBattle)
@@ -115,6 +99,22 @@ public class CometMonster : MonoBehaviour
         else
         {
             Visuals.SetActive(true);
+        }
+    }
+    public virtual IEnumerator Set()
+    {
+        if (!Player)
+        {
+            yield return new WaitForSeconds(0.1f);
+            Agent.isStopped = true;
+            Player = FindObjectOfType<PlayerActions>().gameObject.transform;
+            Agent.velocity = Vector3.zero;
+            Agent.Warp(Player.position);
+            Agent.isStopped = false;
+        }
+        else
+        {
+            yield return null;
         }
     }
 }

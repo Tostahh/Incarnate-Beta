@@ -2179,6 +2179,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1722101064}
     m_Modifications:
+    - target: {fileID: 2529500091495485004, guid: ccbbcbc08354e88488622a06e55bc185, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6393614329870768098, guid: ccbbcbc08354e88488622a06e55bc185, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11
@@ -2222,6 +2226,10 @@ PrefabInstance:
     - target: {fileID: 6708115741520621488, guid: ccbbcbc08354e88488622a06e55bc185, type: 3}
       propertyPath: m_Name
       value: MarketStation
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913368136614875287, guid: ccbbcbc08354e88488622a06e55bc185, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
