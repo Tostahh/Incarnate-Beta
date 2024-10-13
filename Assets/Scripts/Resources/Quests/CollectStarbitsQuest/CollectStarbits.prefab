@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 075ebc2caa815ad458b324618924e131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StarbitsToCollect: 5
+  StarbitsToCollect: 20

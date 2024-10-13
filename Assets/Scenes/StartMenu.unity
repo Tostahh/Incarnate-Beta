@@ -3357,6 +3357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1479799710}
   - component: {fileID: 1479799711}
+  - component: {fileID: 1479799712}
   m_Layer: 0
   m_Name: QuestManager
   m_TagString: Untagged
@@ -3389,6 +3390,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 638e5d6cd8b849b4f81d61faf5e63e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QE: {fileID: 0}
+--- !u!114 &1479799712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479799709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a480bb8a2e1e4a48b79aff2f47eb5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1521515648

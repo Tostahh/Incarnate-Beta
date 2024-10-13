@@ -4,14 +4,52 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
     private Dictionary<string, Quest> QuestMap;
+    public QuestEvents QE;
 
     private void Awake()
     {
         QuestMap =  CreateQuestMap();
+        QE = GetComponent<QuestEvents>();
+    }
 
-        Quest quest = GetQuestByID("CollectStarbits");
-        Debug.Log(quest.info.name);
-        Debug.Log(quest.info.StarBits);
+    private void OnEnable()
+    {
+        QuestEvents.OnStartQuest += StartQuest;
+        QuestEvents.OnAdvanceQuest += AdvanceQuest;
+        QuestEvents.OnFinishQuest += FinishQuest;
+    }
+    private void OnDisable()
+    {
+        QuestEvents.OnStartQuest -= StartQuest;
+        QuestEvents.OnAdvanceQuest -= AdvanceQuest;
+        QuestEvents.OnFinishQuest -= FinishQuest;
+    }
+
+    private void Start()
+    {
+        foreach(Quest quest in QuestMap.Values)
+        {
+            QE.QuestStateChange(quest);
+        }
+    }
+
+    private void ChangeQuestState(string ID, QuestState QS)
+    {
+        Quest quest = GetQuestByID(ID);
+        quest.state = QS;
+        QE.QuestStateChange(quest);
+    }
+    private void StartQuest(string ID)
+    {
+
+    }
+    private void AdvanceQuest(string ID)
+    {
+
+    }
+    private void FinishQuest(string ID)
+    {
+
     }
     private Dictionary<string, Quest> CreateQuestMap()
     {
