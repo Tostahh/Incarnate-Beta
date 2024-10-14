@@ -3,9 +3,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class MarketStation : Interactable
 {
+    public static Action<PlayerStats, Inventory> Upgrade = delegate { };
+
     [Header("UI")]
     [SerializeField] private GameObject MarketUI;
     [SerializeField] private GameObject BuyUI;
@@ -27,9 +30,12 @@ public class MarketStation : Interactable
     }
     public void OnGUI()
     {
-        ManageSlots();
-        ManageButtons();
-        ManageText();
+        if (MarketUI.active)
+        {
+            ManageSlots();
+            ManageButtons();
+            ManageText();
+        }
     }
 
     public void ManageSlots()
@@ -382,6 +388,8 @@ public class MarketStation : Interactable
                 Debug.LogError("Invalid purchase slot.");
                 break;
         }
+
+        Upgrade(PS, inventory);
     }
     public void SellFossil(int SellSlot)
     {

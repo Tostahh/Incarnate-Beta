@@ -15,6 +15,9 @@ public class PlayerStats : MonoBehaviour
 
     public bool Lantern;
 
+    public bool Mount; // set up elsewhere
+    public bool DoubleJump; // ^^^
+
     private void Start()
     {
         LoadStats();

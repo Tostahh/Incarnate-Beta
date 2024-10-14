@@ -13,12 +13,20 @@ public class QuestPoint : Interactable
     private string ID;
     private QuestState CurrentQuestState;
     private QuestManager QM;
+    private QuestIcon QI;
 
+    public override void Awake()
+    {
+        base.Awake();
+
+        ID = Info.ID;
+    }
     public override void OnEnable()
     {
         base.OnEnable();
         QuestEvents.OnQuestStateChange += QuestStateChange;
         QM = FindFirstObjectByType<QuestManager>();
+        QI = GetComponentInChildren<QuestIcon>();
     }
     public override void OnDisable()
     {
@@ -31,8 +39,7 @@ public class QuestPoint : Interactable
         if(quest.info.ID == ID)
         {
             CurrentQuestState = quest.state;
-
-            // Add Visual Update When this is called
+            QI.SetState(CurrentQuestState, StartPoint, EndPoint);
         }
     }
 

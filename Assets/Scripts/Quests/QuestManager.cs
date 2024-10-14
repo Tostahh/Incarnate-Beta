@@ -1,10 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 
 public class QuestManager : MonoBehaviour
 {
     private Dictionary<string, Quest> QuestMap;
     public QuestEvents QE;
+
+    private bool Axe;
+    private bool Sling;
+    private int SpearDmg;
+    private int AxeDmg;
+    private int SlingDmg;
+
+    private int InventorySlots;
+
+    private bool Lantern;
+    private bool Mount;
+    private bool DoubleJump;
 
     private void Awake()
     {
@@ -17,19 +30,38 @@ public class QuestManager : MonoBehaviour
         QuestEvents.OnStartQuest += StartQuest;
         QuestEvents.OnAdvanceQuest += AdvanceQuest;
         QuestEvents.OnFinishQuest += FinishQuest;
+
+        QuestEvents.OnQuestStepStateChange += QuestStepChange;
+
+        MarketStation.Upgrade += PlayerUpgrade;
+        // Set up another event for playerAdvancement
     }
     private void OnDisable()
     {
         QuestEvents.OnStartQuest -= StartQuest;
         QuestEvents.OnAdvanceQuest -= AdvanceQuest;
         QuestEvents.OnFinishQuest -= FinishQuest;
-    }
 
+        QuestEvents.OnQuestStepStateChange -= QuestStepChange;
+
+        MarketStation.Upgrade -= PlayerUpgrade;
+    }
     private void Start()
     {
         foreach(Quest quest in QuestMap.Values)
         {
             QE.QuestStateChange(quest);
+        }
+    }
+
+    private void Update()
+    {
+        foreach(Quest quest in QuestMap.Values)
+        {
+            if(quest.state == QuestState.REQUIREMENTS_NOT_MET && CheckIfRequirmentsMet(quest))
+            {
+                ChangeQuestState(quest.info.ID, QuestState.CAN_START);
+            }
         }
     }
 
@@ -39,17 +71,149 @@ public class QuestManager : MonoBehaviour
         quest.state = QS;
         QE.QuestStateChange(quest);
     }
+    private bool CheckIfRequirmentsMet(Quest quest)
+    {
+        Debug.Log(quest.info.name + " " + quest.state);
+
+        bool RequirementsMet = true;
+
+        if (Axe != quest.info.Axe)
+        {
+            RequirementsMet = false;
+        }
+        if (Sling != quest.info.Sling)
+        {
+            RequirementsMet = false;
+        }
+        if (SpearDmg < quest.info.SpearDmg)
+        {
+            RequirementsMet = false;
+        }
+        if (AxeDmg < quest.info.AxeDmg)
+        {
+            RequirementsMet = false;
+        }
+        if (SlingDmg < quest.info.SlingDmg)
+        {
+            RequirementsMet = false;
+        }
+
+        if (InventorySlots < quest.info.InventorySlots)
+        {
+            RequirementsMet = false;
+        }
+
+        if (Lantern != quest.info.Lantern)
+        {
+            RequirementsMet = false;
+        }
+        if (Mount != quest.info.Mount)
+        {
+            RequirementsMet = false;
+        }
+        if (DoubleJump != quest.info.DoubleJump)
+        {
+            RequirementsMet = false;
+        }
+
+        foreach (QuestInfoSO PreRec in quest.info.QuestPreRecs)
+        {
+            if(GetQuestByID(PreRec.ID).state != QuestState.FINSIED)
+            {
+                RequirementsMet = false;
+            }
+        }
+
+        return RequirementsMet;
+    }
     private void StartQuest(string ID)
     {
+        Quest quest = GetQuestByID(ID);
+        quest.MakeCurrentQuestStep(transform);
+        ChangeQuestState(quest.info.ID, QuestState.IN_PROGRESS);
 
+        Debug.Log(quest.info.ID + " " + quest.info.name + " " + quest.state);
     }
     private void AdvanceQuest(string ID)
     {
+        Quest quest = GetQuestByID(ID);
 
+        quest.MoveToNextStep();
+
+        if(quest.CurrentStepExists())
+        {
+            quest.MakeCurrentQuestStep(this.transform);
+        }
+        else
+        {
+            ChangeQuestState(quest.info.ID, QuestState.CAN_FINSIH);
+        }
+
+        Debug.Log(quest.info.ID + " " + quest.info.name + " " + quest.state);
     }
     private void FinishQuest(string ID)
     {
+        Quest quest = GetQuestByID(ID);
+        ClaimRewards(quest);
+        ChangeQuestState(quest.info.ID, QuestState.FINSIED);
 
+        Debug.Log(quest.info.ID + " " + quest.info.name + " " + quest.state);
+    }
+    private void ClaimRewards(Quest quest)
+    {
+        Inventory I = FindFirstObjectByType<Inventory>();
+
+        if (quest.info.StarBits > 0)
+        {
+            I.Starbits += quest.info.StarBits;
+            Debug.Log("Player rewarded with " + quest.info.StarBits + " StarBits.");
+        }
+        if (quest.info.RootStem > 0)
+        {
+            I.RootStem += quest.info.RootStem;
+            Debug.Log("Player rewarded with " + quest.info.RootStem + " RootStem.");
+        }
+        if (quest.info.DeepfrostOre > 0)
+        {
+            I.DeepfrostOre += quest.info.DeepfrostOre;
+            Debug.Log("Player rewarded with " + quest.info.DeepfrostOre + " DeepfrostOre.");
+        }
+        if (quest.info.DarkDisasterKey > 0)
+        {
+            I.DarkDisasterKey += quest.info.DarkDisasterKey;
+            Debug.Log("Player rewarded with " + quest.info.DarkDisasterKey + " Dark Disaster Key.");
+        }
+
+        if (quest.info.Fossils.Length > 0)
+        {
+            foreach (GameObject Fossil in quest.info.Fossils)
+            {
+                if (I.InvetoryIsFull())
+                {
+                    FindObjectOfType<InventoryUIManager>().InventoryPopUp(Fossil);
+                }
+                else
+                {
+                    for (int i = 0; i < I.SlotIsFull.Length; i++)
+                    {
+                        if (I.SlotIsFull[i] == false)
+                        {
+                            I.SlotIsFull[i] = true;
+                            I.Slots[i] = Instantiate(Fossil);
+                            I.Slots[i].SetActive(false);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void QuestStepChange(string ID, int Index, QuestStepState state)
+    {
+        Quest quest = GetQuestByID(ID);
+        quest.StoreQuestStepState(state, Index);
+        ChangeQuestState(ID, quest.state);
     }
     private Dictionary<string, Quest> CreateQuestMap()
     {
@@ -76,5 +240,21 @@ public class QuestManager : MonoBehaviour
             Debug.Log("ID not Found: " + QuestID);
         }
         return quest;
+    }
+
+    //UpdateInfoEvents
+    private void PlayerUpgrade(PlayerStats PS, Inventory I)
+    {
+        Axe = PS.Axe;
+        Sling = PS.Sling;
+        SpearDmg = PS.SpearDmg;
+        AxeDmg = PS.AxeDmg;
+        SlingDmg = PS.SlingDmg;
+
+        InventorySlots = I.FossilSlots;
+
+        Lantern = PS.Lantern;
+        Mount = PS.Mount;
+        DoubleJump = PS.DoubleJump;
     }
 }

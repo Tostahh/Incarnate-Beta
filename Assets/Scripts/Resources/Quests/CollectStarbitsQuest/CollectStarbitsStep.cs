@@ -20,11 +20,18 @@ public class CollectStarbitsStep : QuestStep
         if(StarbitsCollected < StarbitsToCollect)
         {
             StarbitsCollected += StarBits;
+            UpdateStep();
         }
 
         if(StarbitsCollected >= StarbitsToCollect)
         {
             FinishQuestStep();
         }
+    }
+
+    private void UpdateStep()
+    {
+        string state = StarbitsCollected.ToString();
+        ChangeQuestStepState(state);
     }
 }

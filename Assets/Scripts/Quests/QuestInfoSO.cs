@@ -9,7 +9,19 @@ public class QuestInfoSO : ScriptableObject
     public string DisplayedName;
 
     [Header("Requirements")]
-    public QuestInfoSO[] QuestPrereqs;
+    public QuestInfoSO[] QuestPreRecs;
+    public int SpearDmg;
+    public int AxeDmg;
+    public int SlingDmg;
+
+    public bool Axe;
+    public bool Sling;
+    public bool Lantern;
+
+    public int InventorySlots;
+
+    public bool Mount;
+    public bool DoubleJump;
 
     [Header("Steps")]
     public GameObject[] QuestStepPrefabs;

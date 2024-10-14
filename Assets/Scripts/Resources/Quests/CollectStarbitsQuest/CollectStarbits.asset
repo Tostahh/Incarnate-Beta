@@ -13,8 +13,18 @@ MonoBehaviour:
   m_Name: CollectStarbits
   m_EditorClassIdentifier: 
   DisplayedName: Starbits Bonanza
-  QuestPrereqs: []
-  QuestStepPrefabs: []
+  QuestPreRecs: []
+  SpearDmg: 0
+  AxeDmg: 0
+  SlingDmg: 0
+  Axe: 0
+  Sling: 0
+  Lantern: 0
+  InventorySlots: 0
+  Mount: 0
+  DoubleJump: 0
+  QuestStepPrefabs:
+  - {fileID: 8949278824807363271, guid: 9f14ae11d68f7624d85a98eae5babdc7, type: 3}
   StarBits: 20
   PearlStone: 0
   RootStem: 0
