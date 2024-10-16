@@ -27,6 +27,8 @@ public class QuestManager : MonoBehaviour
 
     private void OnEnable()
     {
+        SceneManagment.NewSceneLoaded += OnNewScene;
+
         QuestEvents.OnStartQuest += StartQuest;
         QuestEvents.OnAdvanceQuest += AdvanceQuest;
         QuestEvents.OnFinishQuest += FinishQuest;
@@ -38,6 +40,8 @@ public class QuestManager : MonoBehaviour
     }
     private void OnDisable()
     {
+        SceneManagment.NewSceneLoaded -= OnNewScene;
+
         QuestEvents.OnStartQuest -= StartQuest;
         QuestEvents.OnAdvanceQuest -= AdvanceQuest;
         QuestEvents.OnFinishQuest -= FinishQuest;
@@ -51,6 +55,14 @@ public class QuestManager : MonoBehaviour
         foreach(Quest quest in QuestMap.Values)
         {
             QE.QuestStateChange(quest);
+        }
+    }
+
+    private void OnNewScene()
+    {
+        foreach(Quest quest in QuestMap.Values)
+        {
+            ChangeQuestState(quest.info.ID, quest.state);
         }
     }
 
@@ -256,5 +268,15 @@ public class QuestManager : MonoBehaviour
         Lantern = PS.Lantern;
         Mount = PS.Mount;
         DoubleJump = PS.DoubleJump;
+    }
+
+    public void SaveQuests()
+    {
+
+    }
+
+    public void LoadQuests()
+    {
+
     }
 }
