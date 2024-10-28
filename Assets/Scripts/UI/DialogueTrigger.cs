@@ -11,7 +11,6 @@ public class DialogueTrigger : Interactable
     public override void Awake()
     {
         base.Awake();
-        InteractableUI = GameObject.Find("InteractableUI");
     }
 
 
