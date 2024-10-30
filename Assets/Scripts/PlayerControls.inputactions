@@ -45,7 +45,7 @@
                     "name": "HeavyAttack",
                     "type": "Button",
                     "id": "fa00456e-277c-4095-b8ca-96927ed461b3",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -108,7 +108,7 @@
                     "name": "Pause",
                     "type": "Button",
                     "id": "0186e0ec-2226-4e97-a2c2-6ffa2d489226",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -464,7 +464,7 @@
                     "name": "LeftNote",
                     "type": "Button",
                     "id": "6b95d908-3c9b-42b3-b97e-1657ba9b4f64",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

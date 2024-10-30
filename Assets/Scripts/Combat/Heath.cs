@@ -69,6 +69,10 @@ public class Heath : MonoBehaviour
     public void UpdateHeath(float AmountOfChange)
     {
         CurrentHeath += AmountOfChange;
+        if(Enemy)
+        {
+            GetComponent<EnemyFollow>().Stun();
+        }
     }
 
     public void Dead()

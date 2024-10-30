@@ -90,8 +90,8 @@ public class EnemyFollow : MonoBehaviour
 
             other.GetComponentInChildren<PlayerActions>().PlayerHit();
 
-            //Vector3 Direction = (other.transform.position - transform.position).normalized;
-            //KnockBack(other.GetComponentInChildren<Rigidbody>(), Direction, KnockbackAmount, 0.5f);
+            Vector3 Direction = (other.transform.position - transform.position).normalized;
+            KnockBack(other.GetComponentInChildren<Rigidbody>(), Direction, KnockbackAmount, 0.5f);
         }
 
         if (other.gameObject.CompareTag("CometMonster"))
@@ -113,5 +113,16 @@ public class EnemyFollow : MonoBehaviour
             yield return new WaitForFixedUpdate();
             timer += Time.deltaTime;
         }
+    }
+
+    public void Stun()
+    {
+        Agent.speed = 0;
+        StartCoroutine(StunC());
+    }
+    private IEnumerator StunC()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Agent.speed = 2.5f;
     }
 }
