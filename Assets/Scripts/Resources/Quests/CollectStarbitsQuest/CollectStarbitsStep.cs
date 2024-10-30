@@ -34,4 +34,10 @@ public class CollectStarbitsStep : QuestStep
         string state = StarbitsCollected.ToString();
         ChangeQuestStepState(state);
     }
+
+    protected override void SetQuestStepState(string state)
+    {
+        this.StarbitsCollected = System.Int32.Parse(state);
+        UpdateStep();
+    }
 }

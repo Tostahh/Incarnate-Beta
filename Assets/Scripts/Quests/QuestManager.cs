@@ -4,7 +4,7 @@ using UnityEngine.InputSystem.LowLevel;
 
 public class QuestManager : MonoBehaviour
 {
-    private Dictionary<string, Quest> QuestMap;
+    public Dictionary<string, Quest> QuestMap;
     public QuestEvents QE;
 
     private bool Axe;
@@ -54,6 +54,11 @@ public class QuestManager : MonoBehaviour
     {
         foreach(Quest quest in QuestMap.Values)
         {
+            if(quest.state == QuestState.IN_PROGRESS)
+            {
+                quest.MakeCurrentQuestStep(this.transform);
+
+            }
             QE.QuestStateChange(quest);
         }
     }
@@ -133,6 +138,7 @@ public class QuestManager : MonoBehaviour
             if(GetQuestByID(PreRec.ID).state != QuestState.FINSIED)
             {
                 RequirementsMet = false;
+                break;
             }
         }
 
@@ -238,7 +244,7 @@ public class QuestManager : MonoBehaviour
             {
                 Debug.Log("Duplicate ID Found: " + quest.ID);
             }
-            IDToQuestMap.Add(quest.ID, new Quest(quest));
+            IDToQuestMap.Add(quest.ID, LoadQuests(quest));
         }
 
         return IDToQuestMap;
@@ -270,13 +276,57 @@ public class QuestManager : MonoBehaviour
         DoubleJump = PS.DoubleJump;
     }
 
-    public void SaveQuests()
+    public void SaveAll()
     {
+        foreach(Quest quest in QuestMap.Values)
+        {
+            SaveQuests(quest);
+        }
+    }
+    public void SaveQuests(Quest quest)
+    {
+        try
+        {
+            QuestData data = quest.GetData();
 
+            string DataToJson = JsonUtility.ToJson(data);
+
+            FindFirstObjectByType<SaveLoadJson>().GiveSaveData().QuestSaveStates[quest.info.ID] = DataToJson;
+
+            Debug.Log(DataToJson);
+        }
+        catch (System.Exception E)
+        {
+            Debug.Log("Issue Saving Quest :" + quest.info.name);
+        }
     }
 
-    public void LoadQuests()
+    public Quest LoadQuests(QuestInfoSO info)
     {
+        Quest quest = null;
+        try
+        {
+            // Check if the quest data exists in QuestSaveStates
+            if (FindFirstObjectByType<SaveLoadJson>().GiveSaveData().QuestSaveStates.ContainsKey(info.ID))
+            {
+                // Retrieve JSON data for the quest and deserialize it
+                string data = FindFirstObjectByType<SaveLoadJson>().GiveSaveData().QuestSaveStates[info.ID];
+                QuestData questData = JsonUtility.FromJson<QuestData>(data);
 
+                // Create a Quest instance with the loaded data
+                quest = new Quest(info, questData.state, questData.Index, questData.questStepStates);
+            }
+            else
+            {
+                // If the quest has no saved data, initialize it as a new quest
+                quest = new Quest(info);
+            }
+        }
+        catch(System.Exception E)
+        {
+            Debug.Log("Issue Loading save For Quest:" + info.name);
+        }
+
+        return quest;
     }
 }

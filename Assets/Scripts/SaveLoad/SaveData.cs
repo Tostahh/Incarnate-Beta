@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 [System.Serializable]
 public class SaveData
 {
@@ -41,5 +43,7 @@ public class SaveData
     public bool Lantern; // Market Purchase
 
     //Set Combat Information
-    public bool[] PlanetAreaSetCombats = new bool[4]; // num of combats in area
+    public CombatInfo[] SetCombats = new CombatInfo[1]; // Combats by ID and Status
+    public Dictionary<string, string> QuestSaveStates = new Dictionary<string, string>(); // Quests states
+
 }

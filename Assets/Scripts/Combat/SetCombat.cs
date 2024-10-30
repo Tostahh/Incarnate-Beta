@@ -7,8 +7,7 @@ public class SetCombat : MonoBehaviour
 {
     public static Action TriggerCombat = delegate { };
 
-    [SerializeField] private int AreaNumb;
-    [SerializeField] private int EncounterNumb;
+    [SerializeField] private int SetCombatID;
 
     public bool Active;
     public bool Defeated;
@@ -25,25 +24,29 @@ public class SetCombat : MonoBehaviour
 
     private void Awake()
     {
-        if (AreaNumb == 0)
+        var saveData = FindObjectOfType<SaveLoadJson>().GiveSaveData();
+
+        if (saveData.SetCombats.Length > SetCombatID)
         {
-            if (FindObjectOfType<SaveLoadJson>().GiveSaveData().PlanetAreaSetCombats[EncounterNumb])
+            if (saveData.SetCombats[SetCombatID].Defeated)
             {
-                Defeated = FindObjectOfType<SaveLoadJson>().GiveSaveData().PlanetAreaSetCombats[EncounterNumb];
+                Defeated = saveData.SetCombats[SetCombatID].Defeated;
             }
         }
     }
     private void OnEnable()
     {
-        if (AreaNumb == 0)
+        var saveData = FindObjectOfType<SaveLoadJson>().GiveSaveData();
+
+        if (saveData.SetCombats.Length > SetCombatID)
         {
-            if (FindObjectOfType<SaveLoadJson>().GiveSaveData().PlanetAreaSetCombats[EncounterNumb])
+            if (saveData.SetCombats[SetCombatID].Defeated)
             {
-                Defeated = FindObjectOfType<SaveLoadJson>().GiveSaveData().PlanetAreaSetCombats[EncounterNumb];
+                Defeated = saveData.SetCombats[SetCombatID].Defeated;
             }
         }
 
-        if(Defeated)
+        if (Defeated)
         {
             GetComponent<Collider>().enabled = false;
         }
@@ -94,13 +97,39 @@ public class SetCombat : MonoBehaviour
                 TriggerCombat();
                 GetComponent<Collider>().enabled = false;
                 Walls.SetActive(false);
+                var saveData = FindObjectOfType<SaveLoadJson>().GiveSaveData();
+                var combats = saveData.SetCombats;
 
-                if (!FindObjectOfType<SaveLoadJson>().GiveSaveData().PlanetAreaSetCombats[EncounterNumb])
+                if (combats.Length > SetCombatID)
                 {
+                    if (!combats[SetCombatID].Defeated)
+                    {
+                        Defeated = true;
+                        combats[SetCombatID].Defeated = Defeated;
+                        FindObjectOfType<SaveLoadJson>().SaveGame();
+                    }
+                }
+                else
+                {
+                    Array.Resize(ref combats, SetCombatID + 1);
+
+                    for (int i = 0; i < combats.Length; i++)
+                    {
+                        if (combats[i].CombatID == 0 && !combats[i].Defeated)
+                        {
+                            combats[i] = new CombatInfo { CombatID = i, Defeated = false };
+                        }
+                    }
+
                     Defeated = true;
-                    FindObjectOfType<SaveLoadJson>().GiveSaveData().PlanetAreaSetCombats[EncounterNumb] = Defeated;
+                    combats[SetCombatID] = new CombatInfo { CombatID = SetCombatID, Defeated = Defeated };
+
+                    Array.Sort(combats, (a, b) => a.CombatID.CompareTo(b.CombatID));
+
+                    saveData.SetCombats = combats;
                     FindObjectOfType<SaveLoadJson>().SaveGame();
                 }
+
             }
         }
     }
@@ -128,4 +157,11 @@ public class SetCombat : MonoBehaviour
             }
         }
     }
+}
+
+[System.Serializable]
+public struct CombatInfo
+{
+    public int CombatID;
+    public bool Defeated;
 }

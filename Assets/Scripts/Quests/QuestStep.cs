@@ -7,11 +7,15 @@ public abstract class QuestStep : MonoBehaviour
     private int StepIndex;
     private QuestManager QM;
 
-    public void StartQuestStep(string id, int Index)
+    public void StartQuestStep(string id, int Index, string stepstate)
     {
         QM = FindFirstObjectByType<QuestManager>();
         ID = id;
         StepIndex = Index;
+        if(stepstate != null && stepstate != "")
+        {
+            SetQuestStepState(stepstate);
+        }
     }
     protected void FinishQuestStep()
     {
@@ -28,4 +32,6 @@ public abstract class QuestStep : MonoBehaviour
     {
         QM.QE.QuestStepStateChange(ID, StepIndex, new QuestStepState(NewState));
     }
+
+    protected abstract void SetQuestStepState(string state);
 }

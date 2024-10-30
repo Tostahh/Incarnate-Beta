@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SaveLoadJson : MonoBehaviour // Learning Save Data
@@ -72,10 +73,12 @@ public class SaveLoadJson : MonoBehaviour // Learning Save Data
         SaveDataInput.DoubleJump = false;
         SaveDataInput.Lantern = false;
 
-        for (int i = 0; i < SaveDataInput.PlanetAreaSetCombats.Length; i++) // Do for each Area Array
+        for (int i = 0; i < SaveDataInput.SetCombats.Length; i++)
         {
-            SaveDataInput.PlanetAreaSetCombats[i] = false;
+            SaveDataInput.SetCombats[i].Defeated = false;
         }
+
+        SaveDataInput.QuestSaveStates = new Dictionary<string, string>();
 
         SaveGame();
     }

@@ -19,6 +19,19 @@ public class Quest
         }
     }
 
+    public Quest(QuestInfoSO info, QuestState state, int currentQuestStepIndex, QuestStepState[] queststepsStates)
+    {
+        this.info = info;
+        this.state = state;
+        CurrentQuestStepIndex = currentQuestStepIndex;
+        QueststepsStates = queststepsStates;
+
+        if(this.QueststepsStates.Length != this.info.QuestStepPrefabs.Length)
+        {
+            Debug.LogWarning("Reset Save Data Project has been Updated");
+        }
+    }
+
     public void MoveToNextStep()
     {
         CurrentQuestStepIndex++;
@@ -37,7 +50,7 @@ public class Quest
         if(QuestStepPrefab != null)
         {
             QuestStep Step = Object.Instantiate(QuestStepPrefab, _parentTransform).GetComponent<QuestStep>();
-            Step.StartQuestStep(info.ID, CurrentQuestStepIndex);
+            Step.StartQuestStep(info.ID, CurrentQuestStepIndex, QueststepsStates[CurrentQuestStepIndex].state);
         }
     }
 

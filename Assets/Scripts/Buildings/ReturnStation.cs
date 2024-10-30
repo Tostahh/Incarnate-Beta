@@ -23,9 +23,9 @@ public class ReturnStation : MonoBehaviour
     }
     public void SetPlayerPos()
     {
-        if (FindObjectOfType<SaveLoadJson>().GiveSaveData().CurrentStation == StationName)
+        if (FindFirstObjectByType<SaveLoadJson>().GiveSaveData().CurrentStation == StationName)
         {
-            Transform Player = FindObjectOfType<PlayerActions>().GetComponent<Transform>();
+            Transform Player = FindFirstObjectByType<PlayerActions>().GetComponent<Transform>();
 
             Player.position = SpawnPoint.position;
         }
@@ -35,11 +35,12 @@ public class ReturnStation : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            FindObjectOfType<PlayerStats>().SaveStats();
-            FindObjectOfType<Inventory>().SaveInvetory();
-            FindObjectOfType<SaveLoadJson>().GiveSaveData().CurrentStation = StationName;
-            FindObjectOfType<SaveLoadJson>().GiveSaveData().LastLoadedScene = FindObjectOfType<SceneManagment>().CurrentSceneName;
-            FindObjectOfType<SaveLoadJson>().SaveGame();
+            FindFirstObjectByType<QuestManager>().SaveAll();
+            FindFirstObjectByType<PlayerStats>().SaveStats();
+            FindFirstObjectByType<Inventory>().SaveInvetory();
+            FindFirstObjectByType<SaveLoadJson>().GiveSaveData().CurrentStation = StationName;
+            FindFirstObjectByType<SaveLoadJson>().GiveSaveData().LastLoadedScene = FindFirstObjectByType<SceneManagment>().CurrentSceneName;
+            FindFirstObjectByType<SaveLoadJson>().SaveGame();
         }
     }
 }
