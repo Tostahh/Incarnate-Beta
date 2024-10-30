@@ -1,0 +1,13 @@
+[NAME=???]Hello!
+
+Welcome to the world of Game Development!
+
+[NAME=Michael]My name is Michael, and this is NPC Dialogue.
+
+A pretty easy way to handle linear dialogue is with text files.
+
+Here you can edit what is being said without having to edit every line in Unity.
+
+Trust me, it can get annoying very quickly having to click on textboxes and such.
+
+Of course, if you wanted nonlinear dialogue, you would need a way to implement player choice, a way to record it, and a way to navigate a file or two.

@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -8,8 +8,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI messageText;
     public RectTransform backgroundBox;
 
-    private Message[] currentMessages;
-    private Actor[] currentActors;
+    private List<Message> currentMessages = new List<Message>();
     private int activeMessage = 0;
     public static bool isActive = false;
     public static DialogueManager instance;
@@ -19,22 +18,21 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         instance = this;
-        ToggleDisplay(false);
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
 
 
     //Method called by Dialogue trigger to begin conversation
-    public void OpenDialogue(Message[] messages, Actor[] actors)
+    public void OpenDialogue(List<Message> messages)
     {
-        ToggleDisplay(true);
+        transform.GetChild(0).gameObject.SetActive(true);
         currentMessages = messages;
-        currentActors = actors;
         activeMessage = 0;
         isActive = true;
 
         DisplayMessage();
-        Debug.Log("Started conversation! loaded messages: " + messages.Length);
+        Debug.Log("Started conversation! loaded messages: " + messages.Count);
     }
 
 
@@ -44,9 +42,7 @@ public class DialogueManager : MonoBehaviour
     {
         Message messageToDisplay = currentMessages[activeMessage];
         messageText.text = messageToDisplay.message;
-
-        Actor actorToDisplay = currentActors[messageToDisplay.actorID];
-        actorName.text = actorToDisplay.name;
+        actorName.text = messageToDisplay.actorName;
     }
 
 
@@ -54,7 +50,7 @@ public class DialogueManager : MonoBehaviour
     public void NextMessage()
     {
         activeMessage++;
-        if(activeMessage < currentMessages.Length)
+        if(activeMessage < currentMessages.Count)
         {
             DisplayMessage();
         }
@@ -62,19 +58,7 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.Log("Conversation Ended!");
             isActive = false;
-            ToggleDisplay(false);
+            transform.GetChild(0).gameObject.SetActive(false);
         }
-    }
-
-
-    //Toggles all relevant UI components
-    private void ToggleDisplay(bool b)
-    {
-        int children = transform.childCount;
-        for(int i = 0; i < children; i++)
-        {
-            transform.GetChild(i).gameObject.SetActive(b);
-        }
-        GetComponent<Image>().enabled = b;
     }
 }
