@@ -49,10 +49,13 @@ public class DialogueTrigger : Interactable
     {
         if (other.CompareTag("Player"))
         {
-            PlayerInRange = true;
             if (!triggerImmediately)
             {
-                InstanceUI = Instantiate(InteractableUI, transform.position, Camera.main.transform.rotation);
+                if (other.CompareTag("Player"))
+                {
+                    PlayerInRange = false;
+                    Destroy(InstanceUI);
+                }
             }
         }
     }

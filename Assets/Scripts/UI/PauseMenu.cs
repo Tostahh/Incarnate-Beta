@@ -21,12 +21,14 @@ public class PauseMenu : MonoBehaviour
     {
         PC.Player.Pause.performed += PauseStateGame;
         SetSelectedButton.PauseGame += PauseWithOutUI;
+        DialogueManager.PauseGame += PauseWithOutUI;
         SceneManagment.NewSceneLoaded += NewScene;
     }
     private void OnDisable()
     {
         PC.Player.Pause.performed -= PauseStateGame;
         SetSelectedButton.PauseGame -= PauseWithOutUI;
+        DialogueManager.PauseGame -= PauseWithOutUI;
         SceneManagment.NewSceneLoaded -= NewScene;
     }
     public void PauseStateGame(InputAction.CallbackContext jump)

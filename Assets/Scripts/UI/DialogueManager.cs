@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
+    public static Action PauseGame = delegate { };
+
     public TextMeshProUGUI actorName;
     public TextMeshProUGUI messageText;
     public RectTransform backgroundBox;
@@ -26,6 +29,7 @@ public class DialogueManager : MonoBehaviour
     //Method called by Dialogue trigger to begin conversation
     public void OpenDialogue(List<Message> messages)
     {
+        PauseGame();
         transform.GetChild(0).gameObject.SetActive(true);
         currentMessages = messages;
         activeMessage = 0;
@@ -56,6 +60,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            PauseGame();
             Debug.Log("Conversation Ended!");
             isActive = false;
             transform.GetChild(0).gameObject.SetActive(false);
