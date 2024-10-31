@@ -19,8 +19,6 @@ public class QuestTracker : MonoBehaviour
         QuestEvents.OnQuestStepStateChange += UpdateQuestDisplayR;
         QuestEvents.OnFinishQuest += DestroyQuestDisplay;
         QuestEvents.OnQuestStepInitialized += OnQuestStepInitialized;
-
-
     }
 
     private void OnDisable()
@@ -30,6 +28,17 @@ public class QuestTracker : MonoBehaviour
         QuestEvents.OnQuestStepStateChange -= UpdateQuestDisplayR;
         QuestEvents.OnFinishQuest -= DestroyQuestDisplay;
         QuestEvents.OnQuestStepInitialized -= OnQuestStepInitialized;
+    }
+
+    public void LoadQuestDisplay()
+    {
+        foreach(Quest quest in QM.QuestMap.Values)
+        {
+            if(quest.state == QuestState.IN_PROGRESS || quest.state == QuestState.CAN_FINSIH)
+            {
+                MakeQuestDisplay(quest.info.ID);
+            }
+        }
     }
 
     private void MakeQuestDisplay(string ID)
@@ -124,6 +133,15 @@ public class QuestTracker : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void ClearDisplay()
+    {
+        foreach (var questUI in activeQuests.Values)
+        {
+            Destroy(questUI);
+        }
+        activeQuests.Clear();
     }
 
 }

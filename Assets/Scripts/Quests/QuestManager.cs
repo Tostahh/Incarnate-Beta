@@ -21,7 +21,7 @@ public class QuestManager : MonoBehaviour
 
     private void Awake()
     {
-        QuestMap =  CreateQuestMap();
+        QuestMap = CreateQuestMap();
         QE = GetComponent<QuestEvents>();
     }
 
@@ -60,6 +60,8 @@ public class QuestManager : MonoBehaviour
             }
             QE.QuestStateChange(quest);
         }
+
+        FindFirstObjectByType<QuestTracker>().LoadQuestDisplay();
     }
 
     private void OnNewScene()
@@ -276,6 +278,15 @@ public class QuestManager : MonoBehaviour
         Lantern = PS.Lantern;
         Mount = PS.Mount;
         DoubleJump = PS.DoubleJump;
+    }
+    public void ClearQuestSteps()
+    {
+        QuestStep[] questSteps = FindObjectsOfType<QuestStep>();
+
+        foreach (QuestStep step in questSteps)
+        {
+            Destroy(step.gameObject);
+        }
     }
 
     public void SaveAll()
