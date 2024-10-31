@@ -25,7 +25,7 @@ public class Conductor : MonoBehaviour
     public GameObject LoseUI;
     public GameObject WinUI;
 
-    private PlayerControls PC;
+    private PlayerControl PC;
     private AudioSource MusicSource;
     private Song CurrentSong;
     private float SongBPM;
@@ -35,7 +35,7 @@ public class Conductor : MonoBehaviour
     private void Awake()
     {
         Instantiate(FindObjectOfType<Fossil>().SongPrefab);
-        PC = new PlayerControls();
+        PC = new PlayerControl();
         PC.Enable();
         MusicSource = GetComponent<AudioSource>();
 

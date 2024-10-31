@@ -8,11 +8,11 @@ public class NoteInteractions : MonoBehaviour
     [SerializeField] private Collider Collider;
     [SerializeField] private NotePlacement NotePlace;
 
-    private PlayerControls PC;
+    private PlayerControl PC;
 
     private void Awake()
     {
-        PC = new PlayerControls();
+        PC = new PlayerControl();
         PC.Enable();
         Collider = GetComponent<Collider>();
     }

@@ -10,11 +10,11 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private GameObject PauseMenuUI;
 
-    private PlayerControls PC;
+    private PlayerControl PC;
     private void Awake()
     {
         main = this;
-        PC = new PlayerControls();
+        PC = new PlayerControl();
         PC.Enable();
     }
     private void OnEnable()

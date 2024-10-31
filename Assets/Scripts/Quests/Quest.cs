@@ -4,7 +4,7 @@ public class Quest
 {
     public QuestInfoSO info;
     public QuestState state;
-    private int CurrentQuestStepIndex;
+    public int CurrentQuestStepIndex;
     private QuestStepState[] QueststepsStates;
 
     public Quest(QuestInfoSO QuestInfo)

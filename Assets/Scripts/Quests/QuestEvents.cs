@@ -8,6 +8,8 @@ public class QuestEvents : MonoBehaviour
     public static Action<string> OnFinishQuest = delegate { };
     public static Action<Quest> OnQuestStateChange = delegate { };
     public static Action<string, int, QuestStepState> OnQuestStepStateChange = delegate { };
+    public static Action<string, int> OnQuestStepInitialized;
+
 
     public void StartQuest(string ID)
     {
@@ -44,4 +46,10 @@ public class QuestEvents : MonoBehaviour
             OnQuestStepStateChange(ID, StepIndex, questStepState);
         }
     }
+    public void QuestStepInitialized(string questID, int stepIndex)
+    {
+        if (OnQuestStepInitialized != null)
+            OnQuestStepInitialized(questID, stepIndex);
+    }
+
 }

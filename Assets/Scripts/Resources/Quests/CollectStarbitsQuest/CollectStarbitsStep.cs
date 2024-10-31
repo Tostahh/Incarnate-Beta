@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using UnityEngine;
 
 public class CollectStarbitsStep : QuestStep
@@ -8,6 +9,8 @@ public class CollectStarbitsStep : QuestStep
 
     private void OnEnable()
     {
+        this.DisplayName = "Collect Starbits";
+        this.Requirement = "Left to Get: " + (StarbitsToCollect - StarbitsCollected).ToString();
         CurrencyPickUp.StarbitsPickedUp += UpdateStarbitCount;
     }
     private void OnDisable()
@@ -20,6 +23,7 @@ public class CollectStarbitsStep : QuestStep
         if(StarbitsCollected < StarbitsToCollect)
         {
             StarbitsCollected += StarBits;
+            Requirement = "Left to Get: " + (StarbitsToCollect - StarbitsCollected).ToString();
             UpdateStep();
         }
 

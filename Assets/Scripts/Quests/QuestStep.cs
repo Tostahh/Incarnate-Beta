@@ -2,9 +2,13 @@ using UnityEngine;
 
 public abstract class QuestStep : MonoBehaviour
 {
+    public string DisplayName;
+    public string Requirement;
+
+    public string ID;
+    public int StepIndex;
+
     private bool IsFinished = false;
-    private string ID;
-    private int StepIndex;
     private QuestManager QM;
 
     public void StartQuestStep(string id, int Index, string stepstate)
@@ -16,6 +20,8 @@ public abstract class QuestStep : MonoBehaviour
         {
             SetQuestStepState(stepstate);
         }
+
+        QM.QE.QuestStepInitialized(ID, StepIndex);
     }
     protected void FinishQuestStep()
     {

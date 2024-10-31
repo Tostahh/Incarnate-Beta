@@ -6,14 +6,14 @@ using UnityEngine.InputSystem;
 public class Interactable : MonoBehaviour
 {
     public bool PlayerInRange;
-    public PlayerControls PC;
+    public PlayerControl PC;
 
     public GameObject InteractableUI;
 
     public GameObject InstanceUI;
     public virtual void Awake()
     {
-        PC = new PlayerControls();
+        PC = new PlayerControl();
         PC.Enable();
     }
     public virtual void OnEnable()

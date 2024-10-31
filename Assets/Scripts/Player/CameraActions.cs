@@ -9,11 +9,11 @@ public class CameraActions : MonoBehaviour
     public bool LockedOn;
     public float LockDistance = 13f;
 
-    private PlayerControls PC;
+    private PlayerControl PC;
     private Transform Player;
     private void Awake()
     {
-        PC = new PlayerControls();
+        PC = new PlayerControl();
         PC.Enable();
         Player = FindObjectOfType<PlayerActions>().gameObject.transform;
     }

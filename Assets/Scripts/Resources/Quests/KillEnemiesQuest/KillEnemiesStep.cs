@@ -7,6 +7,8 @@ public class KillEnemiesStep : QuestStep
     private int EnemiesKilled;
     private void OnEnable()
     {
+        this.DisplayName = "Kill Enemies";
+        this.Requirement = "Left to Get: " + (EnemiesToKill - EnemiesKilled).ToString();
         Heath.EnemyDefeated += UpdateKills;
     }
     private void OnDisable()
@@ -18,6 +20,7 @@ public class KillEnemiesStep : QuestStep
         if (EnemiesKilled < EnemiesToKill)
         {
             EnemiesKilled++;
+            Requirement = "Left to Get: " + (EnemiesToKill - EnemiesKilled).ToString();
             UpdateStep();
         }
 

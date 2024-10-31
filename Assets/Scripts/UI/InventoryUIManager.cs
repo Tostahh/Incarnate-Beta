@@ -16,11 +16,11 @@ public class InventoryUIManager : MonoBehaviour
 
     private Inventory inventory;
 
-    private PlayerControls PC;
+    private PlayerControl PC;
 
     private void Awake()
     {
-        PC = new PlayerControls();
+        PC = new PlayerControl();
         PC.Enable();
     }
 

@@ -37,7 +37,7 @@ public class PlayerActions : MonoBehaviour
 
     private bool Tcooldown;
 
-    private PlayerControls PC;
+    private PlayerControl PC;
     private Vector2 InputDirection;
     private Vector3 AppliedDirection;
     private Vector3 CamMovement;
@@ -60,7 +60,7 @@ public class PlayerActions : MonoBehaviour
         // Set collision detection mode to Continuous
         RB.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-        PC = new PlayerControls();
+        PC = new PlayerControl();
         PC.Enable();
     }
 

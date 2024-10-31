@@ -57,7 +57,6 @@ public class QuestManager : MonoBehaviour
             if(quest.state == QuestState.IN_PROGRESS)
             {
                 quest.MakeCurrentQuestStep(this.transform);
-
             }
             QE.QuestStateChange(quest);
         }
@@ -73,11 +72,14 @@ public class QuestManager : MonoBehaviour
 
     private void Update()
     {
-        foreach(Quest quest in QuestMap.Values)
+        if (QuestMap.Values.Count > 0)
         {
-            if(quest.state == QuestState.REQUIREMENTS_NOT_MET && CheckIfRequirmentsMet(quest))
+            foreach (Quest quest in QuestMap.Values)
             {
-                ChangeQuestState(quest.info.ID, QuestState.CAN_START);
+;               if (quest.state == QuestState.REQUIREMENTS_NOT_MET && CheckIfRequirmentsMet(quest))
+                {
+                    ChangeQuestState(quest.info.ID, QuestState.CAN_START);
+                }
             }
         }
     }
@@ -250,7 +252,7 @@ public class QuestManager : MonoBehaviour
         return IDToQuestMap;
     }
 
-    private Quest GetQuestByID(string QuestID)
+    public Quest GetQuestByID(string QuestID)
     {
         Quest quest = QuestMap[QuestID];
         if(quest == null)

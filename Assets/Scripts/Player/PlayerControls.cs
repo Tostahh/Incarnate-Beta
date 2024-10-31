@@ -16,10 +16,10 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 using UnityEngine;
 
-public partial class @PlayerControls: IInputActionCollection2, IDisposable
+public partial class PlayerControl: IInputActionCollection2, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @PlayerControls()
+    public PlayerControl()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""PlayerControls"",
@@ -637,7 +637,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Rhythm_StartSong = m_Rhythm.FindAction("StartSong", throwIfNotFound: true);
     }
 
-    ~@PlayerControls()
+    ~PlayerControl()
     {
         Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, PlayerControls.Player.Disable() has not been called.");
         Debug.Assert(!m_Rhythm.enabled, "This will cause a leak and performance issues, PlayerControls.Rhythm.Disable() has not been called.");
@@ -717,8 +717,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_LockCam;
     public struct PlayerActions
     {
-        private @PlayerControls m_Wrapper;
-        public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        private PlayerControl m_Wrapper;
+        public PlayerActions(PlayerControl wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Look => m_Wrapper.m_Player_Look;
@@ -850,8 +850,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Rhythm_StartSong;
     public struct RhythmActions
     {
-        private @PlayerControls m_Wrapper;
-        public RhythmActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        private PlayerControl m_Wrapper;
+        public RhythmActions(PlayerControl wrapper) { m_Wrapper = wrapper; }
         public InputAction @LeftNote => m_Wrapper.m_Rhythm_LeftNote;
         public InputAction @MiddleNote => m_Wrapper.m_Rhythm_MiddleNote;
         public InputAction @RightNote => m_Wrapper.m_Rhythm_RightNote;
