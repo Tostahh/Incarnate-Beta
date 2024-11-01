@@ -1,13 +1,7 @@
-[NAME=???]Hello!
+[NAME=Quest Dude]Hello! I am Quest Dude! I'll give you a quest
 
-Welcome to the world of Game Development!
+Go collect Starbits! 20 of them please. They look like gold pods on the ground
 
-[NAME=Michael]My name is Michael, and this is NPC Dialogue.
+To get them you are going need to go to the RED box named Explore and travel to the Main Planet Station!
 
-A pretty easy way to handle linear dialogue is with text files.
-
-Here you can edit what is being said without having to edit every line in Unity.
-
-Trust me, it can get annoying very quickly having to click on textboxes and such.
-
-Of course, if you wanted nonlinear dialogue, you would need a way to implement player choice, a way to record it, and a way to navigate a file or two.
+Come Back here when you are done and ill Give you a reward!!

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd23ff5ea56a0ef489a728f20d88755e, type: 3}
   m_Name: KillEnemies
   m_EditorClassIdentifier: 
+  id: KillEnemies
   DisplayedName: Mummy Masher
   QuestPreRecs: []
   SpearDmg: 0

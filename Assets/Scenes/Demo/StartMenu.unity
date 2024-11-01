@@ -911,17 +911,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010871254}
   m_CullTransparentMesh: 1
---- !u!114 &1028160724 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 767377680634763709, guid: bf7ce14c85f860d40a80176d1252fabb, type: 3}
-  m_PrefabInstance: {fileID: 5908867155474873067}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd322a3c0e25434458bfb8365753ffe3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1213178507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1610,6 +1599,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668443610}
   m_CullTransparentMesh: 1
+--- !u!1 &1788220156 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7644316702363440732, guid: bf7ce14c85f860d40a80176d1252fabb, type: 3}
+  m_PrefabInstance: {fileID: 5908867155474873067}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1824166725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1780,7 +1774,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1028160724}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: QuestTracker, Assembly-CSharp
         m_MethodName: ClearDisplay
         m_Mode: 1
@@ -1835,12 +1829,27 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 79106450104711980, guid: bf7ce14c85f860d40a80176d1252fabb, type: 3}
   m_PrefabInstance: {fileID: 5908867155474873067}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1788220156}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 638e5d6cd8b849b4f81d61faf5e63e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2033514121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788220156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd322a3c0e25434458bfb8365753ffe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestDisplay: {fileID: 5908867155474873069}
+  QuestPrefabUI: {fileID: 1491248918895473856, guid: 8a02339e108b29d47b9048b289514169, type: 3}
+  QuestUIContainer: {fileID: 5908867155474873068}
 --- !u!1001 &5908867155474873067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1897,11 +1906,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuestDisplay
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 767377680634763709, guid: bf7ce14c85f860d40a80176d1252fabb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7644316702363440732, guid: bf7ce14c85f860d40a80176d1252fabb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2033514121}
   m_SourcePrefab: {fileID: 100100000, guid: bf7ce14c85f860d40a80176d1252fabb, type: 3}
+--- !u!224 &5908867155474873068 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6298945888193993673, guid: bf7ce14c85f860d40a80176d1252fabb, type: 3}
+  m_PrefabInstance: {fileID: 5908867155474873067}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5908867155474873069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3212078510464085097, guid: bf7ce14c85f860d40a80176d1252fabb, type: 3}
+  m_PrefabInstance: {fileID: 5908867155474873067}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

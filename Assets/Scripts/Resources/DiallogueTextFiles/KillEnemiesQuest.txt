@@ -1,13 +1,7 @@
-[NAME=???]Hello!
+[NAME=Quest Bro]Hello! I am Quest Bro! I'll give you a quest
 
-Welcome to the world of Game Development!
+Go Kill Mummys! 3 of them please. They Wonder around the Planet area 
 
-[NAME=Michael]My name is Michael, and this is NPC Dialogue.
+Quest Dude will tell you how to get there
 
-A pretty easy way to handle linear dialogue is with text files.
-
-Here you can edit what is being said without having to edit every line in Unity.
-
-Trust me, it can get annoying very quickly having to click on textboxes and such.
-
-Of course, if you wanted nonlinear dialogue, you would need a way to implement player choice, a way to record it, and a way to navigate a file or two.
+Come Back here when you are done and ill Give you a reward!!

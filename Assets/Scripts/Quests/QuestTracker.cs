@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class QuestTracker : MonoBehaviour
 {
+    [SerializeField] private GameObject QuestDisplay;
     [SerializeField] private GameObject QuestPrefabUI; // Prefab for each quest's UI display
     [SerializeField] private Transform QuestUIContainer; // Container for the quest UI elements
 
@@ -19,6 +20,7 @@ public class QuestTracker : MonoBehaviour
         QuestEvents.OnQuestStepStateChange += UpdateQuestDisplayR;
         QuestEvents.OnFinishQuest += DestroyQuestDisplay;
         QuestEvents.OnQuestStepInitialized += OnQuestStepInitialized;
+        SceneManagment.NewSceneLoaded += CheckPlayer;
     }
 
     private void OnDisable()
@@ -28,8 +30,19 @@ public class QuestTracker : MonoBehaviour
         QuestEvents.OnQuestStepStateChange -= UpdateQuestDisplayR;
         QuestEvents.OnFinishQuest -= DestroyQuestDisplay;
         QuestEvents.OnQuestStepInitialized -= OnQuestStepInitialized;
+        SceneManagment.NewSceneLoaded -= CheckPlayer;
     }
-
+    public void CheckPlayer()
+    {
+        if(FindObjectOfType<PlayerActions>())
+        {
+            QuestDisplay.SetActive(true);
+        }
+        else
+        {
+            QuestDisplay.SetActive(false);
+        }
+    }
     public void LoadQuestDisplay()
     {
         foreach(Quest quest in QM.QuestMap.Values)

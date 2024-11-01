@@ -471,6 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd322a3c0e25434458bfb8365753ffe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  QuestDisplay: {fileID: 0}
   QuestPrefabUI: {fileID: 1491248918895473856, guid: 8a02339e108b29d47b9048b289514169, type: 3}
   QuestUIContainer: {fileID: 6298945888193993673}
 --- !u!114 &790677552069547448
@@ -3936,9 +3937,85 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1055491420886450576, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_text
+      value: Sample
+      objectReference: {fileID: 0}
+    - target: {fileID: 1055491420886450576, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1055491420886450576, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1055491420886450576, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5906015285241332059, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
       propertyPath: m_Name
       value: DialogueSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754313217975381901, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 142.4945
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754313217975381901, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -388.75275
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754313217975381901, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -700
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837304755359921290, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -940
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837304755359921290, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837304755359921290, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837304755359921290, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 837
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015792831292648284, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015792831292648284, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0.00000667572
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015792831292648284, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -0.0000038146973
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015792831292648284, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015792831292648284, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8220953907271139280, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_text
+      value: Sample
+      objectReference: {fileID: 0}
+    - target: {fileID: 8220953907271139280, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8220953907271139280, guid: 6356243941ef54142b400e64a4e1a2eb, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
