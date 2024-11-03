@@ -11,6 +11,7 @@ public class SetSelectedButton : MonoBehaviour
     EventSystem myEventSystem;
 
     [SerializeField] private GameObject SelectedButton;
+    [SerializeField] private bool DontPause;
 
     private void Awake()
     {
@@ -24,12 +25,18 @@ public class SetSelectedButton : MonoBehaviour
         myEventSystem = FindObjectOfType<EventSystem>();
         myEventSystem.SetSelectedGameObject(null);
         myEventSystem.SetSelectedGameObject(SelectedButton);
-        PauseGame();
+        if (!DontPause)
+        {
+            PauseGame();
+        }
     }
 
     private void OnDisable()
     {
         myEventSystem.SetSelectedGameObject(null);
-        PauseGame();
+        if (!DontPause)
+        {
+            PauseGame();
+        }
     }
 }

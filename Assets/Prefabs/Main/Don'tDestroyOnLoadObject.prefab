@@ -393,7 +393,6 @@ GameObject:
   - component: {fileID: 6298945888193993673}
   - component: {fileID: 6402854555363806117}
   - component: {fileID: 6760804928231004067}
-  - component: {fileID: 767377680634763709}
   - component: {fileID: 790677552069547448}
   m_Layer: 6
   m_Name: QuestUI
@@ -459,21 +458,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &767377680634763709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1686129367693841119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd322a3c0e25434458bfb8365753ffe3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  QuestDisplay: {fileID: 0}
-  QuestPrefabUI: {fileID: 1491248918895473856, guid: 8a02339e108b29d47b9048b289514169, type: 3}
-  QuestUIContainer: {fileID: 6298945888193993673}
 --- !u!114 &790677552069547448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -840,7 +824,7 @@ GameObject:
   - component: {fileID: 2084126073420254262}
   - component: {fileID: 3076354925502426528}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: QuestDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1179,6 +1163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectedButton: {fileID: 4027686103080881551}
+  DontPause: 0
 --- !u!1 &4398515512527979408
 GameObject:
   m_ObjectHideFlags: 0
@@ -3234,6 +3219,7 @@ GameObject:
   - component: {fileID: 4679281697036556885}
   - component: {fileID: 79106450104711980}
   - component: {fileID: 8102080824904399036}
+  - component: {fileID: 5004957610243942078}
   m_Layer: 0
   m_Name: QuestManager
   m_TagString: Untagged
@@ -3282,6 +3268,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a480bb8a2e1e4a48b79aff2f47eb5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5004957610243942078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7644316702363440732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd322a3c0e25434458bfb8365753ffe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestDisplay: {fileID: 3212078510464085097}
+  QuestPrefabUI: {fileID: 1491248918895473856, guid: 8a02339e108b29d47b9048b289514169, type: 3}
+  QuestUIContainer: {fileID: 6298945888193993673}
 --- !u!1 &7666652911540083748
 GameObject:
   m_ObjectHideFlags: 0
@@ -3773,6 +3774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectedButton: {fileID: 4635424839921098962}
+  DontPause: 1
 --- !u!1 &9043523252583898247
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public static PauseMenu main;
     public bool Paused;
+    private bool NoUI;
 
     [SerializeField] private GameObject PauseMenuUI;
 
@@ -31,8 +32,13 @@ public class PauseMenu : MonoBehaviour
         DialogueManager.PauseGame -= PauseWithOutUI;
         SceneManagment.NewSceneLoaded -= NewScene;
     }
-    public void PauseStateGame(InputAction.CallbackContext jump)
+    private void PauseStateGame(InputAction.CallbackContext jump)
     {
+        if(NoUI)
+        {
+            return;
+        }
+
         if(Paused)
         {
             PauseMenuUI.SetActive(false);
@@ -52,11 +58,13 @@ public class PauseMenu : MonoBehaviour
         if (Paused)
         {
             Paused = false;
+            NoUI = false;
             Time.timeScale = 1f;
         }
         else
         {
             Paused = true;
+            NoUI = true;
             Time.timeScale = 0f;
         }
     }
@@ -67,6 +75,11 @@ public class PauseMenu : MonoBehaviour
         {
             Paused = false;
             Time.timeScale = 1f;
+        }
+
+        if(NoUI)
+        {
+            NoUI = false;
         }
     }
 }
