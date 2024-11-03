@@ -48,5 +48,5 @@ MonoBehaviour:
   Discovered: 0
   Name: MushMan
   Description: Lil Guy
-  SongPrefab: {fileID: 3688659504262292584}
+  SongPrefab: {fileID: 2487137466055710760, guid: 8d3e493792e81244aa46d0703e6ba06b, type: 3}
   CometMonsterPrafab: {fileID: 5673730335090023779, guid: 0b5c91b51e91ab945be6acf522ffb2cf, type: 3}

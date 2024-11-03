@@ -21,6 +21,7 @@ public class QuestTracker : MonoBehaviour
         QuestEvents.OnFinishQuest += DestroyQuestDisplay;
         QuestEvents.OnQuestStepInitialized += OnQuestStepInitialized;
         SceneManagment.NewSceneLoaded += CheckPlayer;
+        CheckPlayer(); //tmp
     }
 
     private void OnDisable()

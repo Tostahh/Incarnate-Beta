@@ -46,11 +46,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notes:
   - {x: 3, y: 0}
-  - {x: 7, y: 1}
-  - {x: 11, y: 2}
-  - {x: 15, y: 1}
+  - {x: 4, y: 1}
+  - {x: 5, y: 2}
+  - {x: 6, y: 1}
+  - {x: 8, y: 0}
+  - {x: 9, y: 0}
+  - {x: 9.5, y: 1}
+  - {x: 10, y: 2}
+  - {x: 11, y: 1}
+  - {x: 13, y: 2}
+  - {x: 14, y: 1}
+  - {x: 15, y: 0}
   NotePrefab: {fileID: 473150038828297023, guid: 481f63c3671925741b97fae891965a9c, type: 3}
   SongMusic: {fileID: 8300000, guid: 7d8bc15e7418d4e4987e634a2fc6419c, type: 3}
   SongBPM: 60
-  FirstBeatOffset: 1
+  FirstBeatOffset: 0.5
   BeatsShownInAdvance: 3

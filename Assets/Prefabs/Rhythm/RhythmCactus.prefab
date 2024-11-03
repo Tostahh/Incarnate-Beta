@@ -45,12 +45,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notes:
-  - {x: 3, y: 0}
-  - {x: 7, y: 1}
-  - {x: 11, y: 2}
+  - {x: 0.5, y: 0}
+  - {x: 1, y: 1}
+  - {x: 1.5, y: 2}
+  - {x: 2, y: 1}
+  - {x: 2.5, y: 0}
+  - {x: 2.75, y: 1}
+  - {x: 3, y: 2}
+  - {x: 3.5, y: 0}
+  - {x: 4, y: 2}
+  - {x: 5, y: 1}
+  - {x: 5.5, y: 1}
+  - {x: 6, y: 0}
+  - {x: 6.5, y: 0}
+  - {x: 7, y: 0}
+  - {x: 7.25, y: 1}
+  - {x: 7.5, y: 2}
+  - {x: 8, y: 0}
+  - {x: 8.75, y: 0}
+  - {x: 9, y: 1}
+  - {x: 9.75, y: 0}
+  - {x: 10, y: 2}
+  - {x: 10.25, y: 0}
+  - {x: 10.5, y: 1}
+  - {x: 10.75, y: 2}
+  - {x: 11, y: 0}
+  - {x: 11.25, y: 1}
+  - {x: 11.5, y: 0}
+  - {x: 11.75, y: 1}
+  - {x: 12, y: 2}
+  - {x: 12.75, y: 0}
+  - {x: 13, y: 1}
+  - {x: 13.5, y: 2}
+  - {x: 14, y: 1}
+  - {x: 14.5, y: 0}
+  - {x: 14.75, y: 2}
+  - {x: 15, y: 0}
   - {x: 15, y: 1}
+  - {x: 15, y: 2}
   NotePrefab: {fileID: 473150038828297023, guid: 481f63c3671925741b97fae891965a9c, type: 3}
   SongMusic: {fileID: 8300000, guid: c25a7ce0fc382504c9d4c3a9cd6519a1, type: 3}
   SongBPM: 60
-  FirstBeatOffset: 1
+  FirstBeatOffset: 0.5
   BeatsShownInAdvance: 3
