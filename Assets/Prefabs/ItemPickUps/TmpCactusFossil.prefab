@@ -48,5 +48,5 @@ MonoBehaviour:
   Discovered: 0
   Name: Stabby
   Description: Big Man
-  SongPrefab: {fileID: 2487137466055710760, guid: a436c55e22053bb47b2139d90e29d14e, type: 3}
+  SongPrefab: {fileID: 2487137466055710760, guid: d5334b7ce7489b74491f23d667e89ca7, type: 3}
   CometMonsterPrafab: {fileID: 653777797268641158, guid: 315f49079c347d34796a8fec27918b7a, type: 3}

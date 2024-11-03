@@ -64,11 +64,14 @@ public class SetCombat : MonoBehaviour
         TriggerCombat();
         GetComponent<Collider>().enabled = true;
         Walls.SetActive(false);
-        for (int i = 0; i < enemies.Length; i++)
+        if (enemies != null)
         {
-            if (enemies[i])
+            for (int i = 0; i < enemies.Length; i++)
             {
-                Destroy(enemies[i]);
+                if (enemies[i] != null)
+                {
+                    Destroy(enemies[i]);
+                }
             }
         }
         EnemiesDefeated = 0;
