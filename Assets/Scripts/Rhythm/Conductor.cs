@@ -9,10 +9,13 @@ public class Conductor : MonoBehaviour
 
     [Header("ConductorInformation")]
     public bool SongPlaying;
+    public bool CountDownPlaing;
     public bool SongDone;
+    public bool CountDownDone;
     public Transform MiddleRow;
     public Transform LeftRow;
     public Transform RightRow;
+    public AudioClip BPM;
 
     [Header("SongInformation")]
     public float SecPerBeat;
@@ -46,7 +49,7 @@ public class Conductor : MonoBehaviour
     }
     private void OnEnable()
     {
-        PC.Rhythm.StartSong.performed += StartSong;
+        PC.Rhythm.StartSong.performed += StartCountIn;
         Grader.WinFossil += Win;
         Grader.LoseFossil += LoseSong;
 
@@ -58,7 +61,7 @@ public class Conductor : MonoBehaviour
     }
     private void OnDisable()
     {
-        PC.Rhythm.StartSong.performed -= StartSong;
+        PC.Rhythm.StartSong.performed -= StartCountIn;
         Grader.WinFossil -= Win;
         Grader.LoseFossil -= LoseSong;
     }
@@ -84,8 +87,31 @@ public class Conductor : MonoBehaviour
                 EndSong();
             }
         }
+
+        if(CountDownPlaing && !CountDownDone)
+        {
+            if(MusicSource.time > 3.9f)
+            {
+                MusicSource.Stop();
+                MusicSource.clip = CurrentSong.SongMusic;
+                CountDownDone = true;
+                StartSong();
+            }
+        }
     }
-    private void StartSong(InputAction.CallbackContext Pressed)
+
+    private void StartCountIn(InputAction.CallbackContext Pressed)
+    {
+        MusicSource.clip = BPM;
+        MusicSource.Play();
+        CountDownPlaing = true;
+        if (StartUI)
+        {
+            StartUI.SetActive(false);
+        }
+    }
+
+    private void StartSong()
     {
         if (!SongPlaying)
         {
