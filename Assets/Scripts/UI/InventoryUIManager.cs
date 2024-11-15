@@ -42,7 +42,7 @@ public class InventoryUIManager : MonoBehaviour
 
         if (inventory.BigMonsterSlotFull)
         {
-            BigMonsterSlot.text = inventory.BigMonsterSlot.gameObject.GetComponent<BigMonster>().GiveName();
+            BigMonsterSlot.text = inventory.BigMonsterSlot.gameObject.GetComponent<BattleForm>().GiveName();
         }
         else
         {
@@ -51,7 +51,7 @@ public class InventoryUIManager : MonoBehaviour
 
         if (inventory.SmallMonsterSlotFull)
         {
-            SmallMonsterSlot.text = inventory.SmallMonsterSlot.gameObject.GetComponent<SmallMonster>().GiveName();
+            SmallMonsterSlot.text = inventory.SmallMonsterSlot.gameObject.GetComponent<SupportForm>().GiveName();
         }
         else
         {
@@ -81,7 +81,7 @@ public class InventoryUIManager : MonoBehaviour
 
         if(inventory.BigMonsterSlotFull)
         {
-            BigMonsterSlot.text = inventory.BigMonsterSlot.gameObject.GetComponent<BigMonster>().GiveName();
+            BigMonsterSlot.text = inventory.BigMonsterSlot.gameObject.GetComponent<BattleForm>().GiveName();
         }
         else
         {
@@ -90,7 +90,7 @@ public class InventoryUIManager : MonoBehaviour
 
         if (inventory.SmallMonsterSlotFull)
         {
-            SmallMonsterSlot.text = inventory.SmallMonsterSlot.gameObject.GetComponent<SmallMonster>().GiveName();
+            SmallMonsterSlot.text = inventory.SmallMonsterSlot.gameObject.GetComponent<SupportForm>().GiveName();
         }
         else
         {

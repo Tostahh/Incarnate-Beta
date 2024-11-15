@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SmallMonster : CometMonster
+public class SupportForm : CometMonster
 {
     [Header("SupportFormInformation")]
     [SerializeField] private float BuffCooldown;

@@ -7,6 +7,7 @@ public class CometMonster : MonoBehaviour
     [Header("MonsterInformation")]
     public string Name;
     public int MonsterNum;
+    public CometType Type;
 
     [Header("RoamBehavior")]
     public float RoamTimer;
@@ -117,4 +118,15 @@ public class CometMonster : MonoBehaviour
             yield return null;
         }
     }
+}
+
+[System.Serializable]
+public enum CometType
+{
+    Costal,
+    Objectual,
+    Floral,
+    Prismal,
+    Crustal,
+    Infernal
 }

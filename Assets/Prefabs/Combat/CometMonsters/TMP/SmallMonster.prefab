@@ -132,6 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: MushMan
   MonsterNum: 2
+  Type: 2
   RoamTimer: 0
   RoamRange: 10
   PlayerFollowRange: 5

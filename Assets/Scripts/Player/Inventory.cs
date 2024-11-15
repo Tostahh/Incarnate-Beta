@@ -71,7 +71,7 @@ public class Inventory : MonoBehaviour
         FindObjectOfType<SaveLoadJson>().GiveSaveData().BigMonsterSlot = BigMonsterSlotFull;
         if (BigMonsterSlotFull)
         {
-            FindObjectOfType<SaveLoadJson>().GiveSaveData().BigMonster = BigMonsterSlot.GetComponent<BigMonster>().MonsterNum;
+            FindObjectOfType<SaveLoadJson>().GiveSaveData().BigMonster = BigMonsterSlot.GetComponent<BattleForm>().MonsterNum;
         }
         else
         {
@@ -81,7 +81,7 @@ public class Inventory : MonoBehaviour
         FindObjectOfType<SaveLoadJson>().GiveSaveData().SmallMonsterSlot = SmallMonsterSlotFull;
         if (SmallMonsterSlotFull)
         {
-            FindObjectOfType<SaveLoadJson>().GiveSaveData().SmallMonster = SmallMonsterSlot.GetComponent<SmallMonster>().MonsterNum;
+            FindObjectOfType<SaveLoadJson>().GiveSaveData().SmallMonster = SmallMonsterSlot.GetComponent<SupportForm>().MonsterNum;
         }
         else
         {

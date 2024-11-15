@@ -10,8 +10,8 @@ public class PlayerActions : MonoBehaviour
     public bool Moving;
 
     [SerializeField] public PlayerStats PS;
-    [SerializeField] public BigMonster BigMon;
-    [SerializeField] public SmallMonster SmallMon;
+    [SerializeField] public BattleForm BigMon;
+    [SerializeField] public SupportForm SmallMon;
 
     [SerializeField] private Animator Anim;
     [SerializeField] private Light HandLight;
@@ -343,8 +343,8 @@ public class PlayerActions : MonoBehaviour
     }
     private void SetMons()
     {
-        BigMon = FindObjectOfType<BigMonster>();
-        SmallMon = FindObjectOfType<SmallMonster>();
+        BigMon = FindObjectOfType<BattleForm>();
+        SmallMon = FindObjectOfType<SupportForm>();
     }
 
     public void PlayerHit()

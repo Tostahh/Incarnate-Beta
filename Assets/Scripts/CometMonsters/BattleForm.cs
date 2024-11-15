@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BigMonster : CometMonster
+public class BattleForm : CometMonster
 {
     [Header("BattleFormInformation")]
     [SerializeField] private Collider FistHitBox;
