@@ -327,7 +327,12 @@ public class QuestManager : MonoBehaviour
 
     public void SaveAll()
     {
-        foreach(Quest quest in QuestMap.Values)
+        if (FindFirstObjectByType<SaveLoadJson>().GiveSaveData().QuestSaveStates == null)
+        {
+            FindFirstObjectByType<SaveLoadJson>().GiveSaveData().QuestSaveStates = new Dictionary<string, string>();
+        }
+
+        foreach (Quest quest in QuestMap.Values)
         {
             SaveQuests(quest);
         }
@@ -337,18 +342,28 @@ public class QuestManager : MonoBehaviour
         try
         {
             QuestData data = quest.GetData();
-
             string DataToJson = JsonUtility.ToJson(data);
 
-            FindFirstObjectByType<SaveLoadJson>().GiveSaveData().QuestSaveStates[quest.info.ID] = DataToJson;
+            var saveData = FindFirstObjectByType<SaveLoadJson>().GiveSaveData();
 
-            Debug.Log(DataToJson);
+            if (saveData.QuestSaveStates == null)
+            {
+                Debug.LogError("QuestSaveStates dictionary is null! Initializing...");
+                saveData.QuestSaveStates = new Dictionary<string, string>();
+            }
+
+            saveData.QuestSaveStates[quest.info.ID] = DataToJson;
+
+            Debug.Log($"Saved quest {quest.info.ID}: {DataToJson}");
+            Debug.Log("Current QuestSaveStates: " + JsonUtility.ToJson(saveData.QuestSaveStates));
         }
         catch (System.Exception E)
         {
-            Debug.Log("Issue Saving Quest :" + quest.info.name);
+            Debug.LogError($"Issue Saving Quest {quest.info.name}: {E.Message}");
         }
     }
+
+
 
     public Quest LoadQuests(QuestInfoSO info)
     {

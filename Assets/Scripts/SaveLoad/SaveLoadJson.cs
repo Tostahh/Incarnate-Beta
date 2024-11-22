@@ -83,14 +83,19 @@ public class SaveLoadJson : MonoBehaviour // Learning Save Data
         SaveGame();
     }
 
-
     public void SaveGame()
     {
-        string SavePlayerData = JsonUtility.ToJson(SaveDataInput);
+        var saveData = SaveDataInput;
+
+        // Debug the QuestSaveStates before serialization
+        Debug.Log("QuestSaveStates JSON: " + JsonUtility.ToJson(saveData.QuestSaveStates));
+
+        string SavePlayerData = JsonUtility.ToJson(saveData);
         File.WriteAllText(SaveFilePath, SavePlayerData);
 
         Debug.Log("Save file created at: " + SaveFilePath);
     }
+
     public void LoadGame()
     {
         if (File.Exists(SaveFilePath))
