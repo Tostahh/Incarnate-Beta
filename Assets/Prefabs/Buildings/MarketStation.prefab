@@ -1101,6 +1101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectedButton: {fileID: 7979816133333981766}
+  DontPause: 0
 --- !u!1 &1169919963105612878
 GameObject:
   m_ObjectHideFlags: 0

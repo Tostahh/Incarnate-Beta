@@ -49,11 +49,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2514298132791800692, guid: 2f7bfa401043573478f19c520d8d765f, type: 3}
-      propertyPath: SceneNames.Array.data[0]
+      propertyPath: 'SceneNames.Array.data[0]'
       value: SpaceHQ
       objectReference: {fileID: 0}
     - target: {fileID: 2514298132791800692, guid: 2f7bfa401043573478f19c520d8d765f, type: 3}
-      propertyPath: StationNames.Array.data[0]
+      propertyPath: 'StationNames.Array.data[0]'
       value: SpaceHQ
       objectReference: {fileID: 0}
     - target: {fileID: 6781762331755019678, guid: 2f7bfa401043573478f19c520d8d765f, type: 3}

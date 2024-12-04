@@ -2462,6 +2462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectedButton: {fileID: 3007901634548373817}
+  DontPause: 0
 --- !u!33 &6171217957606847926
 MeshFilter:
   m_ObjectHideFlags: 0
